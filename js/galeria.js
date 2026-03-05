@@ -51,7 +51,7 @@ function buildImageList() {
 
     // Gallery folder — PNG batch
     for (let i = 1; i <= 145; i++)
-        push(`assets/Gallery/download (${i}).webp`, detectCat(i), 'GLR');
+        push(`assets/Gallery/download (${i}).png`, detectCat(i), 'GLR');
 
     // Kind Mita Portraits
     PORTRAITS.forEach(f =>
@@ -254,3 +254,4 @@ window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', wi
 
 // ── Init ──
 renderItems(true);
+
