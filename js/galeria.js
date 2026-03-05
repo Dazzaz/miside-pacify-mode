@@ -13,24 +13,25 @@ const PORTRAITS = [
 
 // ── Art Contest Submissions ──
 const CONTEST = [
-    '6446.png', 'AusomeGuy13.jpg', 'Benitz.png', 'BonzoMcBonBon.png',
-    'Depikoov.png', 'EddiBluewords.jpg', 'EzmayaM3148.jpg', 'Feanor 1.png',
-    'Feanor.png', 'ImJuztRuby.jpg', 'Keina.png', 'MRFGX 2.jpg', 'MRFGX.webp',
-    'Marlene_Otter.png', 'N0umu 2.png', 'N0umu.png', 'OneLazyArtist.png',
-    'PENCILSHRIMP.jpg', 'Poster 2.jpg', 'Sausage.jpg', 'ShadowWeaver 2.png',
-    'ShadowWeaver 3.png', 'ShadowWeaver.png', 'SnoreDollar.jpg', 'Squintem.png',
-    'Wicho.jpg', 'alyaksey.png', 'amitysy. NOT ELIGIBLE.png', 'banditosaver 2.png',
-    'banditosaver.jpg', 'bataabenn.png', 'blue_hat_..jpg', 'bruh_dude4005.png',
-    'caioox70 2.jpg', 'caioox70.jpg', 'chillthingxx1.png', 'chrome_tron.webp',
-    'dddd_1235.jpg', 'depikoov 2.png', 'devovas.png', 'diman5735 2.png',
-    'diman5735.png', 'fabroxxgp.jpg', 'foxigator.png', 'garfiel_shizaki.jpg',
-    'itsjenott.png', 'kawaiiartistic.png', 'ketroooo.jpg', 'konekochen.webp',
-    'kraxibenco 2.webp', 'kraxibenco.webp', 'kumiko_art.png', 'lhain.jpg',
-    'lilithm.png', 'marilyns.jpg', 'michelangelo_art.png', 'neiro_lulz.png',
-    'notailsartist.jpg', 'occultpie 2.png', 'occultpie.png', 'overlordnugget.png',
-    'penartist.jpg', 'pigeon_wlf.jpg', 'rubixkube.jpg', 'sealchan 2.jpg',
-    'sealchan.jpg', 'shirakamifubuki.jpg', 'skystreak1.jpg', 'tizunai.jpg',
+    '6446.webp', 'AusomeGuy13.webp', 'Benitz.webp', 'BonzoMcBonBon.webp',
+    'Depikoov.webp', 'EddiBluewords.webp', 'EzmayaM3148.webp', 'Feanor 1.webp',
+    'Feanor.webp', 'ImJuztRuby.webp', 'Keina.webp', 'MRFGX 2.webp', 'MRFGX.webp',
+    'Marlene_Otter.webp', 'N0umu 2.webp', 'N0umu.webp', 'OneLazyArtist.webp',
+    'PENCILSHRIMP.webp', 'Poster 2.webp', 'Sausage.webp', 'ShadowWeaver 2.webp',
+    'ShadowWeaver 3.webp', 'ShadowWeaver.webp', 'SnoreDollar.webp', 'Squintem.webp',
+    'Wicho.webp', 'alyaksey.webp', 'amitysy. NOT ELIGIBLE.webp', 'banditosaver 2.webp',
+    'banditosaver.webp', 'bataabenn.webp', 'blue_hat_..webp', 'bruh_dude4005.webp',
+    'caioox70 2.webp', 'caioox70.webp', 'chillthingxx1.webp', 'chrome_tron.webp',
+    'dddd_1235.webp', 'depikoov 2.webp', 'devovas.webp', 'diman5735 2.webp',
+    'diman5735.webp', 'fabroxxgp.webp', 'foxigator.webp', 'garfiel_shizaki.webp',
+    'itsjenott.webp', 'kawaiiartistic.webp', 'ketroooo.webp', 'konekochen.webp',
+    'kraxibenco 2.webp', 'kraxibenco.webp', 'kumiko_art.webp', 'lhain.webp',
+    'lilithm.webp', 'marilyns.webp', 'michelangelo_art.webp', 'neiro_lulz.webp',
+    'notailsartist.webp', 'occultpie 2.webp', 'occultpie.webp', 'overlordnugget.webp',
+    'penartist.webp', 'pigeon_wlf.webp', 'rubixkube.webp', 'sealchan 2.webp',
+    'sealchan.webp', 'shirakamifubuki.webp', 'skystreak1.webp', 'tizunai.webp',
 ];
+
 
 // ── Build full image list ──
 function buildImageList() {
@@ -254,3 +255,4 @@ window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', wi
 
 // ── Init ──
 renderItems(true);
+
