@@ -32,7 +32,6 @@ const CONTEST = [
     'sealchan.webp', 'shirakamifubuki.webp', 'skystreak1.webp', 'tizunai.webp',
 ];
 
-
 // ── Build full image list ──
 function buildImageList() {
     const imgs = [];
@@ -48,11 +47,11 @@ function buildImageList() {
 
     // Gallery folder — JPG batch
     for (let i = 1; i <= 5; i++)
-        push(`assets/Gallery/download (${i}).jpg`, 'fan-art', 'GLR');
+        push(`assets/Gallery/download (${i}).webp`, 'fan-art', 'GLR');
 
     // Gallery folder — PNG batch
     for (let i = 1; i <= 145; i++)
-        push(`assets/Gallery/download (${i}).png`, detectCat(i), 'GLR');
+        push(`assets/Gallery/download (${i}).webp`, detectCat(i), 'GLR');
 
     // Kind Mita Portraits
     PORTRAITS.forEach(f =>
@@ -255,4 +254,3 @@ window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', wi
 
 // ── Init ──
 renderItems(true);
-
