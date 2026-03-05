@@ -25,7 +25,7 @@ const STATIC = [
     '/js/mapa.js',
     '/js/404.js',
     '/js/pwa.js',
-    'favicon.png',
+    '/favicon.png',
 ];
 
 // Install — precache static assets
@@ -61,4 +61,5 @@ self.addEventListener('fetch', (e) => {
         }).catch(() => caches.match('/index.html'))
     );
 });
+
 
