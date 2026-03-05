@@ -19,9 +19,9 @@ window.addEventListener('load', () => {
 
 // ── Trailer tabs ──
 const TRAILERS = [
-    { label: 'Alpha Launch', src: 'assets/Trailers/MiSide Zero Alpha Launch Trailer.mp4', poster: 'assets/Renders/Promotional Renders/MiSide Zero Promotional Render 2.png' },
-    { label: 'Announcement', src: 'assets/Trailers/MiSide Zero Alpha Announcement Trailer.mp4', poster: 'assets/Renders/Announcement Renders/MiSide Zero Alpha Announcement.png' },
-    { label: 'Alpha Trailer', src: 'assets/Trailers/MiSide Zero Alpha Trailer.mp4', poster: 'assets/Renders/Announcement Renders/MiSide Zero Teaser 1.png' },
+    { label: 'Alpha Launch', src: 'assets/Trailers/MiSide Zero Alpha Launch Trailer.mp4', poster: 'assets/Renders/Promotional Renders/MiSide Zero Promotional Render 2.webp' },
+    { label: 'Announcement', src: 'assets/Trailers/MiSide Zero Alpha Announcement Trailer.mp4', poster: 'assets/Renders/Announcement Renders/MiSide Zero Alpha Announcement.webp' },
+    { label: 'Alpha Trailer', src: 'assets/Trailers/MiSide Zero Alpha Trailer.mp4', poster: 'assets/Renders/Announcement Renders/MiSide Zero Teaser 1.webp' },
 ];
 let currentTrl = 0;
 const trlVideo = document.getElementById('trl-video');
@@ -86,3 +86,4 @@ window.addEventListener('scroll', () => {
 
 // ── Init trailer ──
 loadTrailer(0);
+
