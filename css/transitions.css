@@ -1,0 +1,124 @@
+/* ===================================================
+   MISide — Page Transitions (Fade + Glitch)
+   =================================================== */
+
+/* ── Overlay element (injected by transitions.js) ── */
+#page-transition {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    pointer-events: none;
+    background: #060410;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Glitch text shown mid-transition */
+#page-transition .pt-glitch {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: clamp(.6rem, 1.5vw, .85rem);
+    letter-spacing: .28em;
+    color: #ff6b9d;
+    opacity: 0;
+    text-transform: uppercase;
+    user-select: none;
+    text-shadow:
+        2px 0 0 rgba(255, 107, 157, .5),
+        -2px 0 0 rgba(124, 58, 237, .5);
+}
+
+/* ── EXIT: page leaving ── */
+#page-transition.pt-exit {
+    animation: ptFadeIn .35s cubic-bezier(.4, 0, 1, 1) forwards;
+    pointer-events: all;
+}
+
+#page-transition.pt-exit .pt-glitch {
+    animation: ptGlitchIn .35s .1s forwards;
+}
+
+/* ── ENTER: new page arriving ── */
+#page-transition.pt-enter {
+    opacity: 1;
+    animation: ptFadeOut .45s .05s cubic-bezier(0, 0, .2, 1) forwards;
+}
+
+#page-transition.pt-enter .pt-glitch {
+    opacity: 1;
+    animation: ptGlitchOut .3s forwards;
+}
+
+/* ── Keyframes ── */
+@keyframes ptFadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes ptFadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes ptGlitchIn {
+    0% {
+        opacity: 0;
+        transform: skewX(0deg) translateX(0);
+    }
+
+    20% {
+        opacity: 1;
+        transform: skewX(-4deg) translateX(-3px);
+    }
+
+    40% {
+        opacity: 1;
+        transform: skewX(3deg) translateX(3px);
+        filter: hue-rotate(60deg);
+    }
+
+    60% {
+        opacity: 1;
+        transform: skewX(-2deg) translateX(-2px);
+    }
+
+    80% {
+        opacity: 1;
+        transform: skewX(1deg) translateX(1px);
+        filter: hue-rotate(0deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: skewX(0deg) translateX(0);
+    }
+}
+
+@keyframes ptGlitchOut {
+    0% {
+        opacity: 1;
+        transform: skewX(2deg) translateX(2px);
+    }
+
+    50% {
+        opacity: 1;
+        transform: skewX(-2deg) translateX(-2px);
+        filter: hue-rotate(30deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: skewX(0deg) translateX(0);
+    }
+}

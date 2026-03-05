@@ -1,0 +1,392 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="MISide Zero Alpha — Descubre todo sobre la versión Alpha del juego. Arte conceptual, renders de anuncio, trailers exclusivos y las novedades de MiSide Zero.">
+    <title>MiSide Zero Alpha — MISide: Pacify Mode</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff6b9d">
+    <link rel="stylesheet" href="css/preloader.css">
+    <link rel="stylesheet" href="css/legal-banner.css">
+    <link rel="stylesheet" href="css/pwa.css">
+    <link rel="stylesheet" href="css/transitions.css">
+    <link rel="stylesheet" href="css/alpha.css">
+</head>
+
+<body>
+
+    <!-- PRELOADER -->
+    <div id="preloader" role="status" aria-label="Cargando Alpha">
+        <div class="pl-bg" aria-hidden="true"></div>
+        <div class="pl-vignette" aria-hidden="true"></div>
+        <div class="pl-particles" aria-hidden="true"></div>
+        <div class="pl-hud-corner tl" aria-hidden="true"></div>
+        <div class="pl-hud-corner tr" aria-hidden="true"></div>
+        <div class="pl-hud-corner bl" aria-hidden="true"></div>
+        <div class="pl-hud-corner br" aria-hidden="true"></div>
+        <img src="assets/Character/Mita_Revealed.png" alt="" class="pl-character" aria-hidden="true" draggable="false">
+        <div class="pl-content">
+            <div class="pl-logo-wrap">
+                <div class="pl-glitch-r" aria-hidden="true"></div>
+                <div class="pl-glitch-b" aria-hidden="true"></div>
+                <img src="assets/Logo/LogoOriginal.png" alt="MISide" class="pl-logo" draggable="false">
+            </div>
+            <p class="pl-tagline">Inicializando MiSide Zero Alpha</p>
+            <div class="pl-bar-wrap">
+                <div class="pl-status">
+                    <span style="display:flex;align-items:center;gap:.4rem;">
+                        <span class="pl-label">SYS &gt;</span>
+                        <span id="pl-status-text"></span>
+                        <span class="pl-cursor" aria-hidden="true"></span>
+                    </span>
+                    <span id="pl-status-pct" class="pl-pct">0%</span>
+                </div>
+                <div class="pl-bar-shell" id="pl-bar-track" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                    aria-valuenow="0">
+                    <div id="pl-bar-fill" class="pl-bar-fill">
+                        <div class="pl-bar-tip"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pl-scan" aria-hidden="true"></div>
+        <div class="pl-static" aria-hidden="true"></div>
+        <div class="pl-crt" aria-hidden="true"></div>
+        <div class="pl-hud-top" aria-hidden="true">
+            <span>MISIDE ZERO</span><span class="sep">|</span>
+            <span>ALPHA BUILD v0.9</span><span class="sep">|</span>
+            <span id="pl-clock">--:--:--</span>
+        </div>
+        <div class="pl-hud-bot" aria-hidden="true">
+            <span>◆ AWFULLY STUDIOS</span>
+            <span class="sep">·</span>
+            <span>BUILD ALPHA CARGADA</span>
+            <span class="sep">·</span>
+            <span class="blink">● ACTIVO</span>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav id="navbar" role="navigation" aria-label="Navegación">
+        <a class="nav-logo" href="index.html">
+            <img src="assets/Logo/MiSide Zero Alpha - Kind Mita Logo.png" alt="MISide Logo"
+                onerror="this.style.display='none'">
+            <span>MISide</span>
+        </a>
+        <a class="nav-back" href="index.html">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+            </svg>
+            Volver al inicio
+        </a>
+    </nav>
+
+    <!-- ── HERO ── -->
+    <section id="hero" aria-label="MiSide Zero Alpha">
+        <div class="hero-video-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-grid" aria-hidden="true"></div>
+
+        <div class="hero-inner reveal">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                MISIDE ZERO · ALPHA BUILD
+            </div>
+            <h1 class="hero-title">
+                <span class="line1">MiSide</span>
+                <span class="line2">Zero Alpha</span>
+            </h1>
+            <p class="hero-sub">La versión más temprana y cruda del universo MiSide. Arte conceptual exclusivo, trailers
+                de anuncio y los primeros renders del mundo que Mita construyó para ti.</p>
+            <div class="hero-ctas">
+                <a href="#alpha-trailer" class="btn-primary">Ver Trailers Alpha</a>
+                <a href="#concepts" class="btn-ghost">Arte Conceptual</a>
+            </div>
+        </div>
+
+        <!-- Stat bar -->
+        <div class="hero-stats" aria-label="Estadísticas Alpha">
+            <div class="stat">
+                <div class="stat-val">3</div>
+                <div class="stat-lbl">TRAILERS ALPHA</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+                <div class="stat-val">4</div>
+                <div class="stat-lbl">CONCEPT ART</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+                <div class="stat-val">8</div>
+                <div class="stat-lbl">RENDERS EXCLUSIVOS</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+                <div class="stat-val">2026</div>
+                <div class="stat-lbl">AÑO DE LANZAMIENTO</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+                <div class="stat-val">v0.9</div>
+                <div class="stat-lbl">BUILD ALPHA</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── ALPHA TRAILERS ── -->
+    <section id="alpha-trailer" aria-label="Trailers de la Alpha">
+        <div class="section-inner">
+            <div class="reveal">
+                <div class="sec-label">◆ TRAILERS ALPHA</div>
+                <h2 class="sec-title">Los Primeros Vistazo</h2>
+                <p class="sec-sub">Tres trailers exclusivos de la versión Alpha. Observa cómo el mundo de MiSide tomó
+                    forma antes del lanzamiento oficial.</p>
+            </div>
+
+            <!-- Tab select -->
+            <div class="trailer-tabs reveal" role="group" aria-label="Seleccionar trailer">
+                <button class="trl-tab active">Alpha Launch</button>
+                <button class="trl-tab">Announcement</button>
+                <button class="trl-tab">Alpha Trailer</button>
+            </div>
+
+            <!-- Video player -->
+            <div class="trailer-feat reveal">
+                <video id="trl-video" preload="metadata" playsinline aria-label="Trailer Alpha seleccionado"></video>
+                <div class="trl-play-overlay" id="trl-overlay">
+                    <div class="trl-play-circle">▶</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CONCEPT ART ── -->
+    <section id="concepts" aria-label="Arte conceptual Alpha">
+        <div class="section-inner reveal">
+            <div class="sec-label">◆ ARTE CONCEPTUAL</div>
+            <h2 class="sec-title">Detrás del Juego</h2>
+            <p class="sec-sub">Conceptos originales del equipo de Awfully Studios antes del lanzamiento de la Alpha. El
+                proceso creativo que dio vida al universo MiSide.</p>
+
+            <div class="concepts-grid">
+                <div class="concept-card reveal" data-delay="1"
+                    data-src="assets/Alpha Concepts/MiSide Zero Alpha Main Menu Concept.png">
+                    <img src="assets/Alpha Concepts/MiSide Zero Alpha Main Menu Concept.png"
+                        alt="Alpha Main Menu Concept" loading="lazy"
+                        onerror="this.closest('.concept-card').style.display='none'">
+                    <span class="concept-label">MENÚ PRINCIPAL · CONCEPT</span>
+                </div>
+                <div class="concept-card reveal" data-delay="2"
+                    data-src="assets/Alpha Concepts/MiSide Zero Alpha Dialogue Options Concept.png">
+                    <img src="assets/Alpha Concepts/MiSide Zero Alpha Dialogue Options Concept.png"
+                        alt="Alpha Dialogue Concept" loading="lazy"
+                        onerror="this.closest('.concept-card').style.display='none'">
+                    <span class="concept-label">DIÁLOGOS · CONCEPT</span>
+                </div>
+                <div class="concept-card reveal" data-delay="3"
+                    data-src="assets/Alpha Concepts/MiSide Zero Alpha Lighting Concept.png">
+                    <img src="assets/Alpha Concepts/MiSide Zero Alpha Lighting Concept.png" alt="Alpha Lighting Concept"
+                        loading="lazy" onerror="this.closest('.concept-card').style.display='none'">
+                    <span class="concept-label">ILUMINACIÓN · CONCEPT</span>
+                </div>
+                <div class="concept-card reveal" data-delay="4"
+                    data-src="assets/Alpha Concepts/MiSide Zero Alpha Stereo Concept.png">
+                    <img src="assets/Alpha Concepts/MiSide Zero Alpha Stereo Concept.png" alt="Alpha Stereo Concept"
+                        loading="lazy" onerror="this.closest('.concept-card').style.display='none'">
+                    <span class="concept-label">ESTÉREO · CONCEPT</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── ANNOUNCEMENT RENDERS ── -->
+    <section id="renders" aria-label="Renders de anuncio">
+        <div class="section-inner reveal">
+            <div class="sec-label">◆ RENDERS OFICIALES</div>
+            <h2 class="sec-title">Renders de Anuncio</h2>
+            <p class="sec-sub">Los renders exclusivos usados en los comunicados y anuncios oficiales de la Alpha.
+                Desplázate para verlos todos.</p>
+
+            <div class="renders-row" role="list">
+                <div class="render-card reveal" data-delay="1">
+                    <img src="assets/Renders/Announcement Renders/MiSide Zero Alpha Announcement.png"
+                        alt="Alpha Announcement" loading="lazy">
+                    <div class="render-info">
+                        <div class="render-title">Alpha Announcement</div>
+                        <div class="render-meta">RENDER OFICIAL · 2024</div>
+                    </div>
+                </div>
+                <div class="render-card reveal" data-delay="1">
+                    <img src="assets/Renders/Announcement Renders/MiSide Zero Alpha Announcement - Christmas Version.png"
+                        alt="Christmas Version" loading="lazy">
+                    <div class="render-info">
+                        <div class="render-title">Christmas Version</div>
+                        <div class="render-meta">VERSIÓN NAVIDEÑA</div>
+                    </div>
+                </div>
+                <div class="render-card reveal" data-delay="2">
+                    <img src="assets/Renders/Announcement Renders/MiSide Zero Alpha Announcement - Christmas Version ALT.png"
+                        alt="Christmas ALT" loading="lazy">
+                    <div class="render-info">
+                        <div class="render-title">Christmas Version ALT</div>
+                        <div class="render-meta">VARIANTE ALT</div>
+                    </div>
+                </div>
+                <div class="render-card reveal" data-delay="2">
+                    <img src="assets/Renders/Announcement Renders/MiSide Zero First Trailer Results.png"
+                        alt="First Trailer Results" loading="lazy">
+                    <div class="render-info">
+                        <div class="render-title">First Trailer Results</div>
+                        <div class="render-meta">RESULTADOS · TRAILER 1</div>
+                    </div>
+                </div>
+                <div class="render-card reveal" data-delay="3">
+                    <img src="assets/Renders/Announcement Renders/MiSide Zero Teaser 1.png" alt="Teaser 1"
+                        loading="lazy">
+                    <div class="render-info">
+                        <div class="render-title">Teaser 1</div>
+                        <div class="render-meta">TEASER OFICIAL</div>
+                    </div>
+                </div>
+                <div class="render-card reveal" data-delay="3">
+                    <img src="assets/Renders/Announcement Renders/MiSide Zero Teaser 2.png" alt="Teaser 2"
+                        loading="lazy">
+                    <div class="render-info">
+                        <div class="render-title">Teaser 2</div>
+                        <div class="render-meta">TEASER OFICIAL</div>
+                    </div>
+                </div>
+                <div class="render-card reveal" data-delay="4">
+                    <img src="assets/Renders/Announcement Renders/MiSide Zero Teaser 3.png" alt="Teaser 3"
+                        loading="lazy">
+                    <div class="render-info">
+                        <div class="render-title">Teaser 3</div>
+                        <div class="render-meta">TEASER OFICIAL</div>
+                    </div>
+                </div>
+                <div class="render-card reveal" data-delay="4">
+                    <img src="assets/Renders/Announcement Renders/MiSide Zero Teaser 4.png" alt="Teaser 4"
+                        loading="lazy">
+                    <div class="render-info">
+                        <div class="render-title">Teaser 4</div>
+                        <div class="render-meta">TEASER OFICIAL</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FEATURES ── -->
+    <section id="features" aria-label="Novedades de la Alpha">
+        <div class="section-inner">
+            <div class="reveal">
+                <div class="sec-label">◆ NOVEDADES ALPHA</div>
+                <h2 class="sec-title">Lo que Trajo la Alpha</h2>
+                <p class="sec-sub">Las características y elementos que se introdujeron por primera vez en la versión
+                    Alpha de MiSide Zero.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feat-card reveal" data-delay="1">
+                    <span class="feat-num">01 ─────</span>
+                    <span class="feat-icon">🎮</span>
+                    <div class="feat-name">Sistema de Versiones</div>
+                    <p class="feat-desc">La Alpha introdujo el sistema de "versiones" del mundo — cada Mita habita su
+                        propio mundo paralelo dentro del juego.</p>
+                </div>
+                <div class="feat-card reveal" data-delay="2">
+                    <span class="feat-num">02 ─────</span>
+                    <span class="feat-icon">🤖</span>
+                    <div class="feat-name">Múltiples Mitas</div>
+                    <p class="feat-desc">La primera vez que los jugadores pudieron conocer a versiones distintas de
+                        Mita, con personalidades radicalmente diferentes.</p>
+                </div>
+                <div class="feat-card reveal" data-delay="3">
+                    <span class="feat-num">03 ─────</span>
+                    <span class="feat-icon">🌌</span>
+                    <div class="feat-name">Mundos Corruptos</div>
+                    <p class="feat-desc">La Alpha mostró por primera vez los mundos glitchados y corruptos que habitan
+                        en los rincones más oscuros del sistema.</p>
+                </div>
+                <div class="feat-card reveal" data-delay="1">
+                    <span class="feat-num">04 ─────</span>
+                    <span class="feat-icon">🎵</span>
+                    <div class="feat-name">OST Completo</div>
+                    <p class="feat-desc">El OST "MiSide Zero" se lanzó junto a la Alpha, incluyendo los temas Little
+                        Shy, Brave World, Kinder Days y Ambient Zero.</p>
+                </div>
+                <div class="feat-card reveal" data-delay="2">
+                    <span class="feat-num">05 ─────</span>
+                    <span class="feat-icon">📱</span>
+                    <div class="feat-name">Tamagotchi App</div>
+                    <p class="feat-desc">La mecánica del Tamagotchi en el smartphone del jugador, que sirve como portal
+                        de entrada al mundo de Mita, debutó aquí.</p>
+                </div>
+                <div class="feat-card reveal" data-delay="3">
+                    <span class="feat-num">06 ─────</span>
+                    <span class="feat-icon">⚙️</span>
+                    <div class="feat-name">Core Mita Revelada</div>
+                    <p class="feat-desc">La Alpha puso en marcha el primer contacto con la Sala del Núcleo y estableció
+                        el misterio central del juego.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CTA ── -->
+    <section id="cta" aria-label="Llamada a la acción">
+        <div class="cta-overlay"></div>
+        <div class="cta-inner reveal">
+            <span class="cta-label">◆ JUEGA AHORA</span>
+            <h2 class="cta-title">¿Listo para entrar al mundo de Mita?</h2>
+            <p class="cta-sub">La versión completa de MiSide está disponible en Steam. Descarga gratis y descubre si
+                puedes escapar.</p>
+            <a href="https://voidwaygames.itch.io/misidezero" target="_blank" rel="noopener" class="btn-primary">
+                Jugar en Itch.io — Gratis
+            </a>
+        </div>
+    </section>
+
+    <!-- ── LIGHTBOX (concept art) ── -->
+    <div id="lb-alpha"
+        style="position:fixed;inset:0;z-index:99999;background:rgba(4,8,15,.95);backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;cursor:zoom-out;"
+        role="dialog" aria-modal="true" aria-label="Imagen ampliada">
+        <img id="lb-alpha-img" src="" alt="Arte conceptual ampliado"
+            style="max-width:90vw;max-height:88vh;border-radius:12px;box-shadow:0 0 80px rgba(0,212,255,.2),0 0 0 1px rgba(0,212,255,.3);object-fit:contain;">
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <p class="footer-text">
+            © 2026 MISide: Pacify Mode — Awfully Studios ·
+            <a href="index.html">Inicio</a> ·
+            <a href="personajes.html">Personajes</a> ·
+            <a href="lore.html">Historia</a> ·
+            <a href="trailers.html">Trailers</a> ·
+            <a href="galeria.html">Galería</a> ·
+            <a href="banda-sonora.html">Música</a>
+        </p>
+    </footer>
+
+    <script src="js/preloader.js"></script>
+    <script src="js/legal-banner.js"></script>
+    <script>
+        // Fix lightbox opacity via JS since inline style needs open class
+        const _lb = document.getElementById('lb-alpha');
+        function openAlphaLb() { if (_lb) { _lb.style.opacity = '1'; _lb.style.pointerEvents = 'all'; } }
+        function closeAlphaLb() { if (_lb) { _lb.style.opacity = '0'; _lb.style.pointerEvents = 'none'; } }
+        document.querySelectorAll('.concept-card[data-src]').forEach(c => {
+            c.addEventListener('click', () => { document.getElementById('lb-alpha-img').src = c.dataset.src; openAlphaLb(); });
+        });
+        document.getElementById('lb-alpha')?.addEventListener('click', closeAlphaLb);
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAlphaLb(); });
+    </script>
+    <script src="js/alpha.js"></script>
+    <script src="js/transitions.js"></script>
+    <script src="js/pwa.js"></script>
+</body>
+
+</html>

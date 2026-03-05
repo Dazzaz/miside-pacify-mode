@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="MISide: Pacify Mode — Página no encontrada. La ruta que buscas no existe o fue movida.">
+    <title>404 — Página no encontrada | MISide: Pacify Mode</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff6b9d">
+    <link rel="stylesheet" href="css/legal-banner.css">
+    <link rel="stylesheet" href="css/pwa.css">
+    <link rel="stylesheet" href="css/transitions.css">
+    <link rel="stylesheet" href="css/404.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR (igual que index) -->
+    <nav id="navbar" role="navigation" aria-label="Navegación principal">
+        <a class="nav-logo" href="index.html">
+            <img src="assets/Logo/LogoOriginal.png" alt="MISide Logo" onerror="this.style.display='none'">
+            <span></span>
+        </a>
+        <button class="hamburger" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="index.html#about-band">El Juego</a></li>
+            <li><a href="personajes.html">Personajes</a></li>
+            <li><a href="lore.html">Historia</a></li>
+            <li><a href="alpha.html">Alpha</a></li>
+            <li><a href="trailers.html">Trailers</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="banda-sonora.html">Música</a></li>
+            <li><a href="https://store.steampowered.com/app/2527500/MiSide/" target="_blank" class="nav-cta">Jugar
+                    ahora</a></li>
+        </ul>
+    </nav>
+
+    <!-- MAIN 404 SECTION -->
+    <main id="page-404" aria-label="Error 404 — Página no encontrada">
+
+        <!-- Particles -->
+        <div id="particles-404" aria-hidden="true"
+            style="position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;"></div>
+
+        <div class="page-404-inner">
+
+            <!-- Image -->
+            <div class="err-img-wrap" aria-hidden="true">
+                <img src="assets/404.png" alt="Mita confundida" class="err-img" draggable="false">
+            </div>
+
+            <!-- Text content -->
+            <div class="err-text">
+                <span class="err-eyebrow">◆ ERROR DEL SISTEMA ◆</span>
+
+                <div class="err-code" data-text="404" aria-label="Error 404">404</div>
+
+                <h1 class="err-title">
+                    Esta versión<br>
+                    <em>no existe.</em>
+                </h1>
+
+                <p class="err-desc">
+                    La página que buscas no fue encontrada en ninguna de las versiones del mundo de MiSide.
+                    Tal vez la URL está incorrecta, o Crazy Mita se la llevó.
+                </p>
+
+                <!-- CTA buttons -->
+                <div class="err-btns">
+                    <a href="index.html" class="btn-home" aria-label="Volver al inicio">
+                        ⌂ &nbsp;Volver al inicio
+                    </a>
+                    <button id="btn-back" class="btn-back" aria-label="Página anterior">
+                        ‹ &nbsp;Página anterior
+                    </button>
+                </div>
+
+                <!-- Terminal error box -->
+                <div class="err-terminal" role="log" aria-live="polite" aria-label="Log del sistema">
+                    <div id="term-output"></div>
+                    <span class="cursor" aria-hidden="true"></span>
+                </div>
+
+            </div><!-- /.err-text -->
+
+        </div><!-- /.page-404-inner -->
+    </main>
+
+    <script src="js/legal-banner.js"></script>
+    <script src="js/404.js"></script>
+    <script src="js/transitions.js"></script>
+    <script src="js/pwa.js"></script>
+</body>
+
+</html>

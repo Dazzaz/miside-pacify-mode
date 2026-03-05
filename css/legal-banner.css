@@ -1,0 +1,213 @@
+/* ===================================================
+   MISide — Legal Cookie Banner CSS
+   Included on EVERY page
+   =================================================== */
+
+/* ── COOKIE BANNER ── */
+#cookie-banner {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(120px);
+    z-index: 99998;
+    width: min(680px, calc(100vw - 2rem));
+    background: rgba(6, 4, 16, .92);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 107, 157, 0.3);
+    border-radius: 18px;
+    padding: 1.2rem 1.6rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    box-shadow: 0 8px 60px rgba(0, 0, 0, .8), 0 0 0 1px rgba(255, 107, 157, .06), 0 0 40px rgba(192, 23, 92, .08);
+    transition: transform .55s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity .55s;
+    opacity: 0;
+    pointer-events: none;
+    font-family: 'Share Tech Mono', 'Courier New', monospace;
+}
+
+#cookie-banner.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    pointer-events: all;
+}
+
+#cookie-banner.hide {
+    transform: translateX(-50%) translateY(140px);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.ck-icon {
+    font-size: 1.6rem;
+    flex-shrink: 0;
+}
+
+.ck-text {
+    flex: 1;
+    min-width: 180px;
+}
+
+.ck-title {
+    font-size: .72rem;
+    letter-spacing: .18em;
+    color: #ff6b9d;
+    margin-bottom: .3rem;
+}
+
+.ck-body {
+    font-size: .68rem;
+    color: rgba(138, 122, 170, .85);
+    line-height: 1.7;
+}
+
+.ck-body a {
+    color: #ffb3d1;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color .2s;
+}
+
+.ck-body a:hover {
+    color: #ff6b9d;
+}
+
+.ck-btns {
+    display: flex;
+    gap: .6rem;
+    flex-shrink: 0;
+    align-items: center;
+}
+
+.ck-accept {
+    font-family: inherit;
+    font-size: .62rem;
+    letter-spacing: .16em;
+    padding: .5rem 1.2rem;
+    border-radius: 50px;
+    background: linear-gradient(90deg, #c0175c, #7c3aed);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(192, 23, 92, .3);
+    transition: transform .2s, box-shadow .2s;
+    white-space: nowrap;
+}
+
+.ck-accept:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 32px rgba(192, 23, 92, .5);
+}
+
+.ck-reject {
+    font-family: inherit;
+    font-size: .62rem;
+    letter-spacing: .16em;
+    padding: .48rem 1rem;
+    border-radius: 50px;
+    background: transparent;
+    border: 1px solid rgba(255, 107, 157, .25);
+    color: rgba(138, 122, 170, .8);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: border-color .2s, color .2s;
+}
+
+.ck-reject:hover {
+    border-color: rgba(255, 107, 157, .55);
+    color: #ede6ff;
+}
+
+/* ── PRIVACY MINI-MODAL ── */
+#privacy-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(4, 4, 12, .75);
+    backdrop-filter: blur(16px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .35s;
+}
+
+#privacy-modal.open {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.prv-box {
+    background: rgba(13, 8, 32, .97);
+    border: 1px solid rgba(255, 107, 157, .28);
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 480px;
+    width: calc(100vw - 2rem);
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, .9), 0 0 0 1px rgba(255, 107, 157, .04);
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.prv-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: rgba(138, 122, 170, .7);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: color .2s;
+}
+
+.prv-close:hover {
+    color: #ff6b9d;
+}
+
+.prv-title {
+    font-size: .8rem;
+    letter-spacing: .2em;
+    color: #ff6b9d;
+    margin-bottom: 1rem;
+}
+
+.prv-body {
+    font-size: .68rem;
+    color: rgba(138, 122, 170, .85);
+    line-height: 1.9;
+}
+
+.prv-body h4 {
+    color: #ede6ff;
+    letter-spacing: .12em;
+    margin-top: 1rem;
+    margin-bottom: .3rem;
+}
+
+.prv-body a {
+    color: #ffb3d1;
+}
+
+@media(max-width:500px) {
+    #cookie-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: .8rem;
+        padding: 1rem;
+    }
+
+    .ck-btns {
+        width: 100%;
+    }
+
+    .ck-accept,
+    .ck-reject {
+        flex: 1;
+        text-align: center;
+    }
+}

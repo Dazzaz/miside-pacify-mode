@@ -1,0 +1,834 @@
+/* ===================================================
+   MISide: Pacify Mode — Preloader v2 "SEXY"
+   =================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Outfit:wght@300;700;900&display=swap');
+
+/* ──────────────────────────────────────────
+   BODY LOCK
+────────────────────────────────────────── */
+body.preloading {
+    overflow: hidden;
+}
+
+/* ──────────────────────────────────────────
+   ROOT OVERLAY
+────────────────────────────────────────── */
+#preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #000;
+}
+
+/* ── Exit transition ── */
+#preloader.fade-out {
+    animation: plExit 1s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+@keyframes plExit {
+    0% {
+        opacity: 1;
+        filter: brightness(1);
+    }
+
+    40% {
+        opacity: 1;
+        filter: brightness(2.5) saturate(0.2);
+    }
+
+    60% {
+        clip-path: inset(0 0 100% 0);
+        filter: brightness(3);
+    }
+
+    100% {
+        clip-path: inset(0 0 100% 0);
+        opacity: 0;
+    }
+}
+
+/* ──────────────────────────────────────────
+   BG LAYER — blurred game art
+────────────────────────────────────────── */
+.pl-bg {
+    position: absolute;
+    inset: -4%;
+    background:
+        url('../assets/Cover/Hero.jpg') center / cover no-repeat;
+    filter: blur(18px) brightness(0.18) saturate(1.8);
+    transform: scale(1.08);
+    z-index: 0;
+    animation: bgBreath 8s ease-in-out infinite alternate;
+}
+
+@keyframes bgBreath {
+    0% {
+        filter: blur(18px) brightness(0.18) saturate(1.8);
+        transform: scale(1.08);
+    }
+
+    100% {
+        filter: blur(14px) brightness(0.22) saturate(2.2);
+        transform: scale(1.12);
+    }
+}
+
+/* ──────────────────────────────────────────
+   VIGNETTE
+────────────────────────────────────────── */
+.pl-vignette {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 85% 75% at 50% 50%,
+            transparent 30%,
+            rgba(0, 0, 0, 0.92) 100%);
+    z-index: 1;
+}
+
+/* ──────────────────────────────────────────
+   SCANLINES — double layer
+────────────────────────────────────────── */
+.pl-scan {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* thin lines */
+.pl-scan::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(0deg,
+            rgba(0, 0, 0, 0.22) 0px,
+            rgba(0, 0, 0, 0.22) 1px,
+            transparent 1px,
+            transparent 4px);
+}
+
+/* moving bright scan bar */
+.pl-scan::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 60px;
+    top: -60px;
+    background: linear-gradient(180deg,
+            transparent 0%,
+            rgba(255, 100, 160, 0.04) 50%,
+            transparent 100%);
+    animation: scanBar 5s linear infinite;
+}
+
+@keyframes scanBar {
+    from {
+        top: -60px;
+    }
+
+    to {
+        top: 100vh;
+    }
+}
+
+/* ──────────────────────────────────────────
+   STATIC / GLITCH FLICKER
+────────────────────────────────────────── */
+.pl-static {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    animation: staticFlicker 0.12s steps(1) infinite;
+    background:
+        repeating-linear-gradient(90deg,
+            rgba(255, 255, 255, 0) 0px,
+            rgba(255, 255, 255, 0.012) 1px,
+            rgba(255, 255, 255, 0) 2px);
+    opacity: 0.5;
+}
+
+@keyframes staticFlicker {
+
+    0%,
+    100% {
+        opacity: 0.4;
+        transform: translateX(0);
+    }
+
+    25% {
+        opacity: 0.6;
+        transform: translateX(-1px);
+    }
+
+    50% {
+        opacity: 0.3;
+        transform: translateX(1px);
+    }
+
+    75% {
+        opacity: 0.5;
+        transform: translateX(0px);
+    }
+}
+
+/* ──────────────────────────────────────────
+   CORNER BRACKETS — HUD style
+────────────────────────────────────────── */
+.pl-hud-corner {
+    position: absolute;
+    width: 52px;
+    height: 52px;
+    z-index: 10;
+}
+
+.pl-hud-corner::before,
+.pl-hud-corner::after {
+    content: '';
+    position: absolute;
+    background: #ff6b9d;
+    box-shadow: 0 0 8px rgba(255, 107, 157, 0.7);
+}
+
+.pl-hud-corner::before {
+    width: 100%;
+    height: 2px;
+    top: 0;
+    left: 0;
+}
+
+.pl-hud-corner::after {
+    width: 2px;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.pl-hud-corner.tl {
+    top: 1.5rem;
+    left: 1.5rem;
+    animation: hudIn 0.5s 0.0s ease both;
+}
+
+.pl-hud-corner.tr {
+    top: 1.5rem;
+    right: 1.5rem;
+    transform: scaleX(-1);
+    animation: hudIn 0.5s 0.1s ease both;
+}
+
+.pl-hud-corner.bl {
+    bottom: 1.5rem;
+    left: 1.5rem;
+    transform: scaleY(-1);
+    animation: hudIn 0.5s 0.2s ease both;
+}
+
+.pl-hud-corner.br {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    transform: scale(-1, -1);
+    animation: hudIn 0.5s 0.3s ease both;
+}
+
+@keyframes hudIn {
+    from {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    to {
+        opacity: 1;
+        width: 52px;
+        height: 52px;
+    }
+}
+
+/* ──────────────────────────────────────────
+   HUD TOP BAR  ─ system info
+────────────────────────────────────────── */
+.pl-hud-top {
+    position: absolute;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    color: rgba(255, 107, 157, 0.45);
+    animation: hudIn 0.7s 0.5s ease both;
+}
+
+.pl-hud-top .sep {
+    opacity: 0.3;
+}
+
+/* ──────────────────────────────────────────
+   HUD BOTTOM BAR
+────────────────────────────────────────── */
+.pl-hud-bot {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+    color: rgba(255, 107, 157, 0.3);
+    animation: hudIn 0.7s 0.6s ease both;
+    white-space: nowrap;
+}
+
+.pl-hud-bot .blink {
+    animation: blinkDot 1.2s step-end infinite;
+    color: rgba(255, 107, 157, 0.6);
+}
+
+@keyframes blinkDot {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+/* ──────────────────────────────────────────
+   PARTICLES
+────────────────────────────────────────── */
+.pl-particles {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.pl-particle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0;
+    animation: plFloat linear infinite;
+}
+
+@keyframes plFloat {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.6;
+    }
+
+    90% {
+        opacity: 0.25;
+    }
+
+    100% {
+        transform: translateY(-105vh) scale(0.2);
+        opacity: 0;
+    }
+}
+
+.pl-heart {
+    position: absolute;
+    opacity: 0;
+    font-size: 11px;
+    color: #c0175c;
+    animation: heartFloat linear infinite;
+    text-shadow: 0 0 8px rgba(192, 23, 92, 0.8);
+}
+
+@keyframes heartFloat {
+    0% {
+        transform: translateY(0) rotate(-20deg) scale(1);
+        opacity: 0;
+    }
+
+    12% {
+        opacity: 0.7;
+    }
+
+    88% {
+        opacity: 0.15;
+    }
+
+    100% {
+        transform: translateY(-100vh) rotate(30deg) scale(0.3);
+        opacity: 0;
+    }
+}
+
+/* ──────────────────────────────────────────
+   MAIN CONTENT
+────────────────────────────────────────── */
+.pl-content {
+    position: relative;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 2rem;
+    gap: 0;
+}
+
+/* ──────────────────────────────────────────
+   LOGO + GLITCH
+────────────────────────────────────────── */
+.pl-logo-wrap {
+    position: relative;
+    margin-bottom: 0.6rem;
+    animation: logoReveal 1s cubic-bezier(0.34, 1.4, 0.64, 1) 0.3s both;
+}
+
+@keyframes logoReveal {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(-20px);
+        filter: blur(12px);
+    }
+
+    60% {
+        filter: blur(0px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.pl-logo {
+    width: clamp(220px, 42vw, 420px);
+    display: block;
+    filter:
+        drop-shadow(0 0 20px rgba(255, 107, 157, 0.7)) drop-shadow(0 0 60px rgba(192, 23, 92, 0.4));
+    animation: logoGlow 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes logoGlow {
+    from {
+        filter:
+            drop-shadow(0 0 14px rgba(255, 107, 157, 0.5)) drop-shadow(0 0 40px rgba(192, 23, 92, 0.25));
+    }
+
+    to {
+        filter:
+            drop-shadow(0 0 35px rgba(255, 107, 157, 1)) drop-shadow(0 0 90px rgba(192, 23, 92, 0.7)) drop-shadow(0 0 120px rgba(124, 58, 237, 0.3));
+    }
+}
+
+/* Glitch aberration copies */
+.pl-glitch-r,
+.pl-glitch-b {
+    position: absolute;
+    inset: 0;
+    background: url('../assets/Logo/LogoOriginal.png') center / contain no-repeat;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    opacity: 0;
+}
+
+.pl-glitch-r {
+    animation: glitchR 4s steps(1) infinite;
+}
+
+.pl-glitch-b {
+    animation: glitchB 4s steps(1) infinite;
+}
+
+@keyframes glitchR {
+
+    0%,
+    82%,
+    100% {
+        opacity: 0;
+        transform: none;
+    }
+
+    83% {
+        opacity: 0.65;
+        transform: translate(-5px, 0);
+        filter: drop-shadow(0 0 0 #ff003c) hue-rotate(-30deg);
+        clip-path: inset(15% 0 50% 0);
+    }
+
+    84% {
+        opacity: 0;
+    }
+
+    87% {
+        opacity: 0.5;
+        transform: translate(5px, 2px);
+        filter: drop-shadow(0 0 0 #ff006a) hue-rotate(-50deg);
+        clip-path: inset(62% 0 8% 0);
+    }
+
+    88% {
+        opacity: 0;
+    }
+}
+
+@keyframes glitchB {
+
+    0%,
+    81%,
+    100% {
+        opacity: 0;
+        transform: none;
+    }
+
+    82% {
+        opacity: 0.5;
+        transform: translate(4px, -1px);
+        filter: drop-shadow(0 0 0 #6300ff) hue-rotate(80deg);
+        clip-path: inset(35% 0 30% 0);
+    }
+
+    83% {
+        opacity: 0;
+    }
+
+    86% {
+        opacity: 0.4;
+        transform: translate(-4px, 0);
+        filter: drop-shadow(0 0 0 #3d00ff) hue-rotate(100deg);
+        clip-path: inset(5% 0 75% 0);
+    }
+
+    87% {
+        opacity: 0;
+    }
+}
+
+/* Whole-panel glitch shake */
+.pl-logo-wrap.glitch-hit {
+    animation: logoShake 0.25s ease !important;
+}
+
+@keyframes logoShake {
+
+    0%,
+    100% {
+        transform: translate(0, 0) skewX(0deg);
+    }
+
+    20% {
+        transform: translate(-6px, 1px) skewX(-2deg);
+    }
+
+    40% {
+        transform: translate(6px, -1px) skewX(2deg);
+    }
+
+    60% {
+        transform: translate(-4px, 0) skewX(-1deg);
+    }
+
+    80% {
+        transform: translate(4px, 2px) skewX(1deg);
+    }
+}
+
+/* ──────────────────────────────────────────
+   TAGLINE
+────────────────────────────────────────── */
+.pl-tagline {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: clamp(0.58rem, 1.6vw, 0.72rem);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(255, 179, 209, 0.4);
+    margin-bottom: 3rem;
+    animation: fadeUp 0.8s 0.7s ease both;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ──────────────────────────────────────────
+   PROGRESS SECTION
+────────────────────────────────────────── */
+.pl-bar-wrap {
+    width: clamp(260px, 46vw, 500px);
+    animation: fadeUp 0.8s 0.85s ease both;
+}
+
+/* Status row */
+.pl-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.55rem;
+}
+
+.pl-status-left {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.pl-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: rgba(255, 107, 157, 0.5);
+    text-transform: uppercase;
+}
+
+#pl-status-text {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: rgba(255, 179, 209, 0.75);
+    min-width: 1ch;
+}
+
+.pl-cursor {
+    display: inline-block;
+    width: 7px;
+    height: 0.8em;
+    background: #ff6b9d;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-radius: 1px;
+    box-shadow: 0 0 6px rgba(255, 107, 157, 0.8);
+    animation: cursorBlink 0.7s step-end infinite;
+}
+
+@keyframes cursorBlink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+.pl-pct {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: rgba(255, 107, 157, 0.8);
+    letter-spacing: 0.05em;
+    font-variant-numeric: tabular-nums;
+    text-shadow: 0 0 12px rgba(255, 107, 157, 0.6);
+    transition: text-shadow 0.2s;
+}
+
+/* Bar shell */
+.pl-bar-shell {
+    position: relative;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 99px;
+    overflow: visible;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 0 0 1px rgba(255, 107, 157, 0.1);
+}
+
+/* Fill */
+.pl-bar-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 99px;
+    background: linear-gradient(90deg, #7c3aed, #c0175c, #ff6b9d, #ffb3d1);
+    background-size: 200% 100%;
+    animation: barGradientShift 2s linear infinite;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes barGradientShift {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: 200% 0%;
+    }
+}
+
+/* shimmer */
+.pl-bar-fill::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -80px;
+    width: 80px;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+    animation: barShimmer 1.4s ease infinite;
+}
+
+@keyframes barShimmer {
+    from {
+        left: -80px;
+    }
+
+    to {
+        left: 110%;
+    }
+}
+
+/* Leading glow dot */
+.pl-bar-tip {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(50%, -50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow:
+        0 0 0 2px rgba(255, 107, 157, 0.6),
+        0 0 10px 4px rgba(255, 107, 157, 0.6),
+        0 0 24px 8px rgba(192, 23, 92, 0.4);
+    animation: tipPulse 1s ease-in-out infinite alternate;
+}
+
+@keyframes tipPulse {
+    from {
+        box-shadow: 0 0 0 2px rgba(255, 107, 157, 0.6), 0 0 8px 3px rgba(255, 107, 157, 0.5), 0 0 18px 6px rgba(192, 23, 92, 0.3);
+    }
+
+    to {
+        box-shadow: 0 0 0 2px rgba(255, 107, 157, 0.9), 0 0 18px 8px rgba(255, 107, 157, 0.8), 0 0 40px 14px rgba(192, 23, 92, 0.5);
+    }
+}
+
+/* ──────────────────────────────────────────
+   CHARACTER SILHOUETTE
+────────────────────────────────────────── */
+.pl-character {
+    position: absolute;
+    bottom: 0;
+    right: clamp(0px, 5vw, 80px);
+    width: clamp(180px, 28vw, 360px);
+    pointer-events: none;
+    z-index: 15;
+    opacity: 0;
+    transform-origin: bottom center;
+    animation:
+        charIn 1.4s cubic-bezier(0.34, 1.2, 0.64, 1) 0.9s both,
+        charFloat 6s ease-in-out 2.3s infinite;
+    /* two-tone: darken + desaturate to silhouette, then color with drop-shadow */
+    filter:
+        brightness(0.6) saturate(0.5) drop-shadow(0 0 30px rgba(255, 107, 157, 0.35)) drop-shadow(-8px 0 20px rgba(192, 23, 92, 0.2));
+}
+
+@keyframes charIn {
+    from {
+        opacity: 0;
+        transform: translateX(60px) translateY(30px) scale(0.9);
+    }
+
+    to {
+        opacity: 0.8;
+        transform: translateX(0) translateY(0) scale(1);
+    }
+}
+
+@keyframes charFloat {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-14px);
+    }
+}
+
+/* ──────────────────────────────────────────
+   CRT FLICKER OVERLAY
+────────────────────────────────────────── */
+.pl-crt {
+    position: absolute;
+    inset: 0;
+    z-index: 25;
+    pointer-events: none;
+    animation: crtFlicker 0.2s steps(1) infinite;
+    border-radius: 4px;
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes crtFlicker {
+
+    0%,
+    96%,
+    100% {
+        opacity: 0;
+    }
+
+    97% {
+        opacity: 0.06;
+    }
+
+    98% {
+        opacity: 0;
+    }
+
+    99% {
+        opacity: 0.04;
+    }
+}
+
+/* ──────────────────────────────────────────
+   RESPONSIVE
+────────────────────────────────────────── */
+@media (max-width: 600px) {
+    .pl-character {
+        width: 170px;
+        right: 0;
+        opacity: 0.5;
+    }
+
+    .pl-logo {
+        width: 240px;
+    }
+
+    .pl-hud-top,
+    .pl-hud-bot {
+        font-size: 0.5rem;
+        gap: 0.6rem;
+    }
+}

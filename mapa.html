@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description"
+        content="MISide: Pacify Mode — Explorador de Mapas 3D. Elige un nivel y explóralo en primera persona.">
+    <title>Mapas 3D | MISide: Pacify Mode</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff6b9d">
+    <link rel="stylesheet" href="css/legal-banner.css">
+    <link rel="stylesheet" href="css/pwa.css">
+    <link rel="stylesheet" href="css/transitions.css">
+    <link rel="stylesheet" href="css/mapa.css">
+</head>
+
+<body>
+
+    <!-- DISCLAIMER MODAL -->
+    <div id="disclaimer-modal" role="dialog" aria-modal="true" aria-labelledby="disclaimer-title">
+        <div class="disc-backdrop"></div>
+        <div class="disc-box">
+            <div class="disc-icon">⚠️</div>
+            <h2 class="disc-title" id="disclaimer-title">Aviso Legal</h2>
+            <p class="disc-text">
+                Los modelos 3D de este explorador pertenecen a sus respectivos creadores y están
+                <strong>preservados únicamente para fines de exploración 3D educativa</strong>.
+                No nos hacemos responsables del uso indebido de este contenido.
+            </p>
+            <p class="disc-support">
+                Apoya a los desarrolladores en su sitio oficial:
+            </p>
+            <div class="disc-links">
+                <a href="https://store.steampowered.com/app/2527500/MiSide/" target="_blank" rel="noopener"
+                    class="disc-btn disc-btn--steam">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.606 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.455 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.662 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.252 0-2.265-1.014-2.265-2.265z" />
+                    </svg>
+                    Steam
+                </a>
+                <a href="https://voidwaygames.itch.io/misidezero" target="_blank" rel="noopener"
+                    class="disc-btn disc-btn--itch">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M3.13 1.338C2.08 1.96.02 4.328 0 4.95v1.03c0 1.303 1.22 2.45 2.325 2.45 1.33 0 2.436-1.102 2.436-2.41 0 1.308 1.07 2.41 2.4 2.41 1.328 0 2.362-1.102 2.362-2.41 0 1.308 1.104 2.41 2.432 2.41h.024c1.328 0 2.432-1.102 2.432-2.41 0 1.308 1.034 2.41 2.363 2.41 1.33 0 2.4-1.102 2.4-2.41 0 1.308 1.106 2.41 2.435 2.41C22.78 8.43 24 7.282 24 5.98V4.95c-.02-.622-2.08-2.99-3.13-3.612C19.948.684 12.197.64 11.716.64c-.48 0-7.676.044-8.586.698zm8.617 5.767v.033c-.01 0-.02.003-.032.003-1.13 0-2.05-.608-2.39-1.46-.34.852-1.262 1.46-2.393 1.46-.016 0-.028-.003-.042-.003v9.146l1.31-1.296-.002.037c.636-.592 1.505-.956 2.458-.956.95 0 1.817.362 2.453.95v-.033l1.318 1.3V7.138c-.014 0-.026.003-.04.003-1.13 0-2.05-.608-2.39-1.46-.34.85-1.26 1.457-2.39 1.457l-.032-.003v-.03zm-2.35 3.708h4.07v5.763l-2.035-2.01-2.035 2.01V10.813zm.47 1.097v3.274l1.565-1.55 1.564 1.553v-3.277H9.867z" />
+                    </svg>
+                    Itch.io
+                </a>
+            </div>
+            <button id="disc-accept" class="disc-accept-btn">Entendido — Explorar</button>
+        </div>
+    </div>
+
+    <!-- MAP SELECTION SCREEN -->
+
+    <div id="map-picker">
+        <div class="picker-bg" aria-hidden="true"></div>
+        <div class="picker-inner">
+            <div class="picker-header">
+                <span class="picker-eyebrow">◆ MISide SYSTEM ◆</span>
+                <h1 class="picker-title">Explorador de Mapas</h1>
+                <p class="picker-sub">Selecciona un nivel para explorarlo en primera persona</p>
+            </div>
+
+            <div class="picker-grid">
+
+                <!-- Map 1: Level 4 -->
+                <button class="map-card" data-glb="Mapa/level_4_miside_opt.glb" data-name="Nivel 4"
+                    data-desc="Departamento de MiSide" data-size="6.75 MB" data-eyeheight="8.6" data-exposure="2.0"
+                    data-ambient="0.5" aria-label="Explorar Nivel 4">
+                    <div class="map-card-img">
+                        <img src="Mapa/img/level_4_miside_opt.png" alt="Vista previa Nivel 4" draggable="false">
+                        <div class="map-card-overlay">
+                            <span class="map-play-icon">▶</span>
+                        </div>
+                        <div class="map-card-badge">6.75 MB</div>
+                    </div>
+                    <div class="map-card-info">
+                        <div class="map-card-name">Nivel 4</div>
+                        <div class="map-card-desc">Departamento de MiSide</div>
+                    </div>
+                </button>
+
+                <!-- Map 2: Player Room -->
+                <button class="map-card" data-glb="Mapa/player_room_opt.glb" data-name="Cuarto del Jugador"
+                    data-desc="La habitación desde donde juegas" data-size="1.92 MB" data-eyeheight="4"
+                    data-exposure="2.0" data-ambient="0.5" aria-label="Explorar Cuarto del Jugador">
+                    <div class="map-card-img">
+                        <img src="Mapa/img/MiSide-Player_Room.png" alt="Vista previa Cuarto del Jugador"
+                            draggable="false">
+                        <div class="map-card-overlay">
+                            <span class="map-play-icon">▶</span>
+                        </div>
+                        <div class="map-card-badge">1.92 MB</div>
+                    </div>
+                    <div class="map-card-info">
+                        <div class="map-card-name">Cuarto del Jugador</div>
+                        <div class="map-card-desc">La habitación desde donde juegas</div>
+                    </div>
+                </button>
+
+                <!-- Map 3: MiSide Nucleo (Casa de Mita) -->
+                <button class="map-card" data-glb="Mapa/nucleo_opt.glb" data-name="Núcleo de MiSide"
+                    data-desc="La casa de Mita" data-size="2.34 MB" data-eyeheight="5.5" data-exposure="1.6"
+                    data-ambient="1.2" aria-label="Explorar Núcleo de MiSide">
+                    <div class="map-card-img">
+                        <img src="Mapa/img/MiSide  Nucleo.png" alt="Vista previa Núcleo de MiSide" draggable="false">
+                        <div class="map-card-overlay">
+                            <span class="map-play-icon">▶</span>
+                        </div>
+                        <div class="map-card-badge">2.34 MB</div>
+                    </div>
+                    <div class="map-card-info">
+                        <div class="map-card-name">Núcleo de MiSide</div>
+                        <div class="map-card-desc">El Nucleo</div>
+                    </div>
+                </button>
+
+                <!-- Map 4: Boss Fight Room -->
+                <button class="map-card" data-glb="Mapa/boss_fight_opt.glb" data-name="Sala del Jefe"
+                    data-desc="Sala del boss final de MiSide" data-size="1.49 MB" data-eyeheight="37.5"
+                    data-exposure="1.8" data-ambient="0.8" aria-label="Explorar Sala del Jefe">
+                    <div class="map-card-img">
+                        <img src="Mapa/img/MiSide Boss fight room.png" alt="Vista previa Sala del Jefe"
+                            draggable="false">
+                        <div class="map-card-overlay">
+                            <span class="map-play-icon">▶</span>
+                        </div>
+                        <div class="map-card-badge">1.49 MB</div>
+                    </div>
+                    <div class="map-card-info">
+                        <div class="map-card-name">Sala del Jefe</div>
+                        <div class="map-card-desc">Sala del boss final de MiSide</div>
+                    </div>
+                </button>
+
+            </div><!-- /.picker-grid -->
+
+
+        </div><!-- /.picker-inner -->
+    </div><!-- /#map-picker -->
+
+    <!-- LOADING SCREEN -->
+    <div id="map-loader" class="hidden">
+        <div class="loader-logo">◆ MISide SYSTEM · CARGANDO NIVEL ◆</div>
+        <div class="loader-map-name" id="loader-map-name">—</div>
+        <div class="loader-bar-wrap">
+            <div class="loader-bar" id="loader-bar"></div>
+        </div>
+        <div class="loader-pct" id="loader-pct">0%</div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav id="navbar" role="navigation" aria-label="Navegación principal">
+        <a class="nav-logo" href="index.html">
+            <img src="assets/Logo/LogoOriginal.png" alt="MISide Logo" onerror="this.style.display='none'">
+            <span></span>
+        </a>
+        <button class="hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+        <ul class="nav-links">
+            <li><a href="index.html#about-band">El Juego</a></li>
+            <li><a href="personajes.html">Personajes</a></li>
+            <li><a href="lore.html">Historia</a></li>
+            <li><a href="alpha.html">Alpha</a></li>
+            <li><a href="trailers.html">Trailers</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="banda-sonora.html">Música</a></li>
+            <li><a href="mapa.html" class="active">Mapas 3D</a></li>
+            <li><a href="https://store.steampowered.com/app/2527500/MiSide/" target="_blank" class="nav-cta">Jugar
+                    ahora</a></li>
+        </ul>
+    </nav>
+
+    <!-- THREE.JS CANVAS (hidden until map selected) -->
+    <canvas id="map-canvas" style="display:none"></canvas>
+
+    <!-- ENTER OVERLAY (desktop FPS) -->
+    <div id="enter-overlay" style="display:none">
+        <div class="enter-inner">
+            <div class="enter-icon">🎮</div>
+            <div class="enter-title">Explorar el Mapa</div>
+            <div class="enter-desc">Haz clic para entrar en modo primera persona</div>
+            <div class="enter-keys">
+                <span class="ekey">W A S D</span> Mover &nbsp;·&nbsp;
+                <span class="ekey">Mouse</span> Mirar &nbsp;·&nbsp;
+                <span class="ekey">ESC</span> Salir / Volver
+            </div>
+        </div>
+    </div>
+
+    <!-- Back button (visible in FPS mode on ESC) -->
+    <button id="btn-back-picker" style="display:none" aria-label="Volver a selección de mapas">← Cambiar mapa</button>
+
+    <!-- CROSSHAIR -->
+    <div id="crosshair" aria-hidden="true" style="display:none">+</div>
+
+    <!-- HUD badge -->
+    <div id="hud-badge" style="display:none">
+        <span class="hud-eyebrow">◆ NIVEL</span>
+        <div class="hud-name" id="hud-map-name">—</div>
+        <div class="hud-meta">Modo Primera Persona</div>
+    </div>
+
+    <!-- MOBILE JOYSTICK -->
+    <div id="joystick-zone" style="display:none" aria-label="Joystick de movimiento">
+        <div id="joystick-base">
+            <div id="joystick-knob"></div>
+        </div>
+    </div>
+    <div id="look-hint" style="display:none" aria-hidden="true">← Desliza para mirar →</div>
+
+    <script src="js/legal-banner.js"></script>
+    <script type="module" src="js/mapa.js"></script>
+    <script src="js/transitions.js"></script>
+    <script src="js/pwa.js"></script>
+</body>
+
+</html>

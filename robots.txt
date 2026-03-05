@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Páginas a no indexar
+Disallow: /sw.js
+
+# Sitemap
+Sitemap: https://TU-DOMINIO.com/sitemap.xml

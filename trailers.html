@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="MISide: Pacify Mode — Trailers oficiales del juego. Desde el teaser original hasta la Alpha. Descubre cómo nació el universo MiSide.">
+    <title>Trailers — MISide: Pacify Mode</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff6b9d">
+    <link rel="stylesheet" href="css/preloader.css">
+    <link rel="stylesheet" href="css/legal-banner.css">
+    <link rel="stylesheet" href="css/pwa.css">
+    <link rel="stylesheet" href="css/transitions.css">
+    <link rel="stylesheet" href="css/trailers.css">
+</head>
+
+<body>
+
+    <!-- PRELOADER -->
+    <div id="preloader" role="status" aria-label="Cargando trailers">
+        <div class="pl-bg" aria-hidden="true"></div>
+        <div class="pl-vignette" aria-hidden="true"></div>
+        <div class="pl-particles" aria-hidden="true"></div>
+        <div class="pl-hud-corner tl" aria-hidden="true"></div>
+        <div class="pl-hud-corner tr" aria-hidden="true"></div>
+        <div class="pl-hud-corner bl" aria-hidden="true"></div>
+        <div class="pl-hud-corner br" aria-hidden="true"></div>
+        <img src="assets/Character/Mita_Revealed.png" alt="" class="pl-character" aria-hidden="true" draggable="false">
+        <div class="pl-content">
+            <div class="pl-logo-wrap">
+                <div class="pl-glitch-r" aria-hidden="true"></div>
+                <div class="pl-glitch-b" aria-hidden="true"></div>
+                <img src="assets/Logo/LogoOriginal.png" alt="MISide" class="pl-logo" draggable="false">
+            </div>
+            <p class="pl-tagline">Cargando Trailers</p>
+            <div class="pl-bar-wrap">
+                <div class="pl-status">
+                    <span style="display:flex;align-items:center;gap:.4rem;">
+                        <span class="pl-label">SYS &gt;</span>
+                        <span id="pl-status-text"></span>
+                        <span class="pl-cursor" aria-hidden="true"></span>
+                    </span>
+                    <span id="pl-status-pct" class="pl-pct">0%</span>
+                </div>
+                <div class="pl-bar-shell" id="pl-bar-track" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                    aria-valuenow="0">
+                    <div id="pl-bar-fill" class="pl-bar-fill">
+                        <div class="pl-bar-tip"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pl-scan" aria-hidden="true"></div>
+        <div class="pl-static" aria-hidden="true"></div>
+        <div class="pl-crt" aria-hidden="true"></div>
+        <div class="pl-hud-top" aria-hidden="true">
+            <span>MISIDE SYSTEM</span><span class="sep">|</span>
+            <span>VIDEO HUB v1.0</span><span class="sep">|</span>
+            <span id="pl-clock">--:--:--</span>
+        </div>
+        <div class="pl-hud-bot" aria-hidden="true">
+            <span>◆ AWFULLY STUDIOS</span>
+            <span class="sep">·</span>
+            <span>5 VIDEOS DETECTADOS</span>
+            <span class="sep">·</span>
+            <span class="blink">● DECODIFICANDO</span>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav id="navbar" role="navigation" aria-label="Navegación">
+        <a class="nav-logo" href="index.html">
+            <img src="assets/Logo/Header.png" alt="MISide Logo" onerror="this.style.display='none'">
+            <span>MISide</span>
+        </a>
+        <a class="nav-back" href="index.html">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+            </svg>
+            Volver al inicio
+        </a>
+    </nav>
+
+    <!-- HERO -->
+    <header id="page-hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-inner reveal">
+            <span class="page-label">◆ ARCHIVO DE VIDEO ◆</span>
+            <h1 class="page-title">Trailers</h1>
+            <p class="page-sub">5 trailers oficiales — desde el teaser que lo comenzó todo hasta la Alpha del juego.</p>
+        </div>
+    </header>
+
+    <!-- FEATURED PLAYER -->
+    <section id="featured" aria-label="Reproductor principal">
+        <div class="featured-wrap reveal">
+
+            <!-- Video player -->
+            <video id="featured-video" preload="metadata" playsinline
+                poster="assets/Renders/Promotional Renders/MiSide Zero Promotional Render 1.png"
+                aria-label="Video del trailer seleccionado">
+            </video>
+
+            <!-- Play overlay -->
+            <div class="play-overlay" id="play-overlay" role="button" tabindex="0" aria-label="Reproducir video">
+                <div class="play-circle">▶</div>
+                <div class="play-feat-title" id="play-title">Trailer Original</div>
+                <div class="play-feat-meta" id="play-meta">MiSide — Trailer Original · 2024</div>
+            </div>
+
+        </div>
+
+        <!-- Info bar -->
+        <div class="featured-info">
+            <div>
+                <div class="feat-title-text" id="feat-title">Trailer Original</div>
+                <div class="feat-meta-text" id="feat-meta">MiSide — Trailer Original · 2024</div>
+            </div>
+            <span class="feat-tag" id="feat-tag">TRAILER OFICIAL</span>
+        </div>
+    </section>
+
+    <!-- TRAILERS GRID -->
+    <section id="trailers-section" aria-label="Lista de trailers">
+        <span class="section-label">TODOS LOS TRAILERS</span>
+        <div id="trailers-grid" class="trailers-grid"></div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <p class="footer-text">
+            © 2026 MISide: Pacify Mode — Awfully Studios ·
+            <a href="index.html">Inicio</a> ·
+            <a href="personajes.html">Personajes</a> ·
+            <a href="galeria.html">Galería</a> ·
+            <a href="banda-sonora.html">Música</a> ·
+            <a href="terminos.html">Términos &amp; Privacidad</a>
+        </p>
+    </footer>
+
+    <script src="js/preloader.js"></script>
+    <script src="js/legal-banner.js"></script>
+    <script src="js/trailers.js"></script>
+    <script src="js/transitions.js"></script>
+    <script src="js/pwa.js"></script>
+</body>
+
+</html>

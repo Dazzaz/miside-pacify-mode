@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="MISide: Pacify Mode — Conoce a todos los personajes del juego. Perfiles detallados de cada versión de Mita con su historia, personalidad y secretos.">
+    <title>Personajes — MISide: Pacify Mode</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff6b9d">
+    <link rel="stylesheet" href="css/preloader.css">
+    <link rel="stylesheet" href="css/legal-banner.css">
+    <link rel="stylesheet" href="css/pwa.css">
+    <link rel="stylesheet" href="css/transitions.css">
+    <link rel="stylesheet" href="css/personajes.css">
+</head>
+
+<body>
+
+    <!-- PRELOADER -->
+    <div id="preloader" role="status" aria-label="Cargando MISide">
+        <div class="pl-bg" aria-hidden="true"></div>
+        <div class="pl-vignette" aria-hidden="true"></div>
+        <div class="pl-particles" aria-hidden="true"></div>
+        <div class="pl-hud-corner tl" aria-hidden="true"></div>
+        <div class="pl-hud-corner tr" aria-hidden="true"></div>
+        <div class="pl-hud-corner bl" aria-hidden="true"></div>
+        <div class="pl-hud-corner br" aria-hidden="true"></div>
+        <img src="assets/Character/CoreMita.png" alt="" class="pl-character" aria-hidden="true" draggable="false">
+        <div class="pl-content">
+            <div class="pl-logo-wrap">
+                <div class="pl-glitch-r" aria-hidden="true"></div>
+                <div class="pl-glitch-b" aria-hidden="true"></div>
+                <img src="assets/Logo/LogoOriginal.png" alt="MISide" class="pl-logo" draggable="false">
+            </div>
+            <p class="pl-tagline">Cargando Perfiles de Personajes</p>
+            <div class="pl-bar-wrap">
+                <div class="pl-status">
+                    <span style="display:flex;align-items:center;gap:.4rem;">
+                        <span class="pl-label">SYS &gt;</span>
+                        <span id="pl-status-text"></span>
+                        <span class="pl-cursor" aria-hidden="true"></span>
+                    </span>
+                    <span id="pl-status-pct" class="pl-pct">0%</span>
+                </div>
+                <div class="pl-bar-shell" id="pl-bar-track" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                    aria-valuenow="0">
+                    <div id="pl-bar-fill" class="pl-bar-fill">
+                        <div class="pl-bar-tip"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pl-scan" aria-hidden="true"></div>
+        <div class="pl-static" aria-hidden="true"></div>
+        <div class="pl-crt" aria-hidden="true"></div>
+        <div class="pl-hud-top" aria-hidden="true">
+            <span>MISIDE SYSTEM</span><span class="sep">|</span>
+            <span>PERSONAJES v1.0</span><span class="sep">|</span>
+            <span id="pl-clock">--:--:--</span>
+        </div>
+        <div class="pl-hud-bot" aria-hidden="true">
+            <span>◆ AWFULLY STUDIOS</span>
+            <span class="sep">·</span>
+            <span>12 ENTIDADES DETECTADAS</span>
+            <span class="sep">·</span>
+            <span class="blink">● ACCEDIENDO</span>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav id="navbar" role="navigation" aria-label="Navegación">
+        <a class="nav-logo" href="index.html">
+            <img src="assets/Logo/LogoOriginal.png" alt="MISide Logo" onerror="this.style.display='none'">
+            <span>.EXE</span>
+        </a>
+        <a class="nav-back" href="index.html">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+            </svg>
+            Volver al inicio
+        </a>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <header id="page-hero">
+        <div class="page-hero-bg"></div>
+        <div class="page-hero-overlay"></div>
+        <div class="page-hero-inner">
+            <span class="page-label">◆ REGISTRO DE ENTIDADES ◆</span>
+            <h1 class="page-title">Personajes</h1>
+            <p class="page-sub">Cada versión de Mita guarda su propia historia, secretos y peligros. Descúbrelos.</p>
+
+            <!-- Filter bar -->
+            <div class="filter-bar" role="group" aria-label="Filtrar personajes">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="aliada">Aliadas</button>
+                <button class="filter-btn" data-filter="peligrosa">Peligrosas</button>
+                <button class="filter-btn" data-filter="misterio">Misterio</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- CHARACTERS GRID -->
+    <main id="characters-section" aria-label="Lista de personajes">
+        <div id="chars-grid" class="chars-grid"></div>
+    </main>
+
+    <!-- CHARACTER DETAIL MODAL -->
+    <div id="modal-overlay" role="dialog" aria-modal="true" aria-label="Perfil de personaje">
+        <div class="modal-panel">
+            <button id="modal-close" aria-label="Cerrar">✕</button>
+
+            <!-- Image side -->
+            <div class="modal-img-wrap">
+                <div class="modal-danger" id="modal-danger"></div>
+                <img id="modal-img" src="" alt="">
+            </div>
+
+            <!-- Content side -->
+            <div class="modal-content">
+                <div>
+                    <div class="modal-label" id="modal-label">PERSONAJE 01</div>
+                    <div class="modal-name" id="modal-name"></div>
+                    <div id="modal-en-name"
+                        style="font-family:var(--mono);font-size:.65rem;letter-spacing:.18em;color:rgba(255,107,157,.45);margin-top:.25rem;">
+                    </div>
+                    <div class="modal-role" id="modal-role"></div>
+                </div>
+
+                <div class="modal-divider"></div>
+
+                <blockquote class="modal-quote" id="modal-quote"></blockquote>
+
+                <div>
+                    <div class="modal-section-title">Apariencia</div>
+                    <p class="modal-text" id="modal-appearance"></p>
+                </div>
+
+                <div>
+                    <div class="modal-section-title">Personalidad</div>
+                    <p class="modal-text" id="modal-personality"></p>
+                </div>
+
+                <div>
+                    <div class="modal-section-title">Biografía</div>
+                    <p class="modal-text" id="modal-bio"></p>
+                </div>
+
+                <div>
+                    <div class="modal-section-title">Clasificación</div>
+                    <div class="modal-tags" id="modal-tags"></div>
+                </div>
+            </div>
+
+            <!-- Prev / Next navigation -->
+            <div class="modal-nav">
+                <button class="modal-nav-btn" id="modal-prev" aria-label="Anterior">‹</button>
+                <button class="modal-nav-btn" id="modal-next" aria-label="Siguiente">›</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <p class="footer-text">
+            © 2026 MISide: Pacify Mode — Awfully Studios ·
+            <a href="index.html">Volver al inicio</a> ·
+            <a href="terminos.html">Términos &amp; Privacidad</a>
+        </p>
+    </footer>
+
+    <script src="js/preloader.js"></script>
+    <script src="js/legal-banner.js"></script>
+    <script src="js/personajes.js"></script>
+    <script src="js/transitions.js"></script>
+    <script src="js/pwa.js"></script>
+</body>
+
+</html>

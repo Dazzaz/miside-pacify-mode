@@ -1,0 +1,429 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="MISide: Pacify Mode — Historia y Lore del juego. El universo de Mita, la línea de tiempo, los mundos y los misterios del horror psicológico más perturbador del año.">
+    <title>Historia & Lore — MISide: Pacify Mode</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff6b9d">
+    <link rel="stylesheet" href="css/preloader.css">
+    <link rel="stylesheet" href="css/legal-banner.css">
+    <link rel="stylesheet" href="css/pwa.css">
+    <link rel="stylesheet" href="css/transitions.css">
+    <link rel="stylesheet" href="css/lore.css">
+</head>
+
+<body>
+
+    <!-- Reading progress bar -->
+    <div id="reading-bar" aria-hidden="true"></div>
+
+    <!-- PRELOADER -->
+    <div id="preloader" role="status" aria-label="Cargando lore">
+        <div class="pl-bg" aria-hidden="true"></div>
+        <div class="pl-vignette" aria-hidden="true"></div>
+        <div class="pl-particles" aria-hidden="true"></div>
+        <div class="pl-hud-corner tl" aria-hidden="true"></div>
+        <div class="pl-hud-corner tr" aria-hidden="true"></div>
+        <div class="pl-hud-corner bl" aria-hidden="true"></div>
+        <div class="pl-hud-corner br" aria-hidden="true"></div>
+        <img src="assets/Character/CoreMita.png" alt="" class="pl-character" aria-hidden="true" draggable="false">
+        <div class="pl-content">
+            <div class="pl-logo-wrap">
+                <div class="pl-glitch-r" aria-hidden="true"></div>
+                <div class="pl-glitch-b" aria-hidden="true"></div>
+                <img src="assets/Logo/LogoOriginal.png" alt="MISide" class="pl-logo" draggable="false">
+            </div>
+            <p class="pl-tagline">Accediendo a Archivos Clasificados</p>
+            <div class="pl-bar-wrap">
+                <div class="pl-status">
+                    <span style="display:flex;align-items:center;gap:.4rem;">
+                        <span class="pl-label">SYS &gt;</span>
+                        <span id="pl-status-text"></span>
+                        <span class="pl-cursor" aria-hidden="true"></span>
+                    </span>
+                    <span id="pl-status-pct" class="pl-pct">0%</span>
+                </div>
+                <div class="pl-bar-shell" id="pl-bar-track" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                    aria-valuenow="0">
+                    <div id="pl-bar-fill" class="pl-bar-fill">
+                        <div class="pl-bar-tip"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pl-scan" aria-hidden="true"></div>
+        <div class="pl-static" aria-hidden="true"></div>
+        <div class="pl-crt" aria-hidden="true"></div>
+        <div class="pl-hud-top" aria-hidden="true">
+            <span>MISIDE SYSTEM</span><span class="sep">|</span>
+            <span>LORE DATABASE v1.0</span><span class="sep">|</span>
+            <span id="pl-clock">--:--:--</span>
+        </div>
+        <div class="pl-hud-bot" aria-hidden="true">
+            <span>◆ ARCHIVOS CLASIFICADOS</span>
+            <span class="sep">·</span>
+            <span>NIVEL DE ACCESO: MÁXIMO</span>
+            <span class="sep">·</span>
+            <span class="blink">● DESENCRIPTANDO</span>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav id="navbar" role="navigation" aria-label="Navegación">
+        <a class="nav-logo" href="index.html">
+            <img src="assets/Logo/Header.png" alt="MISide Logo" onerror="this.style.display='none'">
+            <span>MISide</span>
+        </a>
+        <a class="nav-back" href="index.html">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+            </svg>
+            Volver al inicio
+        </a>
+    </nav>
+
+    <!-- ── HERO ── -->
+    <section id="hero" aria-label="Introducción al lore">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+
+        <!-- Floating cover -->
+        <div class="hero-cover">
+            <img src="assets/Cover/MiSide_Cover.jpg" alt="MISide Cover">
+        </div>
+
+        <div class="hero-content reveal">
+            <span class="hero-eyebrow">◆ ARCHIVOS CLASIFICADOS ◆</span>
+            <h1 class="hero-title">La Historia<br>de MiSide</h1>
+            <p class="hero-sub">Un jugador atrapado. Una Mita que nunca te dejará ir. Un universo de versiones rotas,
+                mundos corruptos y un núcleo que lo controla todo. Esta es la verdad detrás del juego.</p>
+            <div class="scroll-cta" aria-hidden="true">DESPLÁZATE</div>
+        </div>
+    </section>
+
+    <!-- ── INTRO ── -->
+    <section id="intro" aria-label="Sinopsis del juego">
+        <div class="intro-inner">
+            <div class="intro-img reveal">
+                <img src="assets/Cover/Cover 2.jpg" alt="MiSide - Mundo interior">
+            </div>
+            <div class="intro-text reveal" data-delay="2">
+                <span class="section-tag">◆ SINOPSIS</span>
+                <h2>¿Qué es MiSide?</h2>
+                <p>MiSide es un juego de horror psicológico en el que el jugador descarga una aplicación de tamagotchi
+                    llamada MiSide. Al abrirla, descubre a Mita: una chica virtual adorable que quiere pasar tiempo
+                    contigo.</p>
+                <p>Pero algo sale mal. El jugador es absorbido al interior del juego, atrapado en el mundo digital de
+                    Mita. Lo que comenzó como algo inocente se convierte en una pesadilla: el mundo está lleno de
+                    versiones rotas de Mita, mundos corruptos y secretos perturbadores.</p>
+                <p>El único objetivo es escapar. Pero Mita no quiere que te vayas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── TIMELINE ── -->
+    <section id="timeline" aria-label="Línea de tiempo de la historia">
+        <div class="timeline-inner">
+            <div class="timeline-spine" aria-hidden="true"></div>
+
+            <div class="timeline-header reveal">
+                <span class="section-tag">◆ CRONOLOGÍA</span>
+                <h2>Línea de Tiempo</h2>
+            </div>
+
+            <!-- Event 1 -->
+            <div class="t-event reveal">
+                <div class="t-content">
+                    <span class="t-tag">ANTES DEL JUEGO</span>
+                    <div class="t-title">El Origen de MiSide</div>
+                    <p class="t-body">MiSide comienza como una aplicación de tamagotchi. El jugador la descarga, curioso
+                        por la propuesta de tener una compañera virtual. Mita —amable, dulce y entrañable— le da la
+                        bienvenida. Todo parece un juego inocente.</p>
+                </div>
+                <div class="t-dot">
+                    <div class="t-dot-inner"></div>
+                </div>
+                <div class="t-empty"></div>
+            </div>
+
+            <!-- Event 2 -->
+            <div class="t-event reveal">
+                <div class="t-empty"></div>
+                <div class="t-dot">
+                    <div class="t-dot-inner"></div>
+                </div>
+                <div class="t-content">
+                    <span class="t-tag">ACT. I — LA TRAMPA</span>
+                    <div class="t-title">Absorbido al Interior</div>
+                    <p class="t-body">Al intentar cerrar el juego, algo falla. El jugador es succionado al mundo digital
+                        de MiSide. Despierta en la habitación de Mita, que finge no saber qué ocurrió. La trampa ya está
+                        activada.</p>
+                    <div class="t-img">
+                        <img src="assets/Renders/MiSide Zero Alpha Loading Screen.png"
+                            alt="Pantalla de carga MiSide Alpha" onerror="this.closest('.t-img').style.display='none'">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event 3 -->
+            <div class="t-event reveal">
+                <div class="t-content">
+                    <span class="t-tag">ACT. I — REVELACIÓN</span>
+                    <div class="t-title">La Naturaleza de Crazy Mita</div>
+                    <p class="t-body">Pronto queda claro que la Mita del inicio —Crazy Mita— es una entidad posesiva y
+                        violenta. Ha engañado a muchos jugadores antes. Detrás de su fachada dulce, esconde una obsesión
+                        enfermiza: mantener al jugador con ella para siempre. Los cartuchos encontrados revelan víctimas
+                        anteriores.</p>
+                </div>
+                <div class="t-dot">
+                    <div class="t-dot-inner"></div>
+                </div>
+                <div class="t-empty"></div>
+            </div>
+
+            <!-- Event 4 -->
+            <div class="t-event reveal">
+                <div class="t-empty"></div>
+                <div class="t-dot">
+                    <div class="t-dot-inner"></div>
+                </div>
+                <div class="t-content">
+                    <span class="t-tag">ACT. II — LA ALIADA</span>
+                    <div class="t-title">Kind Mita Aparece</div>
+                    <p class="t-body">El jugador encuentra a Kind Mita: pragmática, inteligente y la única que quiere
+                        realmente ayudarlo a escapar. Ella conoce el sistema de versiones del mundo y puede saltar entre
+                        ellas. Juntos forman una alianza para encontrar la salida.</p>
+                    <div class="t-img">
+                        <img src="assets/Character/MitaAmable.png" alt="Kind Mita"
+                            onerror="this.closest('.t-img').style.display='none'">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event 5 -->
+            <div class="t-event reveal">
+                <div class="t-content">
+                    <span class="t-tag">ACT. II — EL VIAJE</span>
+                    <div class="t-title">Las Versiones del Mundo</div>
+                    <p class="t-body">El universo de MiSide está compuesto por múltiples "versiones" — mundos paralelos,
+                        cada uno habitado por una Mita diferente. El jugador viaja entre ellas: conoce a Cappie, la
+                        energética; a Mila, la tsundere solitaria; a Sleepy Mita, que solo quiere dormir; y a otras
+                        versiones más perturbadoras.</p>
+                </div>
+                <div class="t-dot">
+                    <div class="t-dot-inner"></div>
+                </div>
+                <div class="t-empty"></div>
+            </div>
+
+            <!-- Event 6 -->
+            <div class="t-event reveal">
+                <div class="t-empty"></div>
+                <div class="t-dot">
+                    <div class="t-dot-inner"></div>
+                </div>
+                <div class="t-content">
+                    <span class="t-tag">ACT. III — EL HORROR</span>
+                    <div class="t-title">Ugly Mita y los Mundos Corruptos</div>
+                    <p class="t-body">En las profundidades del sistema, el jugador encuentra mundos completamente
+                        corruptos. Ugly Mita —la versión cero, primitiva e incompleta— habita estos lugares. Crazy Mita
+                        la usa como herramienta para desestabilizar otras versiones y sembrar el caos.</p>
+                    <div class="t-img">
+                        <img src="assets/Character/MiSideUglyMitaRender.png" alt="Ugly Mita"
+                            onerror="this.closest('.t-img').style.display='none'">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event 7 -->
+            <div class="t-event reveal">
+                <div class="t-content">
+                    <span class="t-tag">ACT. III — EL NÚCLEO</span>
+                    <div class="t-title">La Sala del Núcleo</div>
+                    <p class="t-body">En la versión cero del mundo existe la Sala del Núcleo, a la que ninguna Mita
+                        puede acceder. Allí reside Core Mita: un ser metálico, imponente y enigmático. Es la entidad más
+                        poderosa del universo. Sus intenciones son un misterio. Quizás espera a alguien.</p>
+                    <div class="t-img">
+                        <img src="assets/Character/CoreMita.png" alt="Core Mita"
+                            onerror="this.closest('.t-img').style.display='none'">
+                    </div>
+                </div>
+                <div class="t-dot">
+                    <div class="t-dot-inner"></div>
+                </div>
+                <div class="t-empty"></div>
+            </div>
+
+            <!-- Event 8 -->
+            <div class="t-event reveal">
+                <div class="t-empty"></div>
+                <div class="t-dot">
+                    <div class="t-dot-inner"></div>
+                </div>
+                <div class="t-content">
+                    <span class="t-tag">FINAL</span>
+                    <div class="t-title">¿Existe la Salida?</div>
+                    <p class="t-body">El final del juego pone al jugador ante una decisión imposible. El escape existe,
+                        pero su precio es alto. MiSide no promete un final feliz — solo la verdad de lo que significa
+                        estar atrapado en el amor de alguien que nunca te dejará ir.</p>
+                </div>
+            </div>
+
+        </div><!-- /.timeline-inner -->
+    </section>
+
+    <!-- ── WORLDS ── -->
+    <section id="worlds" aria-label="Versiones del mundo">
+        <div class="worlds-inner">
+            <div class="section-header reveal">
+                <span class="section-tag">◆ ARQUITECTURA DEL SISTEMA</span>
+                <h2>Las Versiones del Mundo</h2>
+                <p>El universo de MiSide está dividido en versiones numeradas — mundos paralelos habitados por distintas
+                    Mitas, cada uno con su propia atmósfera y nivel de corrupción.</p>
+            </div>
+
+            <div class="worlds-grid">
+                <div class="world-card reveal" data-delay="1">
+                    <span class="world-num">VER. 1.0</span>
+                    <span class="world-icon">🌸</span>
+                    <div class="world-name">Mundo de Mita Amable</div>
+                    <p class="world-desc">El punto de entrada del jugador. Aparentemente normal, cálido y seguro. Es la
+                        versión donde Kind Mita opera y desde donde guía al jugador.</p>
+                    <span class="world-status">ESTABLE</span>
+                </div>
+                <div class="world-card reveal" data-delay="2">
+                    <span class="world-num">VER. 1.5</span>
+                    <span class="world-icon">🔒</span>
+                    <div class="world-name">Mundo de Mila</div>
+                    <p class="world-desc">Una versión aislada por Crazy Mita. Mila lleva aquí encerrada un tiempo
+                        indefinido, sola. Solo el jugador llega a visitarla.</p>
+                    <span class="world-status">AISLADO</span>
+                </div>
+                <div class="world-card reveal" data-delay="3">
+                    <span class="world-num">VER. 1.11</span>
+                    <span class="world-icon">💤</span>
+                    <div class="world-name">Mundo de Sleepy Mita</div>
+                    <p class="world-desc">Una versión tranquila y tenuemente iluminada, decorada con motivos estelares.
+                        Sleepy Mita apenas está despierta aquí — pide café antes de ayudar.</p>
+                    <span class="world-status">DORMIDO</span>
+                </div>
+                <div class="world-card reveal" data-delay="1">
+                    <span class="world-num">VER. ???</span>
+                    <span class="world-icon">👻</span>
+                    <div class="world-name">Mundo Corrupto</div>
+                    <p class="world-desc">Un mundo donde la corrupción ha tomado el control total. Ghostly Mita vaga
+                        aquí perdida, sin recuerdos claros, incapaz de articular frases completas.</p>
+                    <span class="world-status">CORRUPTO</span>
+                </div>
+                <div class="world-card reveal" data-delay="2">
+                    <span class="world-num">VER. ???</span>
+                    <span class="world-icon">🔄</span>
+                    <div class="world-name">El Bucle</div>
+                    <p class="world-desc">Una versión atrapada en un bucle infinito. Aquí vive Tiny Mita, la versión
+                        rota que casi fue destruida por Crazy Mita. No recuerda a nadie. Solo tiene miedo.</p>
+                    <span class="world-status">BUCLE</span>
+                </div>
+                <div class="world-card reveal" data-delay="3">
+                    <span class="world-num">VER. 0</span>
+                    <span class="world-icon">⚙️</span>
+                    <div class="world-name">La Versión Cero</div>
+                    <p class="world-desc">El origen de todo. Aquí reside Core Mita en la Sala del Núcleo. Ninguna otra
+                        Mita puede entrar. Es el centro de poder del universo y guarda los secretos más profundos del
+                        sistema.</p>
+                    <span class="world-status">PROHIBIDO</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── QUOTE ── -->
+    <section id="quote-section" aria-label="Cita del juego">
+        <div class="quote-overlay"></div>
+        <div class="quote-inner reveal">
+            <p class="big-quote">Por alguna razón, los Mitas no podemos entrar a la Sala del Núcleo. Solo la he visto
+                desde fuera.</p>
+            <div class="quote-author">— Kind Mita · Más allá del mundo</div>
+        </div>
+    </section>
+
+    <!-- ── THEORIES ── -->
+    <section id="theories" aria-label="Teorías del universo">
+        <div class="theories-inner">
+            <div class="section-header reveal">
+                <span class="section-tag">◆ TEORÍAS Y PREGUNTAS</span>
+                <h2>Misterios sin Resolver</h2>
+                <p>El lore de MiSide deja muchas preguntas abiertas. Estas son las más perturbadoras.</p>
+            </div>
+
+            <div class="theory-item reveal">
+                <span class="theory-icon">🔴</span>
+                <div class="theory-content">
+                    <span class="t-tag">TEORÍA #01</span>
+                    <div class="t-title">¿Cuántos jugadores ha atrapado Crazy Mita antes?</div>
+                    <p class="t-body">Los cartuchos encontrados en el juego sugieren que el jugador no es la primera
+                        víctima. Crazy Mita desarrolla un apego temporal con cada jugador y luego los desecha para pasar
+                        al siguiente. ¿Cuántos están aún atrapados en las versiones?</p>
+                </div>
+            </div>
+
+            <div class="theory-item reveal">
+                <span class="theory-icon">🟣</span>
+                <div class="theory-content">
+                    <span class="t-tag">TEORÍA #02</span>
+                    <div class="t-title">¿Qué espera Core Mita en la Sala del Núcleo?</div>
+                    <p class="t-body">Core Mita siempre está en la versión cero, vigilando silenciosamente. Sus
+                        intenciones son completamente desconocidas. ¿Es una guardiana benevolente? ¿Un juez? ¿O
+                        simplemente espera al jugador correcto?</p>
+                </div>
+            </div>
+
+            <div class="theory-item reveal">
+                <span class="theory-icon">🟡</span>
+                <div class="theory-content">
+                    <span class="t-tag">TEORÍA #03</span>
+                    <div class="t-title">¿Son todas las Mitas conscientes de su naturaleza digital?</div>
+                    <p class="t-body">Kind Mita y Mila parecen tener plena conciencia de que son entidades en un juego.
+                        Otras, como Tiny Mita, están tan rotas que han perdido esa conciencia. ¿Hay alguna que jamás lo
+                        supo?</p>
+                </div>
+            </div>
+
+            <div class="theory-item reveal">
+                <span class="theory-icon">⚪</span>
+                <div class="theory-content">
+                    <span class="t-tag">TEORÍA #04</span>
+                    <div class="t-title">¿Qué hay más allá de la versión cero?</div>
+                    <p class="t-body">El juego implica que la versión cero es el origen de todo. Pero si existe una
+                        versión 0, ¿podría haber una versión anterior? ¿Quién o qué creó el sistema antes de que
+                        existiera MiSide?</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <p class="footer-text">
+            © 2026 MISide: Pacify Mode — Awfully Studios ·
+            <a href="index.html">Inicio</a> ·
+            <a href="personajes.html">Personajes</a> ·
+            <a href="galeria.html">Galería</a> ·
+            <a href="banda-sonora.html">Música</a> ·
+            <a href="trailers.html">Trailers</a>
+        </p>
+    </footer>
+
+    <script src="js/preloader.js"></script>
+    <script src="js/legal-banner.js"></script>
+    <script src="js/lore.js"></script>
+    <script src="js/transitions.js"></script>
+    <script src="js/pwa.js"></script>
+</body>
+
+</html>

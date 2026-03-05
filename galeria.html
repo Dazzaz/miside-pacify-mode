@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="MISide: Pacify Mode — Galería de imágenes del juego. Fan art, renders, arte conceptual y mucho más.">
+    <title>Galería — MISide: Pacify Mode</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff6b9d">
+    <link rel="stylesheet" href="css/preloader.css">
+    <link rel="stylesheet" href="css/legal-banner.css">
+    <link rel="stylesheet" href="css/pwa.css">
+    <link rel="stylesheet" href="css/transitions.css">
+    <link rel="stylesheet" href="css/galeria.css">
+</head>
+
+<body>
+
+    <!-- PRELOADER -->
+    <div id="preloader" role="status" aria-label="Cargando galería">
+        <div class="pl-bg" aria-hidden="true"></div>
+        <div class="pl-vignette" aria-hidden="true"></div>
+        <div class="pl-particles" aria-hidden="true"></div>
+        <div class="pl-hud-corner tl" aria-hidden="true"></div>
+        <div class="pl-hud-corner tr" aria-hidden="true"></div>
+        <div class="pl-hud-corner bl" aria-hidden="true"></div>
+        <div class="pl-hud-corner br" aria-hidden="true"></div>
+        <img src="assets/Character/Mita_Revealed.png" alt="" class="pl-character" aria-hidden="true" draggable="false">
+        <div class="pl-content">
+            <div class="pl-logo-wrap">
+                <div class="pl-glitch-r" aria-hidden="true"></div>
+                <div class="pl-glitch-b" aria-hidden="true"></div>
+                <img src="assets/Logo/LogoOriginal.png" alt="MISide" class="pl-logo" draggable="false">
+            </div>
+            <p class="pl-tagline">Cargando Galería Visual</p>
+            <div class="pl-bar-wrap">
+                <div class="pl-status">
+                    <span style="display:flex;align-items:center;gap:.4rem;">
+                        <span class="pl-label">SYS &gt;</span>
+                        <span id="pl-status-text"></span>
+                        <span class="pl-cursor" aria-hidden="true"></span>
+                    </span>
+                    <span id="pl-status-pct" class="pl-pct">0%</span>
+                </div>
+                <div class="pl-bar-shell" id="pl-bar-track" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                    aria-valuenow="0">
+                    <div id="pl-bar-fill" class="pl-bar-fill">
+                        <div class="pl-bar-tip"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pl-scan" aria-hidden="true"></div>
+        <div class="pl-static" aria-hidden="true"></div>
+        <div class="pl-crt" aria-hidden="true"></div>
+        <div class="pl-hud-top" aria-hidden="true">
+            <span>MISIDE SYSTEM</span><span class="sep">|</span>
+            <span>GALERÍA v1.0</span><span class="sep">|</span>
+            <span id="pl-clock">--:--:--</span>
+        </div>
+        <div class="pl-hud-bot" aria-hidden="true">
+            <span>◆ AWFULLY STUDIOS</span>
+            <span class="sep">·</span>
+            <span>150 ARCHIVOS DETECTADOS</span>
+            <span class="sep">·</span>
+            <span class="blink">● DESCARGANDO</span>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav id="navbar" role="navigation" aria-label="Navegación">
+        <a class="nav-logo" href="index.html">
+            <img src="assets/Logo/Header.png" alt="MISide Logo" onerror="this.style.display='none'">
+            <span>MISide</span>
+        </a>
+        <a class="nav-back" href="index.html">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+            </svg>
+            Volver al inicio
+        </a>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <header id="page-hero">
+        <div class="page-hero-bg"></div>
+        <div class="page-hero-overlay"></div>
+        <div class="page-hero-inner reveal">
+            <span class="page-label">◆ ARCHIVO VISUAL ◆</span>
+            <h1 class="page-title">Galería</h1>
+            <p class="page-sub">150 imágenes del universo MISide — arte, renders, escenas y fan art.</p>
+
+            <!-- Filters -->
+            <div class="filter-bar" role="group" aria-label="Filtrar galería">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="arte">Arte Oficial</button>
+                <button class="filter-btn" data-filter="fan-art">Fan Art</button>
+                <button class="filter-btn" data-filter="personajes">Personajes</button>
+                <button class="filter-btn" data-filter="escenas">Escenas</button>
+                <button class="filter-btn" data-filter="2d-art">Arte 2D</button>
+            </div>
+
+            <!-- Search -->
+            <div class="search-wrap">
+                <input type="search" id="search-input" class="search-input" placeholder="Buscar por número..."
+                    aria-label="Buscar imagen">
+            </div>
+        </div>
+    </header>
+
+    <!-- GALLERY -->
+    <main id="gallery-section">
+        <!-- Stats bar -->
+        <div class="stats-bar">
+            <span class="stats-text" id="stats-count">— imágenes</span>
+            <div class="view-toggle" role="group" aria-label="Modo de vista">
+                <button class="view-btn active" data-view="masonry" title="Vista masonry"
+                    aria-label="Masonry">⊞</button>
+                <button class="view-btn" data-view="grid" title="Vista cuadrícula" aria-label="Cuadrícula">⊟</button>
+                <button class="view-btn" data-view="list" title="Vista lista" aria-label="Lista">≡</button>
+            </div>
+        </div>
+
+        <!-- Masonry grid (populated by JS) -->
+        <div id="masonry-grid" class="masonry view-masonry" role="list" aria-label="Imágenes de la galería"></div>
+
+        <!-- No results -->
+        <div id="no-results" class="no-results">NO_RESULTS_FOUND &gt; Intenta otra búsqueda</div>
+
+        <!-- Load more -->
+        <div class="load-more-wrap">
+            <button id="btn-load-more" class="btn-load hidden">CARGAR MÁS ▾</button>
+        </div>
+    </main>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" role="dialog" aria-modal="true" aria-label="Visor de imagen">
+        <button id="lb-close" aria-label="Cerrar lightbox">✕</button>
+        <button class="lb-arrow" id="lb-prev" aria-label="Imagen anterior">‹</button>
+        <button class="lb-arrow" id="lb-next" aria-label="Imagen siguiente">›</button>
+
+        <div class="lb-img-wrap">
+            <img id="lb-img" src="" alt="Imagen en pantalla completa">
+        </div>
+
+        <div class="lb-info" id="lb-info"></div>
+
+        <!-- Thumbnail strip -->
+        <div class="lb-thumbs" id="lb-thumbs"></div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <p class="footer-text">
+            © 2026 MISide: Pacify Mode — Awfully Studios ·
+            <a href="index.html">Inicio</a> ·
+            <a href="personajes.html">Personajes</a> ·
+            <a href="terminos.html">Términos &amp; Privacidad</a>
+        </p>
+    </footer>
+
+    <script src="js/preloader.js"></script>
+    <script src="js/legal-banner.js"></script>
+    <script src="js/galeria.js"></script>
+    <script src="js/transitions.js"></script>
+    <script src="js/pwa.js"></script>
+</body>
+
+</html>
