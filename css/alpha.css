@@ -190,7 +190,7 @@ img {
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: url('../assets/Renders/Announcement Renders/MiSide Zero Alpha Announcement.webp') center/cover no-repeat;
+    background: url('../assets/Renders/Announcement Renders/MiSide Zero Alpha Announcement.png') center/cover no-repeat;
     filter: brightness(.22) saturate(1.8);
     transition: filter 1s;
 }
@@ -906,3 +906,4 @@ img {
     }
 
 }
+
