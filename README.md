@@ -19,7 +19,7 @@
 
 > *"Un mundo en el que la dulzura esconde algo más profundo."*
 
-Fan site interactivo **100% estático** dedicado al juego **MiSide** de **Awfully Studios**.
+Fan site interactivo **100% estático** dedicado al juego **MiSide** de **Aihasto**.
 Explora personajes, mapas en 3D, galería de imágenes, trailers y la banda sonora oficial.
 
 **[🌐 Ver Sitio en Vivo](#)** · **[🐛 Reportar un Bug](../../issues/new?template=bug_report.md)** · **[💡 Sugerir Feature](../../issues/new?template=feature_request.md)**
@@ -272,16 +272,16 @@ sitemap.xml → Reemplaza "https://TU-DOMINIO.com" en todas las entradas
 
 | Rol | Detalle |
 |:---|:---|
-| 🎮 **Juego original** | [MiSide](https://store.steampowered.com/app/2527500/MiSide/) por **Awfully Studios** |
+| 🎮 **Juego original** | [MiSide](https://store.steampowered.com/app/2527500/MiSide/) por **Aihasto** |
 | 💻 **Desarrollo del fan site** | **Dazzaz Dev** |
 | 🎨 **Fan art de la galería** | Creadores individuales de la comunidad de MiSide |
-| 🎵 **Banda sonora** | OST oficial de MiSide — Awfully Studios |
+| 🎵 **Banda sonora** | OST oficial de MiSide — Aihasto |
 
 ---
 
 ## ⚠️ Aviso Legal
 
-Este es un **proyecto fan completamente no oficial**. No está afiliado, respaldado ni patrocinado por Aihasto ni Awfully Studios.
+Este es un **proyecto fan completamente no oficial**. No está afiliado, respaldado ni patrocinado por Aihasto ni Aihasto.
 
 Todo el contenido del juego (imágenes, música, nombres de personajes, modelos 3D) pertenece a sus respectivos titulares de derechos de autor. Este proyecto fue creado exclusivamente con **fines creativos y de divulgación** para la comunidad de MiSide, sin ningún propósito comercial.
 
