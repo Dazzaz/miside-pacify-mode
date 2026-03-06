@@ -5,4 +5,4 @@ Allow: /
 Disallow: /sw.js
 
 # Sitemap
-Sitemap: https://TU-DOMINIO.com/sitemap.xml
+Sitemap: https://dazzaz.github.io/MISide-Pacify-Mode/sitemap.xml
