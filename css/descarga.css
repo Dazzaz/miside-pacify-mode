@@ -499,6 +499,76 @@ body {
     flex-shrink: 0;
 }
 
+
+/* Contenedor para centrar el botón en la página */
+.download-section {
+    display: flex;
+    justify-content: center;
+    padding: 3rem 2rem;
+    position: relative;
+    z-index: 5;
+}
+
+/* El botón con el estilo de tu sistema (Glassmorphism + Neón) */
+.btn-neon {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 1.1rem 2.2rem;
+    background: rgba(255, 255, 255, 0.05);
+    /* Efecto cristal */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255, 107, 157, 0.3);
+    /* Borde rosa suave */
+    border-radius: 14px;
+
+    color: #fff;
+    font-family: var(--font);
+    /* Usa la fuente 'Outfit' de tu root */
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-size: 0.95rem;
+
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+/* Efecto Hover (Brillo Neón Rosa) */
+.btn-neon:hover {
+    background: rgba(255, 107, 157, 0.15);
+    border-color: var(--pink);
+    /* Usa tu variable pink */
+    transform: translateY(-3px) scale(1.02);
+
+    /* Resplandor neón */
+    box-shadow: 0 0 20px rgba(255, 107, 157, 0.4),
+        0 0 40px rgba(255, 107, 157, 0.1);
+    text-shadow: 0 0 5px #fff;
+}
+
+/* Efecto al hacer clic */
+.btn-neon:active {
+    transform: translateY(1px) scale(0.98);
+}
+
+/* Icono de descarga animado */
+.btn-neon::before {
+    content: '📥';
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-neon:hover::before {
+    transform: translateY(3px);
+    /* El icono "baja" al hacer hover */
+}
+
+
 /* ── REQUIREMENTS SECTION ── */
 #requirements {
     padding: 4rem 2rem 6rem;
