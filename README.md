@@ -22,7 +22,7 @@
 Fan site interactivo **100% estático** dedicado al juego **MiSide** de **Awfully Studios**.
 Explora personajes, mapas en 3D, galería de imágenes, trailers y la banda sonora oficial.
 
-**[🌐 Ver Sitio en Vivo](#)** · **[🐛 Reportar un Bug](../../issues/new?template=bug_report.md)** · **[💡 Sugerir Feature](../../issues/new?template=feature_request.md)**
+**[🌐 Ver Sitio en Vivo](https://dazzaz.github.io/miside-pacify-mode/)** · **[🐛 Reportar un Bug](../../issues/new?template=bug_report.md)** · **[💡 Sugerir Feature](../../issues/new?template=feature_request.md)**
 
 </div>
 
