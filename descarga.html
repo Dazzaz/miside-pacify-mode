@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="MISide: Pacify Mode — Descarga el juego MiSide. Disponible en Steam (versión oficial de Aihasto) y en Itch.io (versión fan por VoidWay Games).">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="MISide: Pacify Mode">
+    <meta property="og:title" content="Descargar MiSide — MISide: Pacify Mode">
+    <meta property="og:description"
+        content="Descarga MiSide en Steam o la versión fan en Itch.io. Dos formas de entrar al mundo de Mita.">
+    <meta property="og:image" content="assets/Renders/MiSide Zero Alpha Loading Screen.png">
+    <meta property="og:url" content="https://dazzaz.github.io/miside-pacify-mode/descarga.html">
+    <meta property="og:locale" content="es_ES">
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Descargar MiSide — MISide: Pacify Mode">
+    <meta name="twitter:description" content="Descarga MiSide en Steam o la versión fan en Itch.io.">
+    <meta name="twitter:image" content="assets/Renders/MiSide Zero Alpha Loading Screen.png">
+
+    <title>Descargar — MISide: Pacify Mode</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff6b9d">
+    <link rel="stylesheet" href="css/preloader.css">
+    <link rel="stylesheet" href="css/legal-banner.css">
+    <link rel="stylesheet" href="css/pwa.css">
+    <link rel="stylesheet" href="css/transitions.css">
+    <link rel="stylesheet" href="css/descarga.css">
+    <link rel="stylesheet" href="css/music-back.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════════════════════
+       PRELOADER
+    ═══════════════════════════════════════════ -->
+    <div id="preloader" role="status" aria-label="Cargando MISide">
+        <div class="pl-bg" aria-hidden="true"></div>
+        <div class="pl-vignette" aria-hidden="true"></div>
+        <div class="pl-particles" aria-hidden="true"></div>
+        <div class="pl-hud-corner tl" aria-hidden="true"></div>
+        <div class="pl-hud-corner tr" aria-hidden="true"></div>
+        <div class="pl-hud-corner bl" aria-hidden="true"></div>
+        <div class="pl-hud-corner br" aria-hidden="true"></div>
+        <img src="assets/Character/Mita_Revealed.png" alt="" class="pl-character" aria-hidden="true" draggable="false">
+        <div class="pl-content">
+            <div class="pl-logo-wrap">
+                <div class="pl-glitch-r" aria-hidden="true"></div>
+                <div class="pl-glitch-b" aria-hidden="true"></div>
+                <img src="assets/Logo/LogoOriginal.png" alt="MISide: Pacify Mode" class="pl-logo" draggable="false">
+            </div>
+            <p class="pl-tagline">Cargando Opciones de Descarga</p>
+            <div class="pl-bar-wrap">
+                <div class="pl-status">
+                    <span style="display:flex;align-items:center;gap:0.4rem;">
+                        <span class="pl-label">SYS ></span>
+                        <span id="pl-status-text"></span>
+                        <span class="pl-cursor" aria-hidden="true"></span>
+                    </span>
+                    <span id="pl-status-pct" class="pl-pct">0%</span>
+                </div>
+                <div class="pl-bar-shell" id="pl-bar-track" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                    aria-valuenow="0">
+                    <div id="pl-bar-fill" class="pl-bar-fill">
+                        <div class="pl-bar-tip"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pl-scan" aria-hidden="true"></div>
+        <div class="pl-static" aria-hidden="true"></div>
+        <div class="pl-crt" aria-hidden="true"></div>
+        <div class="pl-hud-top" aria-hidden="true">
+            <span>MISIDE SYSTEM</span>
+            <span class="sep">|</span>
+            <span>DOWNLOAD v1.0</span>
+            <span class="sep">|</span>
+            <span id="pl-clock">--:--:--</span>
+        </div>
+        <div class="pl-hud-bot" aria-hidden="true">
+            <span>◆ AWFULLY STUDIOS</span>
+            <span class="sep">·</span>
+            <span>2 PLATAFORMAS DISPONIBLES</span>
+            <span class="sep">·</span>
+            <span class="blink">● CONECTANDO</span>
+        </div>
+    </div><!-- /#preloader -->
+
+    <!-- ═══════════════════════════════════════════
+       NAVBAR (same as index.html)
+    ═══════════════════════════════════════════ -->
+    <nav id="navbar" role="navigation" aria-label="Navegación principal">
+        <a class="nav-logo" href="index.html">
+            <img src="assets/Logo/LogoOriginal.png" alt="MISide Logo" onerror="this.style.display='none'">
+            <span></span>
+        </a>
+        <button class="hamburger" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="index.html#about-band">El Juego</a></li>
+            <li><a href="personajes.html">Personajes</a></li>
+            <li><a href="lore.html">Historia</a></li>
+            <li><a href="alpha.html">Alpha</a></li>
+            <li><a href="trailers.html">Trailers</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="banda-sonora.html">Música</a></li>
+            <li><a href="descarga.html" class="active">Descargar</a></li>
+            <li><a href="https://store.steampowered.com/app/2527500/MiSide/" target="_blank" class="nav-cta">Jugar
+                    ahora</a></li>
+        </ul>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════════ -->
+    <section id="hero" aria-label="Descarga MiSide">
+        <div class="hero-bg"></div>
+        <div class="hero-particles" aria-hidden="true"></div>
+
+        <div class="hero-content reveal">
+            <div class="hero-eyebrow">
+                <span class="dot" aria-hidden="true"></span>
+                Elige tu plataforma
+            </div>
+            <h1 class="hero-title">
+                Entra al mundo<br>
+                de <span class="gradient">Mita</span>
+            </h1>
+            <p class="hero-sub">
+                MiSide está disponible en dos plataformas. Elige la que prefieras
+                y comienza la experiencia de terror más dulce del año.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+       DOWNLOAD CARDS
+    ═══════════════════════════════════════════ -->
+    <section id="cards" aria-label="Opciones de descarga">
+        <p class="cards-label">◆ PLATAFORMAS DISPONIBLES</p>
+        <h2 class="cards-title">¿Dónde quieres <span>jugar?</span></h2>
+        <p class="cards-sub">Dos versiones disponibles — elige la oficial en Steam o la versión fan en Itch.io.</p>
+
+        <div class="cards-grid">
+
+            <!-- ── Steam Card ── -->
+            <article class="dl-card steam reveal" data-delay="1">
+                <div class="dl-card-header">
+                    <div class="dl-card-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="rgba(0,212,255,0.7)">
+                            <path
+                                d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.606 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.455 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.662 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.252 0-2.265-1.014-2.265-2.265z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="dl-card-platform">Versión Oficial</div>
+                        <div class="dl-card-name">Aihasto · Steam</div>
+                    </div>
+                </div>
+
+                <div class="dl-card-badge">
+                    <span class="badge-dot"></span>
+                    DISPONIBLE AHORA
+                </div>
+
+                <p class="dl-card-desc">
+                    La versión oficial de MiSide, desarrollada por <strong style="color:#fff">Aihasto</strong> y
+                    publicada en Steam.
+                    Incluye la historia completa, múltiples finales, banda sonora oficial y todas las actualizaciones
+                    del juego.
+                </p>
+
+                <div class="dl-card-stats">
+                    <div class="dl-stat">
+                        <div class="dl-stat-val">+90%</div>
+                        <div class="dl-stat-lbl">Reseñas positivas</div>
+                    </div>
+                    <div class="dl-stat">
+                        <div class="dl-stat-val">PC</div>
+                        <div class="dl-stat-lbl">Plataforma</div>
+                    </div>
+                    <div class="dl-stat">
+                        <div class="dl-stat-val">2024</div>
+                        <div class="dl-stat-lbl">Lanzamiento</div>
+                    </div>
+                </div>
+
+                <a href="https://store.steampowered.com/app/2527500/MiSide/" target="_blank" rel="noopener noreferrer"
+                    class="dl-card-btn" aria-label="Ir a MiSide en Steam">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.606 0 11.979 0z" />
+                    </svg>
+                    Ver en Steam
+                </a>
+            </article>
+
+            <!-- ── Itch.io Card ── -->
+            <article class="dl-card itch reveal" data-delay="2">
+                <div class="dl-card-header">
+                    <div class="dl-card-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="rgba(255,107,157,0.8)">
+                            <path
+                                d="M3.13 1.338C2.08 1.96.02 4.328 0 4.95v1.03c0 1.303 1.22 2.45 2.325 2.45 1.33 0 2.436-1.102 2.436-2.41 0 1.308 1.07 2.41 2.4 2.41 1.328 0 2.362-1.102 2.362-2.41 0 1.308 1.104 2.41 2.432 2.41h.024c1.328 0 2.432-1.102 2.432-2.41 0 1.308 1.034 2.41 2.363 2.41 1.33 0 2.4-1.102 2.4-2.41 0 1.308 1.106 2.41 2.435 2.41C22.78 8.43 24 7.282 24 5.98V4.95c-.02-.622-2.08-2.99-3.13-3.612C19.948.684 12.197.64 11.716.64c-.48 0-7.676.044-8.586.698zm8.617 5.767v.033c-.01 0-.02.003-.032.003-1.13 0-2.05-.608-2.39-1.46-.34.852-1.262 1.46-2.393 1.46-.016 0-.028-.003-.042-.003v9.146l1.31-1.296-.002.037c.636-.592 1.505-.956 2.458-.956.95 0 1.817.362 2.453.95v-.033l1.318 1.3V7.138c-.014 0-.026.003-.04.003-1.13 0-2.05-.608-2.39-1.46-.34.85-1.26 1.457-2.39 1.457l-.032-.003v-.03zm-2.35 3.708h4.07v5.763l-2.035-2.01-2.035 2.01V10.813zm.47 1.097v3.274l1.565-1.55 1.564 1.553v-3.277H9.867z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="dl-card-platform">Versión Fan</div>
+                        <div class="dl-card-name">VoidWay Games · Itch.io</div>
+                    </div>
+                </div>
+
+                <div class="dl-card-badge">
+                    <span class="badge-dot"></span>
+                    GRATIS
+                </div>
+
+                <p class="dl-card-desc">
+                    Versión fan de MiSide Zero creada por <strong style="color:#fff">VoidWay Games</strong> y publicada
+                    en Itch.io.
+                    Un tributo a la comunidad con contenido adicional. Descárgala gratis y apoya a los creadores
+                    independientes.
+                </p>
+
+                <div class="dl-card-stats">
+                    <div class="dl-stat">
+                        <div class="dl-stat-val">Gratis</div>
+                        <div class="dl-stat-lbl">Precio</div>
+                    </div>
+                    <div class="dl-stat">
+                        <div class="dl-stat-val">PC</div>
+                        <div class="dl-stat-lbl">Plataforma</div>
+                    </div>
+                    <div class="dl-stat">
+                        <div class="dl-stat-val">Fan</div>
+                        <div class="dl-stat-lbl">Tipo</div>
+                    </div>
+                </div>
+
+                <a href="https://voidwaygames.itch.io/misidezero" target="_blank" rel="noopener noreferrer"
+                    class="dl-card-btn" aria-label="Ir a MiSide Zero en Itch.io">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M3.13 1.338C2.08 1.96.02 4.328 0 4.95v1.03c0 1.303 1.22 2.45 2.325 2.45 1.33 0 2.436-1.102 2.436-2.41 0 1.308 1.07 2.41 2.4 2.41 1.328 0 2.362-1.102 2.362-2.41 0 1.308 1.104 2.41 2.432 2.41h.024c1.328 0 2.432-1.102 2.432-2.41 0 1.308 1.034 2.41 2.363 2.41 1.33 0 2.4-1.102 2.4-2.41 0 1.308 1.106 2.41 2.435 2.41C22.78 8.43 24 7.282 24 5.98V4.95c-.02-.622-2.08-2.99-3.13-3.612C19.948.684 12.197.64 11.716.64c-.48 0-7.676.044-8.586.698z" />
+                    </svg>
+                    Ir a Itch.io — Gratis
+                </a>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+       REQUIREMENTS
+    ═══════════════════════════════════════════ -->
+    <section id="requirements" aria-label="Requisitos del sistema">
+        <div class="req-header reveal">
+            <span class="section-label">◆ ESPECIFICACIONES TÉCNICAS</span>
+            <h2>Requisitos del <span>Sistema</span></h2>
+        </div>
+
+        <div class="req-grid">
+            <!-- Mínimos -->
+            <div class="req-card reveal" data-delay="1">
+                <div class="req-card-title">⚙️ Requisitos Mínimos</div>
+                <ul class="req-list">
+                    <li>
+                        <span class="req-key">SO</span>
+                        <span class="req-val">Windows 10 (64-bit)</span>
+                    </li>
+                    <li>
+                        <span class="req-key">Procesador</span>
+                        <span class="req-val">Intel Core i5-6600 / AMD Ryzen 5 1600</span>
+                    </li>
+                    <li>
+                        <span class="req-key">Memoria</span>
+                        <span class="req-val">8 GB RAM</span>
+                    </li>
+                    <li>
+                        <span class="req-key">Gráficos</span>
+                        <span class="req-val">NVIDIA GTX 1060 / AMD RX 580 (6 GB VRAM)</span>
+                    </li>
+                    <li>
+                        <span class="req-key">DirectX</span>
+                        <span class="req-val">Versión 11</span>
+                    </li>
+                    <li>
+                        <span class="req-key">Almacenamiento</span>
+                        <span class="req-val">4 GB de espacio disponible</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Recomendados -->
+            <div class="req-card reveal" data-delay="2">
+                <div class="req-card-title">🚀 Requisitos Recomendados</div>
+                <ul class="req-list">
+                    <li>
+                        <span class="req-key">SO</span>
+                        <span class="req-val">Windows 10 / 11 (64-bit)</span>
+                    </li>
+                    <li>
+                        <span class="req-key">Procesador</span>
+                        <span class="req-val">Intel Core i7-8700 / AMD Ryzen 5 3600</span>
+                    </li>
+                    <li>
+                        <span class="req-key">Memoria</span>
+                        <span class="req-val">16 GB RAM</span>
+                    </li>
+                    <li>
+                        <span class="req-key">Gráficos</span>
+                        <span class="req-val">NVIDIA RTX 2060 / AMD RX 6600 XT (8 GB VRAM)</span>
+                    </li>
+                    <li>
+                        <span class="req-key">DirectX</span>
+                        <span class="req-val">Versión 12</span>
+                    </li>
+                    <li>
+                        <span class="req-key">Almacenamiento</span>
+                        <span class="req-val">8 GB de espacio disponible (SSD recomendado)</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <p class="footer-text">
+            © 2026 MISide: Pacify Mode — Awfully Studios ·
+            <a href="index.html">Inicio</a> ·
+            <a href="personajes.html">Personajes</a> ·
+            <a href="terminos.html">Términos &amp; Privacidad</a>
+        </p>
+    </footer>
+
+    <script src="js/preloader.js"></script>
+    <script src="js/legal-banner.js"></script>
+    <script src="js/descarga.js"></script>
+    <script src="js/transitions.js"></script>
+    <script src="js/pwa.js"></script>
+    <script src="js/music-back.js"></script>
+</body>
+
+</html>

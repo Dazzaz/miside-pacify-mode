@@ -1,0 +1,425 @@
+/* =====================================================
+   MISide — Background Music Player
+   Floating button + mini panel, all pages
+   ===================================================== */
+
+/* ── Variables ── */
+:root {
+    --mb-pink: #ff6b9d;
+    --mb-cyan: #00d4ff;
+    --mb-bg: rgba(6, 4, 16, 0.92);
+    --mb-border: rgba(255, 107, 157, 0.25);
+    --mb-glow: rgba(255, 107, 157, 0.15);
+    --mb-radius: 14px;
+    --mb-size: 52px;
+    --mb-z: 9999;
+}
+
+/* ── Floating Button ── */
+#mb-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: var(--mb-z);
+    width: var(--mb-size);
+    height: var(--mb-size);
+    border-radius: 50%;
+    border: 1.5px solid var(--mb-border);
+    background: var(--mb-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, .5), 0 0 0 0 var(--mb-glow);
+    transition: transform .25s, box-shadow .25s, border-color .25s;
+    outline: none;
+    padding: 0;
+}
+
+#mb-btn:hover {
+    transform: scale(1.1);
+    border-color: var(--mb-pink);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, .6), 0 0 18px var(--mb-glow);
+}
+
+#mb-btn:active {
+    transform: scale(.95);
+}
+
+/* Playing pulse ring */
+#mb-btn.is-playing {
+    border-color: var(--mb-pink);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, .5), 0 0 0 5px rgba(255, 107, 157, 0.12);
+    animation: mb-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes mb-pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 4px 24px rgba(0, 0, 0, .5), 0 0 0 5px rgba(255, 107, 157, .12);
+    }
+
+    50% {
+        box-shadow: 0 4px 24px rgba(0, 0, 0, .5), 0 0 0 10px rgba(255, 107, 157, .0);
+    }
+}
+
+/* Icon inside button */
+#mb-btn .mb-icon {
+    font-size: 1.35rem;
+    line-height: 1;
+    transition: transform .3s;
+    user-select: none;
+}
+
+#mb-btn.is-playing .mb-icon {
+    animation: mb-spin 4s linear infinite;
+}
+
+@keyframes mb-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Waveform bars (playing state) */
+#mb-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 18px;
+    opacity: 0;
+    transition: opacity .3s;
+    position: absolute;
+}
+
+#mb-btn.is-playing #mb-bars {
+    opacity: 1;
+}
+
+#mb-btn.is-playing .mb-icon {
+    opacity: 0;
+}
+
+#mb-bars span {
+    display: block;
+    width: 3px;
+    border-radius: 2px;
+    background: var(--mb-pink);
+    animation: mb-bar 1s ease-in-out infinite;
+}
+
+#mb-bars span:nth-child(1) {
+    height: 8px;
+    animation-delay: 0s;
+}
+
+#mb-bars span:nth-child(2) {
+    height: 14px;
+    animation-delay: .15s;
+}
+
+#mb-bars span:nth-child(3) {
+    height: 10px;
+    animation-delay: .3s;
+}
+
+#mb-bars span:nth-child(4) {
+    height: 16px;
+    animation-delay: .1s;
+}
+
+#mb-bars span:nth-child(5) {
+    height: 7px;
+    animation-delay: .4s;
+}
+
+@keyframes mb-bar {
+
+    0%,
+    100% {
+        transform: scaleY(1);
+    }
+
+    50% {
+        transform: scaleY(.4);
+    }
+}
+
+/* ── Mini Panel ── */
+#mb-panel {
+    position: fixed;
+    bottom: 86px;
+    right: 24px;
+    z-index: var(--mb-z);
+    width: 270px;
+    background: var(--mb-bg);
+    border: 1.5px solid var(--mb-border);
+    border-radius: var(--mb-radius);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 16px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, .6), 0 0 0 1px rgba(255, 107, 157, .06);
+    transform-origin: bottom right;
+    transform: scale(.85) translateY(10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .28s cubic-bezier(.34, 1.56, .64, 1), opacity .2s;
+}
+
+#mb-panel.open {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Panel header */
+.mb-panel-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.mb-panel-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--mb-pink);
+    flex-shrink: 0;
+}
+
+#mb-btn.is-playing~#mb-panel .mb-panel-dot {
+    animation: mb-dot-blink 1s ease-in-out infinite;
+}
+
+@keyframes mb-dot-blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .3;
+    }
+}
+
+.mb-panel-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: .6rem;
+    letter-spacing: .14em;
+    color: rgba(255, 107, 157, .7);
+    text-transform: uppercase;
+}
+
+/* Track info */
+.mb-track-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: .82rem;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 2px;
+}
+
+.mb-track-album {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: .6rem;
+    letter-spacing: .1em;
+    color: rgba(255, 255, 255, .35);
+    margin-bottom: 12px;
+}
+
+/* Progress bar */
+.mb-progress-wrap {
+    position: relative;
+    height: 3px;
+    background: rgba(255, 255, 255, .08);
+    border-radius: 4px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.mb-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--mb-pink), var(--mb-cyan));
+    border-radius: 4px;
+    transition: width .25s linear;
+    width: 0%;
+}
+
+/* Controls */
+.mb-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.mb-ctrl {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, .55);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 6px;
+    transition: color .2s, background .2s;
+    line-height: 1;
+}
+
+.mb-ctrl:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, .07);
+}
+
+.mb-ctrl.mb-play-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 107, 157, .4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: var(--mb-pink);
+    transition: background .2s, border-color .2s, transform .15s;
+}
+
+.mb-ctrl.mb-play-btn:hover {
+    background: rgba(255, 107, 157, .12);
+    border-color: var(--mb-pink);
+    transform: scale(1.08);
+}
+
+/* Volume */
+.mb-volume-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mb-vol-ico {
+    font-size: .85rem;
+    opacity: .5;
+    flex-shrink: 0;
+}
+
+.mb-vol-slider {
+    flex: 1;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 3px;
+    background: rgba(255, 255, 255, .1);
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+}
+
+.mb-vol-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--mb-pink);
+    cursor: pointer;
+    box-shadow: 0 0 6px rgba(255, 107, 157, .5);
+    transition: transform .15s;
+}
+
+.mb-vol-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.25);
+}
+
+/* Track list toggle */
+.mb-tracklist-row {
+    margin-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, .06);
+    padding-top: 10px;
+}
+
+.mb-tracklist-toggle {
+    width: 100%;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, .35);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: .6rem;
+    letter-spacing: .12em;
+    cursor: pointer;
+    text-align: center;
+    padding: 2px;
+    transition: color .2s;
+}
+
+.mb-tracklist-toggle:hover {
+    color: rgba(255, 255, 255, .7);
+}
+
+.mb-tracklist {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease;
+}
+
+.mb-tracklist.open {
+    max-height: 160px;
+    overflow-y: auto;
+}
+
+.mb-tracklist::-webkit-scrollbar {
+    width: 3px;
+}
+
+.mb-tracklist::-webkit-scrollbar-thumb {
+    background: rgba(255, 107, 157, .3);
+    border-radius: 4px;
+}
+
+.mb-track-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 4px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background .15s;
+    font-family: 'Outfit', sans-serif;
+    font-size: .73rem;
+    color: rgba(255, 255, 255, .5);
+}
+
+.mb-track-item:hover {
+    background: rgba(255, 255, 255, .05);
+    color: #fff;
+}
+
+.mb-track-item.active {
+    color: var(--mb-pink);
+    background: rgba(255, 107, 157, .08);
+}
+
+.mb-track-item .mb-ti-num {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: .58rem;
+    color: rgba(255, 255, 255, .2);
+    width: 18px;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.mb-track-item.active .mb-ti-num {
+    color: var(--mb-pink);
+}
