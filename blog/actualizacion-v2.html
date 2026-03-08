@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="v2.0 de MISide Pacify Mode: nuevo Blog, reproductor de música persistente entre páginas, Open Graph en todas las secciones y página de descarga con links a Steam e Itch.io.">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="MISide: Pacify Mode">
+    <meta property="og:title" content="v2.0 — Blog, Música persistente y Open Graph | MISide: Pacify Mode">
+    <meta property="og:description"
+        content="Todo lo que llega con la v2.0: el Blog, la música que no se para al cambiar de página y Open Graph en las 10 secciones del sitio.">
+    <meta property="og:image"
+        content="https://dazzaz.github.io/miside-pacify-mode/assets/Blog/Todos_finales/Final_pacifico2.avif">
+    <meta property="og:url" content="https://dazzaz.github.io/miside-pacify-mode/Blog/actualizacion-v2.html">
+    <meta property="og:locale" content="es_ES">
+    <meta property="article:published_time" content="2026-03-08">
+    <meta property="article:author" content="Dazzaz">
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="v2.0 — Blog, Música y Open Graph | MISide: Pacify Mode">
+    <meta name="twitter:description"
+        content="El Blog ya está aquí, la música sigue sonando al navegar y Open Graph en todo el sitio.">
+    <meta name="twitter:image"
+        content="https://dazzaz.github.io/miside-pacify-mode/assets/Blog/Todos_finales/Final_pacifico2.avif">
+
+    <title>v2.0 — Blog, Música y Open Graph | Blog | MISide: Pacify Mode</title>
+    <link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="#ff6b9d">
+
+    <link rel="stylesheet" href="../css/preloader.css">
+    <link rel="stylesheet" href="../css/legal-banner.css">
+    <link rel="stylesheet" href="../css/pwa.css">
+    <link rel="stylesheet" href="../css/transitions.css">
+    <link rel="stylesheet" href="./css/blog-article.css">
+    <link rel="stylesheet" href="../css/music-back.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
+
+    <style>
+        #read-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            width: 0%;
+            background: linear-gradient(90deg, #34d399, #00d4ff);
+            z-index: 10000;
+            transition: width .1s linear;
+            box-shadow: 0 0 8px rgba(52, 211, 153, .5);
+        }
+
+        /* Changelog entry */
+        .changelog {
+            margin: 1.5rem 0;
+            border: 1px solid rgba(255, 255, 255, .07);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .changelog-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: .9rem 1.4rem;
+            background: rgba(255, 255, 255, .04);
+            border-bottom: 1px solid rgba(255, 255, 255, .07);
+        }
+
+        .changelog-version {
+            font-family: var(--mono);
+            font-size: .75rem;
+            letter-spacing: .14em;
+            color: #34d399;
+            font-weight: 700;
+        }
+
+        .changelog-date {
+            font-family: var(--mono);
+            font-size: .58rem;
+            letter-spacing: .1em;
+            color: rgba(255, 255, 255, .25);
+        }
+
+        .changelog-items {
+            padding: 1rem 1.4rem;
+            list-style: none;
+        }
+
+        .changelog-items li {
+            display: flex;
+            align-items: flex-start;
+            gap: .7rem;
+            padding: .4rem 0;
+            font-size: .9rem;
+            color: rgba(255, 255, 255, .6);
+            border-bottom: 1px solid rgba(255, 255, 255, .04);
+        }
+
+        .changelog-items li:last-child {
+            border-bottom: none;
+        }
+
+        .cl-type {
+            font-family: var(--mono);
+            font-size: .5rem;
+            letter-spacing: .12em;
+            padding: .2rem .5rem;
+            border-radius: 8px;
+            text-transform: uppercase;
+            flex-shrink: 0;
+            margin-top: .15rem;
+        }
+
+        .cl-new {
+            background: rgba(52, 211, 153, .12);
+            color: #34d399;
+            border: 1px solid rgba(52, 211, 153, .25);
+        }
+
+        .cl-fix {
+            background: rgba(251, 191, 36, .1);
+            color: #fbbf24;
+            border: 1px solid rgba(251, 191, 36, .2);
+        }
+
+        .cl-imp {
+            background: rgba(0, 212, 255, .1);
+            color: #00d4ff;
+            border: 1px solid rgba(0, 212, 255, .2);
+        }
+
+        /* Feature card grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 12px;
+            padding: 1.1rem;
+            transition: border-color .2s;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(52, 211, 153, .25);
+        }
+
+        .feature-icon {
+            font-size: 1.4rem;
+            margin-bottom: .6rem;
+        }
+
+        .feature-name {
+            font-size: .88rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: .3rem;
+        }
+
+        .feature-desc {
+            font-size: .78rem;
+            color: rgba(255, 255, 255, .4);
+            line-height: 1.5;
+            font-family: var(--mono);
+        }
+
+        /* OG preview card */
+        .og-preview {
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid rgba(255, 255, 255, .1);
+            border-radius: 10px;
+            overflow: hidden;
+            max-width: 480px;
+            margin: 1.5rem 0;
+            font-family: var(--mono);
+        }
+
+        .og-preview-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+            filter: brightness(.7) saturate(1.3);
+        }
+
+        .og-preview-body {
+            padding: .8rem 1rem;
+        }
+
+        .og-domain {
+            font-size: .55rem;
+            letter-spacing: .12em;
+            color: rgba(255, 255, 255, .25);
+            text-transform: uppercase;
+            margin-bottom: .25rem;
+        }
+
+        .og-title {
+            font-size: .8rem;
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: .2rem;
+        }
+
+        .og-desc {
+            font-size: .68rem;
+            color: rgba(255, 255, 255, .4);
+        }
+
+        @media (max-width: 580px) {
+            .feature-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="read-progress" aria-hidden="true"></div>
+
+    <!-- PRELOADER -->
+    <div id="preloader" role="status" aria-label="Cargando actualización">
+        <div class="pl-bg" aria-hidden="true"></div>
+        <div class="pl-vignette" aria-hidden="true"></div>
+        <div class="pl-particles" aria-hidden="true"></div>
+        <div class="pl-hud-corner tl" aria-hidden="true"></div>
+        <div class="pl-hud-corner tr" aria-hidden="true"></div>
+        <div class="pl-hud-corner bl" aria-hidden="true"></div>
+        <div class="pl-hud-corner br" aria-hidden="true"></div>
+        <img src="../assets/Character/Mita_Revealed.png" alt="" class="pl-character" aria-hidden="true"
+            draggable="false">
+        <div class="pl-content">
+            <div class="pl-logo-wrap">
+                <div class="pl-glitch-r" aria-hidden="true"></div>
+                <div class="pl-glitch-b" aria-hidden="true"></div>
+                <img src="../assets/Logo/LogoOriginal.png" alt="MISide: Pacify Mode" class="pl-logo" draggable="false">
+            </div>
+            <p class="pl-tagline">Cargando Notas de Versión</p>
+            <div class="pl-bar-wrap">
+                <div class="pl-status">
+                    <span style="display:flex;align-items:center;gap:0.4rem;">
+                        <span class="pl-label">SYS ></span>
+                        <span id="pl-status-text"></span>
+                        <span class="pl-cursor" aria-hidden="true"></span>
+                    </span>
+                    <span id="pl-status-pct" class="pl-pct">0%</span>
+                </div>
+                <div class="pl-bar-shell" id="pl-bar-track" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                    aria-valuenow="0">
+                    <div id="pl-bar-fill" class="pl-bar-fill">
+                        <div class="pl-bar-tip"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pl-scan" aria-hidden="true"></div>
+        <div class="pl-static" aria-hidden="true"></div>
+        <div class="pl-crt" aria-hidden="true"></div>
+        <div class="pl-hud-top" aria-hidden="true">
+            <span>MISIDE SYSTEM</span><span class="sep">|</span>
+            <span>BLOG · ACTUALIZACIONES</span><span class="sep">|</span>
+            <span id="pl-clock">--:--:--</span>
+        </div>
+        <div class="pl-hud-bot" aria-hidden="true">
+            <span>◆ AWFULLY STUDIOS</span><span class="sep">·</span>
+            <span>PATCH NOTES v2.0</span><span class="sep">·</span>
+            <span class="blink">● INSTALANDO</span>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav id="navbar" role="navigation" aria-label="Navegación principal">
+        <a class="nav-logo" href="../index.html">
+            <img src="../assets/Logo/LogoOriginal.png" alt="MISide Logo" onerror="this.style.display='none'">
+            <span></span>
+        </a>
+        <button class="hamburger" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="../blog.html" class="active">Blog</a></li>
+            <li><a href="../lore.html">Historia</a></li>
+            <li><a href="../personajes.html">Personajes</a></li>
+            <li><a href="../galeria.html">Galería</a></li>
+            <li><a href="../banda-sonora.html">Música</a></li>
+        </ul>
+    </nav>
+
+    <!-- ARTICLE HERO -->
+    <header id="article-hero">
+        <img src="../assets/Blog/Todos_finales/Final_pacifico2.avif"
+            alt="v2.0 — Actualización del sitio MISide: Pacify Mode" class="article-hero-img">
+        <div class="article-hero-overlay"></div>
+        <div class="article-hero-content">
+            <nav class="article-crumbs" aria-label="Breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="sep">›</span>
+                <a href="../blog.html">Blog</a>
+                <span class="sep">›</span>
+                <span>Actualizaciones del Sitio</span>
+            </nav>
+            <div class="article-tag">Actualización del Sitio · v2.0</div>
+            <h1 class="article-title">
+                v2.0 — Blog, Música<br>
+                <span class="gradient">y Open Graph en todo</span>
+            </h1>
+            <div class="article-meta-row">
+                <div class="article-author">
+                    <div class="author-avatar">D</div>
+                    Dazzaz
+                </div>
+                <span class="article-date">8 marzo 2026</span>
+                <span class="article-read">· 3 min de lectura</span>
+                <button id="share-copy"
+                    style="margin-left:auto;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.5);font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;padding:.35rem .8rem;border-radius:20px;cursor:pointer;transition:background .2s,color .2s;"
+                    aria-label="Copiar enlace">🔗 Copiar enlace</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ARTICLE BODY -->
+    <article id="article-body">
+        <div class="article-body-content">
+
+            <p>
+                La <strong>versión 2.0</strong> de MISide: Pacify Mode es la actualización más grande del sitio desde su
+                lanzamiento.
+                Tres grandes novedades: el <em>Blog</em>, la <em>música persistente entre páginas</em>
+                y el <em>Open Graph completo</em> en todas las secciones.
+                Esto es todo lo que llega con esta versión.
+            </p>
+
+            <!-- Changelog v2.0 -->
+            <div class="changelog">
+                <div class="changelog-header">
+                    <span class="changelog-version">v2.0.0 — Release</span>
+                    <span class="changelog-date">8 mar 2026</span>
+                </div>
+                <ul class="changelog-items">
+                    <li><span class="cl-type cl-new">NEW</span> Sección de Blog completa con 4 artículos iniciales</li>
+                    <li><span class="cl-type cl-new">NEW</span> Páginas de artículos individuales dentro de Blog/</li>
+                    <li><span class="cl-type cl-new">NEW</span> Música persistente — sigue sonando al navegar entre
+                        páginas</li>
+                    <li><span class="cl-type cl-new">NEW</span> Open Graph tags en las 10 páginas del sitio</li>
+                    <li><span class="cl-type cl-new">NEW</span> Página de Descarga con links a Steam e Itch.io</li>
+                    <li><span class="cl-type cl-new">NEW</span> Twitter/X Card en todas las páginas</li>
+                    <li><span class="cl-type cl-imp">IMP</span> Navbar actualizado con links a Blog y Descargar</li>
+                    <li><span class="cl-type cl-fix">FIX</span> Hamburger móvil — botón X de cierre siempre visible</li>
+                    <li><span class="cl-type cl-fix">FIX</span> Codificación UTF-8 restaurada en todos los archivos HTML
+                    </li>
+                </ul>
+            </div>
+
+            <h2>El Blog</h2>
+            <p>
+                La novedad más visible de la v2.0 es la sección <strong>Blog</strong> — un espacio
+                para artículos de lore, guías de mini juegos, DevLogs y notas de actualización como esta.
+            </p>
+            <p>
+                Cada artículo tiene su propia página dentro de la carpeta <code
+                    style="font-family:var(--mono);font-size:.85em;color:#a78bfa;">Blog/</code>,
+                con su CSS y JS compartidos, barra de progreso de lectura, breadcrumbs, imagen de hero
+                y navegación entre artículos.
+            </p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📖</div>
+                    <div class="feature-name">4 artículos</div>
+                    <div class="feature-desc">Lore, guías, devlog y notas de versión</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏷️</div>
+                    <div class="feature-name">4 categorías</div>
+                    <div class="feature-desc">Con filtros activos en el índice</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <div class="feature-name">Barra de lectura</div>
+                    <div class="feature-desc">Progreso visible en la parte superior</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔗</div>
+                    <div class="feature-name">Compartir</div>
+                    <div class="feature-desc">Botón copiar enlace y Twitter/X</div>
+                </div>
+            </div>
+
+            <div class="article-img-wrap">
+                <img src="../assets/Blog/Todos_finales/Final_pacifico.avif" alt="El sistema Mita actualizado — v2.0">
+                <div class="article-img-caption">El sitio, como Mita, siempre evolucionando</div>
+            </div>
+
+            <h2>Música persistente entre páginas</h2>
+            <p>
+                Antes, al navegar a otra página el reproductor de música se detenía.
+                Con la v2.0, <strong>la música no se interrumpe</strong>.
+            </p>
+            <p>
+                La solución técnica usa <code
+                    style="font-family:var(--mono);font-size:.85em;color:#a78bfa;">sessionStorage</code>
+                para guardar el estado del reproductor justo antes de cada navegación:
+                el track actual, el tiempo exacto de reproducción, el volumen y si estaba en pausa o no.
+                Al cargar la nueva página, el reproductor restaura ese estado automáticamente.
+            </p>
+
+            <div class="callout">
+                El clic en un link de navegación cuenta como un gesto de usuario — esto permite
+                que el autoplay funcione en la nueva página sin bloqueos del navegador,
+                haciendo la transición completamente transparente para el oyente.
+            </div>
+
+            <h2>Open Graph en todas las páginas</h2>
+            <p>
+                Ahora cada sección del sitio tiene sus propios tags de <strong>Open Graph</strong>
+                y <strong>Twitter/X Card</strong>. Esto significa que al compartir cualquier link
+                del sitio en redes sociales, aparecerá una previsualización con imagen, título y descripción.
+            </p>
+
+            <div class="og-preview" aria-label="Ejemplo de card de Open Graph">
+                <img src="../assets/Blog/Todos_finales/final-tirandocartucho.avif"
+                    alt="Preview Open Graph de MISide: Pacify Mode" class="og-preview-img">
+                <div class="og-preview-body">
+                    <div class="og-domain">dazzaz.github.io</div>
+                    <div class="og-title">MISide: Pacify Mode — El universo de Mita en español</div>
+                    <div class="og-desc">Lore, personajes, galería, música y guías del universo MiSide.</div>
+                </div>
+            </div>
+
+            <p>
+                Las 10 páginas con Open Graph configurado:
+                <em>Inicio, Lore, Personajes, Galería, Banda Sonora, Descarga, Blog, Alpha, Mapa y Términos</em>.
+            </p>
+
+            <h2>Página de Descarga</h2>
+            <p>
+                La nueva sección <strong>Descargar</strong> no descarga el juego directamente —
+                en cambio, lleva al jugador a las páginas oficiales donde puede obtenerlo:
+            </p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <div class="feature-name">Steam</div>
+                    <div class="feature-desc">Versión oficial en la tienda de Valve. MiSide de Aihasto.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎲</div>
+                    <div class="feature-name">Itch.io</div>
+                    <div class="feature-desc">Fan content y versión creada por Voidway.</div>
+                </div>
+            </div>
+
+            <div class="article-img-wrap">
+                <img src="../assets/Blog/Todos_finales/final-tirandocartucho.avif"
+                    alt="El cartucho que sale — el sitio liberado con la v2.0">
+                <div class="article-img-caption">Como el cartucho que finalmente sale del sistema — la v2.0 está aquí
+                </div>
+            </div>
+
+            <h2>¿Qué viene en la v2.1?</h2>
+            <p>
+                La próxima actualización menor estará enfocada en <strong>contenido</strong>:
+                más artículos del blog, galería expandida con las imágenes de ropa de Mita,
+                y pequeñas mejoras de rendimiento en las páginas más pesadas.
+            </p>
+
+            <div class="theory-block">
+                <div class="theory-icon">📢</div>
+                <h4>¿Cómo saber cuándo hay una actualización?</h4>
+                <p>Las notas de versión se publicarán aquí en el Blog, en la categoría
+                    "Actualizaciones del Sitio". Sigue el blog para enterarte de cada cambio
+                    en tiempo real.</p>
+            </div>
+
+            <!-- Share -->
+            <div
+                style="margin-top:3rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+                <span
+                    style="font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;color:rgba(255,255,255,.25);text-transform:uppercase;">Compartir</span>
+                <a href="https://twitter.com/intent/tweet?text=v2.0+%E2%80%94+Blog%2C+M%C3%BAsica+y+Open+Graph+en+MISide%3A+Pacify+Mode&url=https://dazzaz.github.io/miside-pacify-mode/Blog/actualizacion-v2.html"
+                    target="_blank" rel="noopener"
+                    style="font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;color:rgba(255,255,255,.4);text-decoration:none;border:1px solid rgba(255,255,255,.1);padding:.3rem .8rem;border-radius:20px;transition:border-color .2s,color .2s;"
+                    onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,.3)'"
+                    onmouseout="this.style.color='rgba(255,255,255,.4)';this.style.borderColor='rgba(255,255,255,.1)'">
+                    𝕏 / Twitter
+                </a>
+                <button id="share-copy"
+                    style="font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;color:rgba(255,255,255,.4);background:none;border:1px solid rgba(255,255,255,.1);padding:.3rem .8rem;border-radius:20px;cursor:pointer;transition:border-color .2s,color .2s;">
+                    🔗 Copiar enlace
+                </button>
+            </div>
+
+        </div>
+    </article>
+
+    <!-- ARTICLE NAV -->
+    <nav id="article-nav" aria-label="Navegación entre artículos">
+        <a href="devlog-1.html" class="article-nav-link">
+            <span class="article-nav-dir">← Anterior</span>
+            <span class="article-nav-title">DevLog #1 — Cómo nació el sitio</span>
+        </a>
+        <a href="../blog.html" class="article-nav-link next">
+            <span class="article-nav-dir">Volver →</span>
+            <span class="article-nav-title">Todos los artículos</span>
+        </a>
+    </nav>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <p class="footer-text">
+            © 2026 MISide: Pacify Mode — Awfully Studios ·
+            <a href="../index.html">Inicio</a> ·
+            <a href="../blog.html">Blog</a> ·
+            <a href="../terminos.html">Términos &amp; Privacidad</a>
+        </p>
+    </footer>
+
+    <script src="../js/preloader.js"></script>
+    <script src="../js/legal-banner.js"></script>
+    <script src="./js/blog-article.js"></script>
+    <script src="../js/transitions.js"></script>
+    <script src="../js/pwa.js"></script>
+    <script src="../js/music-back.js"></script>
+</body>
+
+</html>

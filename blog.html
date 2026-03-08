@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="MISide: Pacify Mode — Blog oficial. Artículos de lore, noticias, guías, análisis y opiniones sobre el universo MiSide.">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="blog">
+    <meta property="og:site_name" content="MISide: Pacify Mode">
+    <meta property="og:title" content="Blog — MISide: Pacify Mode">
+    <meta property="og:description" content="Artículos de lore, noticias, guías y análisis del universo MiSide.">
+    <meta property="og:image"
+        content="https://dazzaz.github.io/miside-pacify-mode/assets/Renders/MiSide%20Zero%20Alpha%20Loading%20Screen.png">
+    <meta property="og:url" content="https://dazzaz.github.io/miside-pacify-mode/blog.html">
+    <meta property="og:locale" content="es_ES">
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog — MISide: Pacify Mode">
+    <meta name="twitter:description" content="Artículos de lore, noticias, guías y análisis del universo MiSide.">
+    <meta name="twitter:image"
+        content="https://dazzaz.github.io/miside-pacify-mode/assets/Renders/MiSide%20Zero%20Alpha%20Loading%20Screen.png">
+
+    <title>Blog — MISide: Pacify Mode</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff6b9d">
+    <link rel="stylesheet" href="css/preloader.css">
+    <link rel="stylesheet" href="css/legal-banner.css">
+    <link rel="stylesheet" href="css/pwa.css">
+    <link rel="stylesheet" href="css/transitions.css">
+    <link rel="stylesheet" href="css/blog.css">
+    <link rel="stylesheet" href="css/music-back.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════════════════════
+       PRELOADER
+    ═══════════════════════════════════════════ -->
+    <div id="preloader" role="status" aria-label="Cargando MISide Blog">
+        <div class="pl-bg" aria-hidden="true"></div>
+        <div class="pl-vignette" aria-hidden="true"></div>
+        <div class="pl-particles" aria-hidden="true"></div>
+        <div class="pl-hud-corner tl" aria-hidden="true"></div>
+        <div class="pl-hud-corner tr" aria-hidden="true"></div>
+        <div class="pl-hud-corner bl" aria-hidden="true"></div>
+        <div class="pl-hud-corner br" aria-hidden="true"></div>
+        <img src="assets/Character/Mita_Revealed.png" alt="" class="pl-character" aria-hidden="true" draggable="false">
+        <div class="pl-content">
+            <div class="pl-logo-wrap">
+                <div class="pl-glitch-r" aria-hidden="true"></div>
+                <div class="pl-glitch-b" aria-hidden="true"></div>
+                <img src="assets/Logo/LogoOriginal.png" alt="MISide: Pacify Mode" class="pl-logo" draggable="false">
+            </div>
+            <p class="pl-tagline">Cargando el Blog</p>
+            <div class="pl-bar-wrap">
+                <div class="pl-status">
+                    <span style="display:flex;align-items:center;gap:0.4rem;">
+                        <span class="pl-label">SYS ></span>
+                        <span id="pl-status-text"></span>
+                        <span class="pl-cursor" aria-hidden="true"></span>
+                    </span>
+                    <span id="pl-status-pct" class="pl-pct">0%</span>
+                </div>
+                <div class="pl-bar-shell" id="pl-bar-track" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                    aria-valuenow="0">
+                    <div id="pl-bar-fill" class="pl-bar-fill">
+                        <div class="pl-bar-tip"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pl-scan" aria-hidden="true"></div>
+        <div class="pl-static" aria-hidden="true"></div>
+        <div class="pl-crt" aria-hidden="true"></div>
+        <div class="pl-hud-top" aria-hidden="true">
+            <span>MISIDE SYSTEM</span>
+            <span class="sep">|</span>
+            <span>BLOG v1.0</span>
+            <span class="sep">|</span>
+            <span id="pl-clock">--:--:--</span>
+        </div>
+        <div class="pl-hud-bot" aria-hidden="true">
+            <span>◆ AWFULLY STUDIOS</span>
+            <span class="sep">·</span>
+            <span>CARGANDO ARTÍCULOS</span>
+            <span class="sep">·</span>
+            <span class="blink">● CONECTANDO</span>
+        </div>
+    </div><!-- /#preloader -->
+
+    <!-- ═══════════════════════════════════════════
+       NAVBAR — Blog-specific links
+    ═══════════════════════════════════════════ -->
+    <nav id="navbar" role="navigation" aria-label="Navegación principal">
+        <a class="nav-logo" href="index.html">
+            <img src="assets/Logo/LogoOriginal.png" alt="MISide Logo" onerror="this.style.display='none'">
+            <span></span>
+        </a>
+        <button class="hamburger" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="blog.html" class="active">Blog</a></li>
+            <li><a href="lore.html">Historia</a></li>
+            <li><a href="personajes.html">Personajes</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="banda-sonora.html">Música</a></li>
+        </ul>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════
+       HERO — Blog specific
+    ═══════════════════════════════════════════ -->
+    <section id="hero" aria-label="Blog MiSide">
+        <div class="hero-bg"></div>
+
+        <div class="hero-content reveal">
+            <div class="hero-eyebrow">
+                <span class="dot" aria-hidden="true"></span>
+                Sistema de transmisión activo
+            </div>
+            <h1 class="hero-title">
+                Transmisiones<br>desde el <span class="gradient">Sistema Mita</span>
+            </h1>
+            <p class="hero-sub">
+                Lore, análisis, noticias y guías del universo MiSide.
+                Todo lo que necesitas saber, escrito por la comunidad.
+            </p>
+        </div>
+
+        <!-- Scrolling info ticker -->
+        <div class="hero-ticker" aria-hidden="true">
+            <div class="hero-ticker-inner">
+                <span>◆ GUÍAS DE MINI JUEGOS</span>
+                <span>·</span>
+                <span>DEVLOGS — DIARIOS DE DESARROLLO</span>
+                <span>·</span>
+                <span>LORE Y PERSONAJES</span>
+                <span>·</span>
+                <span>ACTUALIZACIONES DEL SITIO</span>
+                <span>·</span>
+                <span>◆ GUÍAS DE MINI JUEGOS</span>
+                <span>·</span>
+                <span>DEVLOGS — DIARIOS DE DESARROLLO</span>
+                <span>·</span>
+                <span>LORE Y PERSONAJES</span>
+                <span>·</span>
+                <span>ACTUALIZACIONES DEL SITIO</span>
+                <span>·</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+       FILTER BAR
+    ═══════════════════════════════════════════ -->
+    <div id="filter-bar" role="tablist" aria-label="Filtrar artículos por categoría">
+        <button class="filter-btn active" data-filter="all" role="tab">Todos</button>
+        <button class="filter-btn" data-filter="guia" role="tab">Guías de Mini Juegos</button>
+        <button class="filter-btn" data-filter="devlog" role="tab">DevLogs</button>
+        <button class="filter-btn" data-filter="lore" role="tab">Lore y Personajes</button>
+        <button class="filter-btn" data-filter="meta" role="tab">Actualizaciones del Sitio</button>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+       BLOG GRID
+    ═══════════════════════════════════════════ -->
+    <section id="blog-grid" aria-label="Artículos del blog">
+        <div class="grid-label">◆ ARTÍCULOS RECIENTES</div>
+
+        <div class="post-grid">
+
+            <!-- ══ DESTACADO: Historia de MiSide (Lore) ══ -->
+            <a href="blog/final-principal.html" class="post-card featured reveal" data-category="lore"
+                style="text-decoration:none;color:inherit;" aria-label="Leer: El Final Principal de MiSide">
+                <img src="assets/Blog/Historia_MiSide/blog1.avif" alt="Final principal de MiSide" class="post-img">
+                <div class="post-body">
+                    <div class="post-meta">
+                        <span class="post-tag lore">Lore y Personajes</span>
+                        <span class="post-date">7 mar 2026</span>
+                        <span class="post-read-time">6 min</span>
+                    </div>
+                    <h2 class="post-title">El Final Principal de MiSide: ¿Quién eres realmente?</h2>
+                    <p class="post-excerpt">
+                        El jugador colabora con distintas versiones de Mita para detener a Crazy Mita.
+                        Pero los esfuerzos son en vano: la absorción se completa y te conviertes en
+                        un cartucho más de su colección. ¿Incluye tu cuerpo, tu mente, o solo una copia?
+                        Y la pregunta más inquietante: ¿estamos jugando como el propio desarrollador del juego?
+                    </p>
+                    <div class="post-footer">
+                        <div class="post-author">
+                            <div class="author-avatar">D</div>
+                            Dazzaz
+                        </div>
+                        <span class="post-arrow">→</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- ══ Guía Mini Juegos ══ -->
+            <a href="Blog/guia-mini-juegos.html" class="post-card reveal" data-category="guia"
+                style="text-decoration:none;color:inherit;" aria-label="Leer: Guía completa de Mini Juegos">
+                <img src="assets/Blog/Mini_Juegos/blog3.jpg" alt="Mini Juegos de MiSide" class="post-img">
+                <div class="post-body">
+                    <div class="post-meta">
+                        <span class="post-tag guia">Guías de Mini Juegos</span>
+                        <span class="post-date">7 mar 2026</span>
+                        <span class="post-read-time">5 min</span>
+                    </div>
+                    <h2 class="post-title">Guía completa de Mini Juegos de MiSide</h2>
+                    <p class="post-excerpt">
+                        Snake, Tic-Tac-Toe, Carreras, Baile con Cappie, Penguin Beach y más.
+                        Todo lo que necesitas saber para superar cada mini juego del universo Mita.
+                    </p>
+                    <div class="post-footer">
+                        <div class="post-author">
+                            <div class="author-avatar">D</div>
+                            Dazzaz
+                        </div>
+                        <span class="post-arrow">→</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- ══ DevLog ══ -->
+            <a href="Blog/devlog-1.html" class="post-card reveal" data-category="devlog"
+                style="text-decoration:none;color:inherit;" aria-label="Leer: DevLog #1 — Cómo nació el sitio">
+                <img src="assets/Blog/TodaRopa/blog2.jpg" alt="DevLog MISide: Pacify Mode" class="post-img">
+                <div class="post-body">
+                    <div class="post-meta">
+                        <span class="post-tag devlog">DevLog</span>
+                        <span class="post-date">7 mar 2026</span>
+                        <span class="post-read-time">3 min</span>
+                    </div>
+                    <h2 class="post-title">DevLog #1 — Cómo nació MISide: Pacify Mode</h2>
+                    <p class="post-excerpt">
+                        El origen del sitio, las decisiones de diseño, los retos técnicos
+                        y qué viene a continuación en el desarrollo del fan site.
+                    </p>
+                    <div class="post-footer">
+                        <div class="post-author">
+                            <div class="author-avatar">D</div>
+                            Dazzaz
+                        </div>
+                        <span class="post-arrow">→</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- ══ Actualización del Sitio ══ -->
+            <a href="Blog/actualizacion-v2.html" class="post-card reveal" data-category="meta"
+                style="text-decoration:none;color:inherit;" aria-label="Leer: v2.0 — Blog, Música y Open Graph">
+                <img src="assets/Blog/Todos_finales/Final_pacifico2.avif" alt="Actualización del sitio"
+                    class="post-img">
+                <div class="post-body">
+                    <div class="post-meta">
+                        <span class="post-tag meta">Actualización del Sitio</span>
+                        <span class="post-date">7 mar 2026</span>
+                        <span class="post-read-time">2 min</span>
+                    </div>
+                    <h2 class="post-title">v2.0 — Blog, Música y Open Graph en todas las páginas</h2>
+                    <p class="post-excerpt">
+                        Nueva sección de Blog, reproductor de música persistente entre páginas,
+                        Open Graph tags en las 10 páginas y página de descarga con links a Steam e Itch.io.
+                    </p>
+                    <div class="post-footer">
+                        <div class="post-author">
+                            <div class="author-avatar">D</div>
+                            Dazzaz
+                        </div>
+                        <span class="post-arrow">→</span>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <p class="footer-text">
+            © 2026 MISide: Pacify Mode — Awfully Studios ·
+            <a href="index.html">Inicio</a> ·
+            <a href="lore.html">Historia</a> ·
+            <a href="terminos.html">Términos &amp; Privacidad</a>
+        </p>
+    </footer>
+
+    <script src="js/preloader.js"></script>
+    <script src="js/legal-banner.js"></script>
+    <script src="js/blog.js"></script>
+    <script src="js/transitions.js"></script>
+    <script src="js/pwa.js"></script>
+    <script src="js/music-back.js"></script>
+</body>
+
+</html>

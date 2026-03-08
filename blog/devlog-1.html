@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="DevLog #1: Cómo nació MISide Pacify Mode, el fan site de MiSide. El origen del proyecto, decisiones de diseño y qué viene a continuación.">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="MISide: Pacify Mode">
+    <meta property="og:title" content="DevLog #1 — Cómo nació MISide: Pacify Mode">
+    <meta property="og:description"
+        content="El origen del sitio, las decisiones de diseño, los retos técnicos y qué viene a continuación.">
+    <meta property="og:image" content="../assets/Blog/TodaRopa/blog2.jpg">
+    <meta property="og:url" content="https://dazzaz.github.io/miside-pacify-mode/Blog/devlog-1.html">
+    <meta property="og:locale" content="es_ES">
+    <meta property="article:published_time" content="2026-03-08">
+    <meta property="article:author" content="Dazzaz">
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DevLog #1 — Cómo nació MISide: Pacify Mode">
+    <meta name="twitter:description"
+        content="El origen, las decisiones de diseño y lo que viene próximamente en el fan site.">
+    <meta name="twitter:image" content="../assets/Blog/TodaRopa/blog2.jpg">
+
+    <title>DevLog #1 — Cómo nació el sitio | Blog | MISide: Pacify Mode</title>
+    <link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="#ff6b9d">
+
+    <link rel="stylesheet" href="../css/preloader.css">
+    <link rel="stylesheet" href="../css/legal-banner.css">
+    <link rel="stylesheet" href="../css/pwa.css">
+    <link rel="stylesheet" href="../css/transitions.css">
+    <link rel="stylesheet" href="./css/blog-article.css">
+    <link rel="stylesheet" href="../css/music-back.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
+
+    <style>
+        #read-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            width: 0%;
+            background: linear-gradient(90deg, #a78bfa, #ff6b9d);
+            z-index: 10000;
+            transition: width .1s linear;
+            box-shadow: 0 0 8px rgba(167, 139, 250, .5);
+        }
+
+        /* Timeline for devlog */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #ff6b9d, #7c3aed, transparent);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.35rem;
+            top: .4rem;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ff6b9d;
+            box-shadow: 0 0 10px #ff6b9d;
+        }
+
+        .timeline-date {
+            font-family: var(--mono);
+            font-size: .58rem;
+            letter-spacing: .15em;
+            color: rgba(255, 107, 157, .5);
+            text-transform: uppercase;
+            margin-bottom: .3rem;
+        }
+
+        .timeline-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: .5rem;
+        }
+
+        .timeline-body {
+            font-size: .9rem;
+            color: rgba(255, 255, 255, .55);
+            line-height: 1.7;
+        }
+
+        /* Tech stack pill list */
+        .pill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem;
+            margin: 1rem 0 1.5rem;
+        }
+
+        .pill {
+            font-family: var(--mono);
+            font-size: .62rem;
+            letter-spacing: .1em;
+            padding: .3rem .8rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, .1);
+            color: rgba(255, 255, 255, .55);
+            background: rgba(255, 255, 255, .04);
+        }
+
+        .pill.highlight {
+            border-color: rgba(255, 107, 157, .3);
+            color: #ffb3d1;
+            background: rgba(255, 107, 157, .07);
+        }
+
+        /* What's next section */
+        .next-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .next-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: .7rem;
+            padding: .65rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, .05);
+            font-size: .92rem;
+            color: rgba(255, 255, 255, .6);
+        }
+
+        .next-list li:last-child {
+            border-bottom: none;
+        }
+
+        .next-list .check {
+            font-size: .8rem;
+            margin-top: .15rem;
+            flex-shrink: 0;
+        }
+
+        .next-list .done {
+            color: #86efac;
+        }
+
+        .next-list .wip {
+            color: #fbbf24;
+        }
+
+        .next-list .todo {
+            color: rgba(255, 255, 255, .2);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="read-progress" aria-hidden="true"></div>
+
+    <!-- PRELOADER -->
+    <div id="preloader" role="status" aria-label="Cargando DevLog">
+        <div class="pl-bg" aria-hidden="true"></div>
+        <div class="pl-vignette" aria-hidden="true"></div>
+        <div class="pl-particles" aria-hidden="true"></div>
+        <div class="pl-hud-corner tl" aria-hidden="true"></div>
+        <div class="pl-hud-corner tr" aria-hidden="true"></div>
+        <div class="pl-hud-corner bl" aria-hidden="true"></div>
+        <div class="pl-hud-corner br" aria-hidden="true"></div>
+        <img src="../assets/Character/Mita_Revealed.png" alt="" class="pl-character" aria-hidden="true"
+            draggable="false">
+        <div class="pl-content">
+            <div class="pl-logo-wrap">
+                <div class="pl-glitch-r" aria-hidden="true"></div>
+                <div class="pl-glitch-b" aria-hidden="true"></div>
+                <img src="../assets/Logo/LogoOriginal.png" alt="MISide: Pacify Mode" class="pl-logo" draggable="false">
+            </div>
+            <p class="pl-tagline">Cargando DevLog #1</p>
+            <div class="pl-bar-wrap">
+                <div class="pl-status">
+                    <span style="display:flex;align-items:center;gap:0.4rem;">
+                        <span class="pl-label">SYS ></span>
+                        <span id="pl-status-text"></span>
+                        <span class="pl-cursor" aria-hidden="true"></span>
+                    </span>
+                    <span id="pl-status-pct" class="pl-pct">0%</span>
+                </div>
+                <div class="pl-bar-shell" id="pl-bar-track" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                    aria-valuenow="0">
+                    <div id="pl-bar-fill" class="pl-bar-fill">
+                        <div class="pl-bar-tip"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pl-scan" aria-hidden="true"></div>
+        <div class="pl-static" aria-hidden="true"></div>
+        <div class="pl-crt" aria-hidden="true"></div>
+        <div class="pl-hud-top" aria-hidden="true">
+            <span>MISIDE SYSTEM</span><span class="sep">|</span>
+            <span>BLOG · DEVLOG</span><span class="sep">|</span>
+            <span id="pl-clock">--:--:--</span>
+        </div>
+        <div class="pl-hud-bot" aria-hidden="true">
+            <span>◆ AWFULLY STUDIOS</span><span class="sep">·</span>
+            <span>DIARIO DE DESARROLLO</span><span class="sep">·</span>
+            <span class="blink">● ENTRADA #1</span>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav id="navbar" role="navigation" aria-label="Navegación principal">
+        <a class="nav-logo" href="../index.html">
+            <img src="../assets/Logo/LogoOriginal.png" alt="MISide Logo" onerror="this.style.display='none'">
+            <span></span>
+        </a>
+        <button class="hamburger" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="../blog.html" class="active">Blog</a></li>
+            <li><a href="../lore.html">Historia</a></li>
+            <li><a href="../personajes.html">Personajes</a></li>
+            <li><a href="../galeria.html">Galería</a></li>
+            <li><a href="../banda-sonora.html">Música</a></li>
+        </ul>
+    </nav>
+
+    <!-- ARTICLE HERO -->
+    <header id="article-hero">
+        <img src="../assets/Blog/TodaRopa/blog2.jpg" alt="DevLog #1 — Cómo nació MISide: Pacify Mode"
+            class="article-hero-img">
+        <div class="article-hero-overlay"></div>
+        <div class="article-hero-content">
+            <nav class="article-crumbs" aria-label="Breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="sep">›</span>
+                <a href="../blog.html">Blog</a>
+                <span class="sep">›</span>
+                <span>DevLogs</span>
+            </nav>
+            <div class="article-tag">DevLog · Entrada #1</div>
+            <h1 class="article-title">
+                DevLog #1 —<br>
+                <span class="gradient">Cómo nació MISide: Pacify Mode</span>
+            </h1>
+            <div class="article-meta-row">
+                <div class="article-author">
+                    <div class="author-avatar">D</div>
+                    Dazzaz
+                </div>
+                <span class="article-date">8 marzo 2026</span>
+                <span class="article-read">· 4 min de lectura</span>
+                <button id="share-copy"
+                    style="margin-left:auto;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.5);font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;padding:.35rem .8rem;border-radius:20px;cursor:pointer;transition:background .2s,color .2s;"
+                    aria-label="Copiar enlace">🔗 Copiar enlace</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ARTICLE BODY -->
+    <article id="article-body">
+        <div class="article-body-content">
+
+            <p>
+                Este es el primer DevLog oficial de <strong>MISide: Pacify Mode</strong>.
+                Un espacio para documentar cómo se construyó este fan site desde cero —
+                las decisiones que tomé, los problemas que encontré, y todo lo que viene a continuación.
+            </p>
+
+            <h2>El origen: ¿por qué este sitio?</h2>
+            <p>
+                Todo empezó con una pregunta simple: <em>¿por qué no existe un fan site decente de MiSide en
+                    español?</em>
+                El juego de Aihasto explotó en popularidad a finales de 2024 y siguió creciendo en 2025,
+                pero la comunidad hispanohablante no tenía un lugar centralizado con lore, guías,
+                galería y banda sonora — todo en el mismo sitio, bien presentado.
+            </p>
+            <p>
+                Así nació la idea: construir el fan site que yo hubiera querido encontrar
+                cuando empecé a jugar. Sin anuncios, sin clutter — solo el universo de Mita,
+                bien contado.
+            </p>
+
+            <div class="article-img-wrap">
+                <img src="../assets/Blog/TodaRopa/Mita_Clothes.webp"
+                    alt="Mita y sus distintas apariencias — la inspiración visual detrás del sitio">
+                <div class="article-img-caption">Los distintos aspectos de Mita fueron la inspiración visual del sitio
+                </div>
+            </div>
+
+            <h2>Las primeras decisiones de diseño</h2>
+            <p>
+                Desde el principio tuve claro lo que quería lograr visualmente:
+                un sitio que se sintiera parte del universo de MiSide, no solo un contenedor de información.
+                El juego tiene una estética muy particular — lo digital corrupto, el mundo que parece
+                amigable pero esconde algo más oscuro. Quería que el diseño lo reflejara.
+            </p>
+
+            <p>Las tres reglas de diseño que me puse desde el día uno:</p>
+
+            <div class="callout">
+                <strong>1.</strong> Oscuro pero vivo — negro profundo con acentos en rosa y cian, nunca plano.<br>
+                <strong>2.</strong> Tipografía con personalidad — Outfit para los textos, Share Tech Mono para los
+                elementos de interfaz.<br>
+                <strong>3.</strong> Cada página se siente como una sección diferente del "sistema Mita".
+            </div>
+
+            <div class="article-img-wrap">
+                <img src="../assets/Blog/TodaRopa/School_Clothes.webp"
+                    alt="Mita con ropa de escuela — referencia visual para la paleta de colores">
+                <div class="article-img-caption">La paleta rosa-oscuro-cian viene directamente de la estética del juego
+                </div>
+            </div>
+
+            <h2>La stack técnica</h2>
+            <p>
+                Mantuve todo lo más simple y portable posible.
+                Sin frameworks, sin bundlers, sin dependencias de npm.
+                HTML, CSS y JavaScript vanilla — porque quería que cualquiera pudiera
+                abrir el código y entenderlo sin instalar nada.
+            </p>
+
+            <div class="pill-list">
+                <span class="pill highlight">HTML5 semántico</span>
+                <span class="pill highlight">CSS Variables</span>
+                <span class="pill highlight">JavaScript vanilla</span>
+                <span class="pill">Google Fonts</span>
+                <span class="pill">Service Worker (PWA)</span>
+                <span class="pill">Open Graph tags</span>
+                <span class="pill">Web Animations API</span>
+                <span class="pill">IntersectionObserver</span>
+            </div>
+
+            <p>
+                El preloader, el sistema de transiciones entre páginas, el reproductor de música persistente,
+                el banner legal, la instalación como PWA — todo está escrito a mano, sin librerías externas.
+            </p>
+
+            <h2>Los retos más grandes</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Reto 01</div>
+                    <div class="timeline-title">Música persistente entre páginas</div>
+                    <div class="timeline-body">
+                        El reproductor de fondo debía seguir sonando al navegar — sin interrupciones.
+                        La solución fue usar <code
+                            style="font-family:var(--mono);font-size:.85em;color:#a78bfa;">sessionStorage</code>
+                        para guardar el track actual, el tiempo de reproducción y el estado
+                        antes de cada navegación y restaurarlo inmediatamente al cargar la nueva página.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Reto 02</div>
+                    <div class="timeline-title">Preloader personalizado por página</div>
+                    <div class="timeline-body">
+                        Cada página tiene su propio texto en el preloader (el HUD superior e inferior),
+                        pero el JS del preloader es uno solo compartido. Tuve que hacer que el script
+                        detectara el contexto de cada página y ajustara los textos dinámicamente.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Reto 03</div>
+                    <div class="timeline-title">Codificación UTF-8 en todos los archivos</div>
+                    <div class="timeline-body">
+                        Algunos procesos de edición introdujeron caracteres mal codificados — acentos rotos,
+                        símbolos duplicados. Tuvimos que revisar y limpiar cada archivo HTML
+                        para restaurar todos los textos en español correctamente.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Reto 04</div>
+                    <div class="timeline-title">Estructura consistente a través de 10+ páginas</div>
+                    <div class="timeline-body">
+                        Con páginas independientes (sin componentes reutilizables), mantener
+                        el navbar, el footer y los scripts consistentes requirió disciplina manual.
+                        Cada nueva página heredaba la estructura base y la extendía.
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-img-wrap">
+                <img src="../assets/Blog/TodaRopa/Christmas_Clothes.webp"
+                    alt="Mita con ropa navideña — distintas versiones del sitio a lo largo del tiempo">
+                <div class="article-img-caption">El sitio ha pasado por múltiples versiones, como Mita con sus distintos
+                    atuendos</div>
+            </div>
+
+            <h2>El estado actual del sitio</h2>
+            <p>
+                A la fecha de este DevLog, MISide: Pacify Mode tiene las siguientes páginas activas:
+            </p>
+
+            <ul class="next-list">
+                <li><span class="check done">✓</span> Página principal (index.html) — hero, personajes, lore, galería,
+                    música y trailers</li>
+                <li><span class="check done">✓</span> Lore — historia completa del universo MiSide</li>
+                <li><span class="check done">✓</span> Personajes — fichas de cada versión de Mita y personajes
+                    secundarios</li>
+                <li><span class="check done">✓</span> Galería — imágenes del juego organizadas</li>
+                <li><span class="check done">✓</span> Banda Sonora — reproductor con todas las canciones</li>
+                <li><span class="check done">✓</span> Descarga — links a Steam e Itch.io</li>
+                <li><span class="check done">✓</span> Blog — esta sección que estás leyendo ahora</li>
+                <li><span class="check done">✓</span> Alpha — sección especial de la versión alpha del juego</li>
+                <li><span class="check done">✓</span> Mapa — mapa interactivo del universo Mita</li>
+                <li><span class="check done">✓</span> Términos y Privacidad</li>
+            </ul>
+
+            <h2>¿Qué viene a continuación?</h2>
+            <p>
+                El blog es solo el comienzo de la siguiente fase del sitio.
+                Aquí está el roadmap de lo que viene próximamente:
+            </p>
+
+            <ul class="next-list">
+                <li><span class="check wip">◌</span> Más artículos del blog — guías, lore expandido y análisis de
+                    personajes</li>
+                <li><span class="check wip">◌</span> Galería expandida con las imágenes de ropa y versiones de Mita</li>
+                <li><span class="check todo">○</span> Páginas individuales de personajes con su lore propio</li>
+                <li><span class="check todo">○</span> Sección de teorías de la comunidad</li>
+                <li><span class="check todo">○</span> Timeline visual de la historia de MiSide</li>
+                <li><span class="check todo">○</span> Modo sin JS para accesibilidad completa</li>
+            </ul>
+
+            <div class="article-img-wrap">
+                <img src="../assets/Blog/TodaRopa/Vampire_Clothes.webp"
+                    alt="Mita con ropa de vampiresa — el lado más oscuro del sitio está por llegar">
+                <div class="article-img-caption">El lado más oscuro y profundo del sitio está por llegar</div>
+            </div>
+
+            <div class="theory-block">
+                <div class="theory-icon">📝</div>
+                <h4>¿Cada cuánto saldrán los DevLogs?</h4>
+                <p>Sin fecha fija. Los DevLogs saldrán cuando haya algo significativo que documentar —
+                    una nueva sección, un rediseño mayor, o un problema técnico interesante que valga la pena compartir.
+                    Calidad sobre cantidad.</p>
+            </div>
+
+            <!-- Share -->
+            <div
+                style="margin-top:3rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+                <span
+                    style="font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;color:rgba(255,255,255,.25);text-transform:uppercase;">Compartir</span>
+                <a href="https://twitter.com/intent/tweet?text=DevLog+%231+%E2%80%94+C%C3%B3mo+naci%C3%B3+MISide%3A+Pacify+Mode&url=https://dazzaz.github.io/miside-pacify-mode/Blog/devlog-1.html"
+                    target="_blank" rel="noopener"
+                    style="font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;color:rgba(255,255,255,.4);text-decoration:none;border:1px solid rgba(255,255,255,.1);padding:.3rem .8rem;border-radius:20px;transition:border-color .2s,color .2s;"
+                    onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,.3)'"
+                    onmouseout="this.style.color='rgba(255,255,255,.4)';this.style.borderColor='rgba(255,255,255,.1)'">
+                    𝕏 / Twitter
+                </a>
+                <button id="share-copy"
+                    style="font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;color:rgba(255,255,255,.4);background:none;border:1px solid rgba(255,255,255,.1);padding:.3rem .8rem;border-radius:20px;cursor:pointer;transition:border-color .2s,color .2s;">
+                    🔗 Copiar enlace
+                </button>
+            </div>
+
+        </div>
+    </article>
+
+    <!-- ARTICLE NAV -->
+    <nav id="article-nav" aria-label="Navegación entre artículos">
+        <a href="guia-mini-juegos.html" class="article-nav-link">
+            <span class="article-nav-dir">← Anterior</span>
+            <span class="article-nav-title">Guía de Mini Juegos</span>
+        </a>
+        <a href="../blog.html" class="article-nav-link next">
+            <span class="article-nav-dir">Volver →</span>
+            <span class="article-nav-title">Todos los artículos</span>
+        </a>
+    </nav>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <p class="footer-text">
+            © 2026 MISide: Pacify Mode — Awfully Studios ·
+            <a href="../index.html">Inicio</a> ·
+            <a href="../blog.html">Blog</a> ·
+            <a href="../terminos.html">Términos &amp; Privacidad</a>
+        </p>
+    </footer>
+
+    <script src="../js/preloader.js"></script>
+    <script src="../js/legal-banner.js"></script>
+    <script src="./js/blog-article.js"></script>
+    <script src="../js/transitions.js"></script>
+    <script src="../js/pwa.js"></script>
+    <script src="../js/music-back.js"></script>
+</body>
+
+</html>

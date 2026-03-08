@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Guía completa de todos los mini juegos de MiSide: Snake, Tic-Tac-Toe, Baile con Cappie, Carreras, Penguin Beach, Quadrangle, Martillazo y más.">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="MISide: Pacify Mode">
+    <meta property="og:title" content="Guía completa de Mini Juegos de MiSide — Pacify Mode Blog">
+    <meta property="og:description"
+        content="Todo lo que necesitas saber para superar cada mini juego del universo Mita. Guías, tips y estrategias.">
+    <meta property="og:image" content="../assets/Blog/Mini_Juegos/blog3.jpg">
+    <meta property="og:url" content="https://dazzaz.github.io/miside-pacify-mode/Blog/guia-mini-juegos.html">
+    <meta property="og:locale" content="es_ES">
+    <meta property="article:published_time" content="2026-03-08">
+    <meta property="article:author" content="Dazzaz">
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Guía completa de Mini Juegos de MiSide">
+    <meta name="twitter:description"
+        content="Snake, Tic-Tac-Toe, Baile con Cappie, Carreras y más. Guía completa con imágenes.">
+    <meta name="twitter:image" content="../assets/Blog/Mini_Juegos/blog3.jpg">
+
+    <title>Guía de Mini Juegos — Blog | MISide: Pacify Mode</title>
+    <link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="#ff6b9d">
+
+    <link rel="stylesheet" href="../css/preloader.css">
+    <link rel="stylesheet" href="../css/legal-banner.css">
+    <link rel="stylesheet" href="../css/pwa.css">
+    <link rel="stylesheet" href="../css/transitions.css">
+    <link rel="stylesheet" href="./css/blog-article.css">
+    <link rel="stylesheet" href="../css/music-back.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
+
+    <style>
+        #read-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            width: 0%;
+            background: linear-gradient(90deg, #00d4ff, #ff6b9d);
+            z-index: 10000;
+            transition: width .1s linear;
+            box-shadow: 0 0 8px rgba(0, 212, 255, .5);
+        }
+
+        /* Mini-game index */
+        .toc {
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 14px;
+            padding: 1.4rem 1.6rem;
+            margin: 1.5rem 0 2.5rem;
+        }
+
+        .toc-title {
+            font-family: var(--mono);
+            font-size: .6rem;
+            letter-spacing: .18em;
+            color: rgba(0, 212, 255, .6);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .toc-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: .4rem .8rem;
+        }
+
+        .toc-list a {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            font-size: .85rem;
+            color: rgba(255, 255, 255, .5);
+            text-decoration: none;
+            padding: .3rem 0;
+            transition: color .2s;
+            font-family: var(--mono);
+            font-size: .72rem;
+            letter-spacing: .06em;
+        }
+
+        .toc-list a:hover {
+            color: var(--cyan);
+        }
+
+        .toc-list a .toc-num {
+            color: rgba(0, 212, 255, .4);
+            width: 18px;
+            flex-shrink: 0;
+        }
+
+        /* Game section header */
+        .game-section {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, .06);
+        }
+
+        .game-section:first-of-type {
+            border-top: none;
+            margin-top: 1.5rem;
+        }
+
+        .game-num {
+            font-family: var(--mono);
+            font-size: .6rem;
+            letter-spacing: .18em;
+            color: rgba(0, 212, 255, .5);
+            text-transform: uppercase;
+            margin-bottom: .4rem;
+        }
+
+        /* Tip box */
+        .tip-box {
+            border: 1px solid rgba(0, 212, 255, .2);
+            background: rgba(0, 212, 255, .04);
+            border-radius: 12px;
+            padding: 1rem 1.3rem;
+            margin: 1.2rem 0;
+            font-size: .9rem;
+            color: rgba(255, 255, 255, .6);
+            display: flex;
+            gap: .7rem;
+            align-items: flex-start;
+        }
+
+        .tip-box .tip-icon {
+            font-size: 1rem;
+            flex-shrink: 0;
+            margin-top: .1rem;
+        }
+
+        /* Difficulty badge */
+        .difficulty {
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            font-family: var(--mono);
+            font-size: .58rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            padding: .25rem .7rem;
+            border-radius: 12px;
+            margin-bottom: .8rem;
+        }
+
+        .diff-easy {
+            color: #86efac;
+            border: 1px solid rgba(134, 239, 172, .3);
+            background: rgba(134, 239, 172, .06);
+        }
+
+        .diff-medium {
+            color: #fbbf24;
+            border: 1px solid rgba(251, 191, 36, .3);
+            background: rgba(251, 191, 36, .06);
+        }
+
+        .diff-hard {
+            color: #f87171;
+            border: 1px solid rgba(248, 113, 113, .3);
+            background: rgba(248, 113, 113, .06);
+        }
+
+        /* Two-col images */
+        .img-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        @media (max-width: 580px) {
+            .img-pair {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="read-progress" aria-hidden="true"></div>
+
+    <!-- PRELOADER -->
+    <div id="preloader" role="status" aria-label="Cargando guía">
+        <div class="pl-bg" aria-hidden="true"></div>
+        <div class="pl-vignette" aria-hidden="true"></div>
+        <div class="pl-particles" aria-hidden="true"></div>
+        <div class="pl-hud-corner tl" aria-hidden="true"></div>
+        <div class="pl-hud-corner tr" aria-hidden="true"></div>
+        <div class="pl-hud-corner bl" aria-hidden="true"></div>
+        <div class="pl-hud-corner br" aria-hidden="true"></div>
+        <img src="../assets/Character/Mita_Revealed.png" alt="" class="pl-character" aria-hidden="true"
+            draggable="false">
+        <div class="pl-content">
+            <div class="pl-logo-wrap">
+                <div class="pl-glitch-r" aria-hidden="true"></div>
+                <div class="pl-glitch-b" aria-hidden="true"></div>
+                <img src="../assets/Logo/LogoOriginal.png" alt="MISide: Pacify Mode" class="pl-logo" draggable="false">
+            </div>
+            <p class="pl-tagline">Cargando Guía de Mini Juegos</p>
+            <div class="pl-bar-wrap">
+                <div class="pl-status">
+                    <span style="display:flex;align-items:center;gap:0.4rem;">
+                        <span class="pl-label">SYS ></span>
+                        <span id="pl-status-text"></span>
+                        <span class="pl-cursor" aria-hidden="true"></span>
+                    </span>
+                    <span id="pl-status-pct" class="pl-pct">0%</span>
+                </div>
+                <div class="pl-bar-shell" id="pl-bar-track" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                    aria-valuenow="0">
+                    <div id="pl-bar-fill" class="pl-bar-fill">
+                        <div class="pl-bar-tip"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pl-scan" aria-hidden="true"></div>
+        <div class="pl-static" aria-hidden="true"></div>
+        <div class="pl-crt" aria-hidden="true"></div>
+        <div class="pl-hud-top" aria-hidden="true">
+            <span>MISIDE SYSTEM</span><span class="sep">|</span>
+            <span>BLOG · GUÍAS</span><span class="sep">|</span>
+            <span id="pl-clock">--:--:--</span>
+        </div>
+        <div class="pl-hud-bot" aria-hidden="true">
+            <span>◆ AWFULLY STUDIOS</span><span class="sep">·</span>
+            <span>MINI JUEGOS</span><span class="sep">·</span>
+            <span class="blink">● CARGANDO DATOS</span>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav id="navbar" role="navigation" aria-label="Navegación principal">
+        <a class="nav-logo" href="../index.html">
+            <img src="../assets/Logo/LogoOriginal.png" alt="MISide Logo" onerror="this.style.display='none'">
+            <span></span>
+        </a>
+        <button class="hamburger" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="../blog.html" class="active">Blog</a></li>
+            <li><a href="../lore.html">Historia</a></li>
+            <li><a href="../personajes.html">Personajes</a></li>
+            <li><a href="../galeria.html">Galería</a></li>
+            <li><a href="../banda-sonora.html">Música</a></li>
+        </ul>
+    </nav>
+
+    <!-- ARTICLE HERO -->
+    <header id="article-hero">
+        <img src="../assets/Blog/Mini_Juegos/Panel1.webp" alt="Mini Juegos de MiSide" class="article-hero-img">
+        <div class="article-hero-overlay"></div>
+        <div class="article-hero-content">
+            <nav class="article-crumbs" aria-label="Breadcrumb">
+                <a href="../index.html">Inicio</a>
+                <span class="sep">›</span>
+                <a href="../blog.html">Blog</a>
+                <span class="sep">›</span>
+                <span>Guías de Mini Juegos</span>
+            </nav>
+            <div class="article-tag">Guías de Mini Juegos</div>
+            <h1 class="article-title">
+                Guía completa de<br>
+                <span class="gradient">Mini Juegos de MiSide</span>
+            </h1>
+            <div class="article-meta-row">
+                <div class="article-author">
+                    <div class="author-avatar">D</div>
+                    Dazzaz
+                </div>
+                <span class="article-date">8 marzo 2026</span>
+                <span class="article-read">· 8 min de lectura</span>
+                <button id="share-copy"
+                    style="margin-left:auto;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.5);font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;padding:.35rem .8rem;border-radius:20px;cursor:pointer;transition:background .2s,color .2s;"
+                    aria-label="Copiar enlace">🔗 Copiar enlace</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ARTICLE BODY -->
+    <article id="article-body">
+        <div class="article-body-content">
+
+            <p>
+                MiSide está lleno de mini juegos que Mita usa para entretenerte — o distraerte.
+                Cada uno tiene sus propias reglas, dificultad y mecánicas. Aquí tienes la guía
+                completa con tips para superar cada uno.
+            </p>
+
+            <!-- Índice de contenidos -->
+            <nav class="toc" aria-label="Índice de mini juegos">
+                <div class="toc-title">◆ Mini Juegos en esta guía</div>
+                <ul class="toc-list">
+                    <li><a href="#snake"><span class="toc-num">01</span> Snake</a></li>
+                    <li><a href="#tictactoe"><span class="toc-num">02</span> Tic-Tac-Toe</a></li>
+                    <li><a href="#baile"><span class="toc-num">03</span> Baile con Cappie</a></li>
+                    <li><a href="#cartas"><span class="toc-num">04</span> Juego de Cartas</a></li>
+                    <li><a href="#racing"><span class="toc-num">05</span> Carreras</a></li>
+                    <li><a href="#penguin"><span class="toc-num">06</span> Penguin Beach</a></li>
+                    <li><a href="#quadrangle"><span class="toc-num">07</span> Quadrangle</a></li>
+                    <li><a href="#martillo"><span class="toc-num">08</span> Martillazo con Cappie</a></li>
+                    <li><a href="#flygame"><span class="toc-num">09</span> Fly Game</a></li>
+                    <li><a href="#monsterslap"><span class="toc-num">10</span> Monster Slap</a></li>
+                    <li><a href="#dummysort"><span class="toc-num">11</span> Dummy Sort</a></li>
+                    <li><a href="#punkin"><span class="toc-num">12</span> Punkin Knock Knock</a></li>
+                    <li><a href="#hetoor"><span class="toc-num">13</span> Hetoor</a></li>
+                    <li><a href="#milaglitch"><span class="toc-num">14</span> Mila Glitch</a></li>
+                </ul>
+            </nav>
+
+            <!-- ══ 01 SNAKE ══ -->
+            <div class="game-section" id="snake">
+                <div class="game-num">◆ Mini Juego 01</div>
+                <h2>Snake</h2>
+                <div class="difficulty diff-easy">● Fácil</div>
+                <div class="article-img-wrap">
+                    <img src="../assets/Blog/Mini_Juegos/Snake.webp" alt="Snake en MiSide">
+                    <div class="article-img-caption">El clásico Snake dentro del universo de Mita</div>
+                </div>
+                <p>
+                    El Snake de MiSide sigue las reglas del clásico: controla la serpiente,
+                    come la fruta y evita chocar contigo mismo o con las paredes.
+                    La dificultad aumenta con la velocidad a medida que creces.
+                </p>
+                <div class="tip-box">
+                    <span class="tip-icon">💡</span>
+                    <span>Mantente en los bordes del tablero y muévete hacia el centro solo para comerte la fruta.
+                        Así tendrás más espacio de maniobra cuando la serpiente sea larga.</span>
+                </div>
+            </div>
+
+            <!-- ══ 02 TIC-TAC-TOE ══ -->
+            <div class="game-section" id="tictactoe">
+                <div class="game-num">◆ Mini Juego 02</div>
+                <h2>Tic-Tac-Toe</h2>
+                <div class="difficulty diff-easy">● Fácil</div>
+                <div class="article-img-wrap">
+                    <img src="../assets/Blog/Mini_Juegos/Tiktaktoew2dmiiiita.webp" alt="Tic-Tac-Toe con Mita">
+                    <div class="article-img-caption">Tic-Tac-Toe — el tres en raya de Mita</div>
+                </div>
+                <p>
+                    El clásico tres en raya. Juegas contra Mita en un tablero 3×3.
+                    El objetivo es conseguir tres fichas en línea (horizontal, vertical o diagonal)
+                    antes que ella.
+                </p>
+                <div class="tip-box">
+                    <span class="tip-icon">💡</span>
+                    <span>Ocupa el centro en el primer turno siempre que puedas.
+                        Desde el centro controlas más líneas ganadoras que desde cualquier otra posición.</span>
+                </div>
+            </div>
+
+            <!-- ══ 03 BAILE ══ -->
+            <div class="game-section" id="baile">
+                <div class="game-num">◆ Mini Juego 03</div>
+                <h2>Baile con Cappie</h2>
+                <div class="difficulty diff-medium">● Medio</div>
+                <div class="article-img-wrap">
+                    <img src="../assets/Blog/Mini_Juegos/Baile -Ritmo_Coppie.webp" alt="Baile de ritmo con Cappie">
+                    <div class="article-img-caption">Sigue el ritmo de Cappie al pie de la letra</div>
+                </div>
+                <p>
+                    Un juego de ritmo donde debes presionar las teclas en el momento exacto
+                    siguiendo el patrón de movimientos de Cappie. Las notas caen en tiempo
+                    y hay que pulsar la tecla correcta antes de que pasen.
+                </p>
+                <div class="tip-box">
+                    <span class="tip-icon">💡</span>
+                    <span>Mira el patrón completo antes de reaccionar. Es mejor
+                        anticiparte visualmente que reaccionar a la nota cuando ya está en la línea.
+                        El ritmo es constante — interiorízalo.</span>
+                </div>
+            </div>
+
+            <!-- ══ 04 CARTAS ══ -->
+            <div class="game-section" id="cartas">
+                <div class="game-num">◆ Mini Juego 04</div>
+                <h2>Juego de Cartas</h2>
+                <div class="difficulty diff-medium">● Medio</div>
+                <div class="article-img-wrap">
+                    <img src="../assets/Blog/Mini_Juegos/Juegos-Cartas.webp" alt="Juego de cartas de MiSide">
+                    <div class="article-img-caption">El juego de cartas — memoria y estrategia</div>
+                </div>
+                <p>
+                    Un mini juego de cartas donde debes recordar la posición de las cartas
+                    y emparejar las que coinciden. Cuantas más rondas pasas, más cartas
+                    hay en el tablero y menos tiempo tienes para memorizarlas.
+                </p>
+                <div class="tip-box">
+                    <span class="tip-icon">💡</span>
+                    <span>Cuando se revelen las cartas al inicio, fíjate primero en las que están
+                        en las esquinas y bordes — son las que tienden a olvidarse primero.</span>
+                </div>
+            </div>
+
+            <!-- ══ 05 RACING ══ -->
+            <div class="game-section" id="racing">
+                <div class="game-num">◆ Mini Juego 05</div>
+                <h2>Carreras</h2>
+                <div class="difficulty diff-medium">● Medio</div>
+                <div class="article-img-wrap">
+                    <img src="../assets/Blog/Mini_Juegos/Racing.webp" alt="Carreras en MiSide">
+                    <div class="article-img-caption">Carreras de obstáculos — esquiva y avanza</div>
+                </div>
+                <p>
+                    Un juego de carreras lateral donde debes esquivar obstáculos y llegar
+                    a la meta. La velocidad aumenta progresivamente y los obstáculos
+                    se vuelven más impredecibles.
+                </p>
+                <div class="tip-box">
+                    <span class="tip-icon">💡</span>
+                    <span>Los primeros segundos son los más fáciles. Aprovéchalos
+                        para ganar distancia desde el inicio y tener más margen de error
+                        cuando el ritmo se acelere.</span>
+                </div>
+            </div>
+
+            <!-- ══ 06 PENGUIN BEACH ══ -->
+            <div class="game-section" id="penguin">
+                <div class="game-num">◆ Mini Juego 06</div>
+                <h2>Penguin Beach</h2>
+                <div class="difficulty diff-easy">● Fácil</div>
+                <div class="article-img-wrap">
+                    <img src="../assets/Blog/Mini_Juegos/Penguin-Beach.webp" alt="Penguin Beach en MiSide">
+                    <div class="article-img-caption">Penguin Beach — el mini juego más adorable del sistema</div>
+                </div>
+                <p>
+                    Ayuda al pingüino a llegar a la playa esquivando obstáculos en el camino.
+                    Es uno de los mini juegos más sencillos y relajados de MiSide,
+                    pensado como un respiro entre los más exigentes.
+                </p>
+                <div class="tip-box">
+                    <span class="tip-icon">💡</span>
+                    <span>Muévete despacio. No hay penalización por tardar —
+                        solo por chocar. Tómatelo con calma y llega seguro.</span>
+                </div>
+            </div>
+
+            <!-- ══ 07 QUADRANGLE ══ -->
+            <div class="game-section" id="quadrangle">
+                <div class="game-num">◆ Mini Juego 07</div>
+                <h2>Quadrangle</h2>
+                <div class="difficulty diff-hard">● Difícil</div>
+                <div class="img-pair">
+                    <div class="article-img-wrap" style="margin:0;">
+                        <img src="../assets/Blog/Mini_Juegos/Quadrangle.webp" alt="Quadrangle fase inicial">
+                        <div class="article-img-caption">Fase inicial</div>
+                    </div>
+                    <div class="article-img-wrap" style="margin:0;">
+                        <img src="../assets/Blog/Mini_Juegos/Quadranglephase1.webp" alt="Quadrangle fase avanzada">
+                        <div class="article-img-caption">Fase avanzada</div>
+                    </div>
+                </div>
+                <p>
+                    Uno de los mini juegos más desafiantes. Debes mover un cuadrado
+                    a través de un laberinto de obstáculos en movimiento.
+                    Las fases se vuelven más complejas con cada nivel superado.
+                </p>
+                <div class="tip-box">
+                    <span class="tip-icon">💡</span>
+                    <span>Estudia el patrón de movimiento de los obstáculos antes de moverte.
+                        Todos siguen ciclos repetitivos — memoriza el ciclo y actúa
+                        en la ventana de tiempo correcta.</span>
+                </div>
+            </div>
+
+            <!-- ══ 08 MARTILLAZO ══ -->
+            <div class="game-section" id="martillo">
+                <div class="game-num">◆ Mini Juego 08</div>
+                <h2>Martillazo con Cappie</h2>
+                <div class="difficulty diff-medium">● Medio</div>
+                <div class="article-img-wrap">
+                    <img src="../assets/Blog/Mini_Juegos/Martillazo-Cappie.webp" alt="Martillazo con Cappie">
+                    <div class="article-img-caption">Cappie y su martillo — tempestivo y preciso</div>
+                </div>
+                <p>
+                    Cappie levanta el martillo al ritmo de la música.
+                    Debes golpear en el momento exacto cuando el indicador llega
+                    a la zona marcada. La ventana de tiempo se reduce en dificultades mayores.
+                </p>
+                <div class="tip-box">
+                    <span class="tip-icon">💡</span>
+                    <span>Escucha el audio tanto como miras la pantalla.
+                        La señal sonora llega fracción de segundo antes que la visual —
+                        usarla te da una ventaja real de tiempo.</span>
+                </div>
+            </div>
+
+            <!-- ══ 09 FLY GAME ══ -->
+            <div class="game-section" id="flygame">
+                <div class="game-num">◆ Mini Juego 09</div>
+                <h2>Fly Game</h2>
+                <div class="difficulty diff-hard">● Difícil</div>
+                <div class="article-img-wrap">
+                    <img src="../assets/Blog/Mini_Juegos/Flygame.webp" alt="Fly Game en MiSide">
+                    <div class="article-img-caption">Fly Game — vuelo entre obstáculos al estilo Flappy</div>
+                </div>
+                <p>
+                    Inspirado en Flappy Bird: mantén a tu personaje en vuelo pulsando repetidamente
+                    para evitar los tubos y barreras. La física del salto es impredecible
+                    al principio pero se vuelve intuitiva con práctica.
+                </p>
+                <div class="tip-box">
+                    <span class="tip-icon">💡</span>
+                    <span>Pulsa en ráfagas cortas en vez de mantener pulsado continuamente.
+                        El objetivo es mantener una altura constante, no subir y bajar bruscamente.</span>
+                </div>
+            </div>
+
+            <!-- ══ 10 MONSTER SLAP ══ -->
+            <div class="game-section" id="monsterslap">
+                <div class="game-num">◆ Mini Juego 10</div>
+                <h2>Monster Slap</h2>
+                <div class="difficulty diff-easy">● Fácil</div>
+                <div class="article-img-wrap">
+                    <img src="../assets/Blog/Mini_Juegos/Monsterslap.webp" alt="Monster Slap en MiSide">
+                    <div class="article-img-caption">Monster Slap — golpea antes de que escapen</div>
+                </div>
+                <p>
+                    Un juego de reflejos al estilo "whack-a-mole": aparecen monstruos
+                    en distintas posiciones y debes golpearlos antes de que desaparezcan.
+                    Falla demasiados y perderás puntos valiosos.
+                </p>
+                <div class="tip-box">
+                    <span class="tip-icon">💡</span>
+                    <span>No persigas los que ya casi desaparecen. Es mejor ignorar uno
+                        que fallar el golpe y perder tiempo — los próximos saldrán inmediatamente.</span>
+                </div>
+            </div>
+
+            <!-- ══ 11 DUMMY SORT ══ -->
+            <div class="game-section" id="dummysort">
+                <div class="game-num">◆ Mini Juego 11</div>
+                <h2>Dummy Sort</h2>
+                <div class="difficulty diff-medium">● Medio</div>
+                <div class="article-img-wrap">
+                    <img src="../assets/Blog/Mini_Juegos/Dummysort.webp" alt="Dummy Sort en MiSide">
+                    <div class="article-img-caption">Dummy Sort — ordena las piezas antes de que el tiempo se acabe
+                    </div>
+                </div>
+                <p>
+                    Un puzzle de ordenamiento: tienes un conjunto de piezas o elementos
+                    en desorden y debes colocarlos en la secuencia correcta
+                    dentro del tiempo límite.
+                </p>
+                <div class="tip-box">
+                    <span class="tip-icon">💡</span>
+                    <span>Estudia el orden objetivo antes de empezar a mover piezas.
+                        Planear 2-3 movimientos por adelantado es más eficiente
+                        que mover y corregir sobre la marcha.</span>
+                </div>
+            </div>
+
+            <!-- ══ 12 PUNKIN KNOCK KNOCK ══ -->
+            <div class="game-section" id="punkin">
+                <div class="game-num">◆ Mini Juego 12</div>
+                <h2>Punkin Knock Knock</h2>
+                <div class="difficulty diff-medium">● Medio</div>
+                <div class="article-img-wrap">
+                    <img src="../assets/Blog/Mini_Juegos/Punkin_knock_knock.webp" alt="Punkin Knock Knock">
+                    <div class="article-img-caption">Punkin Knock Knock — adivina dónde está</div>
+                </div>
+                <p>
+                    Una variante del juego de las tres tazas: Punkin esconde algo
+                    bajo uno de varios recipientes y los mezcla. Debes seguir
+                    con la vista el correcto y señalar dónde está al final.
+                </p>
+                <div class="tip-box">
+                    <span class="tip-icon">💡</span>
+                    <span>Fija la vista en el recipiente objetivo y no la muevas durante el barajeo.
+                        El truco psicológico del juego está en hacerte perder el foco —
+                        no caigas en él.</span>
+                </div>
+            </div>
+
+            <!-- ══ 13 HETOOR ══ -->
+            <div class="game-section" id="hetoor">
+                <div class="game-num">◆ Mini Juego 13</div>
+                <h2>Hetoor</h2>
+                <div class="difficulty diff-hard">● Difícil</div>
+                <div class="article-img-wrap">
+                    <img src="../assets/Blog/Mini_Juegos/Hetoor.webp" alt="Hetoor en MiSide">
+                    <div class="article-img-caption">Hetoor — el más exigente del sistema</div>
+                </div>
+                <p>
+                    Hetoor es uno de los mini juegos más exigentes de MiSide.
+                    Requiere coordinación precisa y reacciones rápidas para superar
+                    sus fases. Muchos jugadores lo describen como el mayor reto del juego.
+                </p>
+                <div class="tip-box">
+                    <span class="tip-icon">💡</span>
+                    <span>La paciencia es clave. No intentes completarlo de un tirón al principio —
+                        estudia los patrones en los primeros intentos aunque falles,
+                        y aplica lo aprendido en los siguientes.</span>
+                </div>
+            </div>
+
+            <!-- ══ 14 MILA GLITCH ══ -->
+            <div class="game-section" id="milaglitch">
+                <div class="game-num">◆ Mini Juego 14</div>
+                <h2>Mila Glitch</h2>
+                <div class="difficulty diff-hard">● Difícil</div>
+                <div class="img-pair">
+                    <div class="article-img-wrap" style="margin:0;">
+                        <img src="../assets/Blog/Mini_Juegos/Milagiltch1.webp" alt="Mila Glitch fase 1">
+                        <div class="article-img-caption">Fase 1 — el glitch comienza</div>
+                    </div>
+                    <div class="article-img-wrap" style="margin:0;">
+                        <img src="../assets/Blog/Mini_Juegos/Milagiltch2.webp" alt="Mila Glitch fase 2">
+                        <div class="article-img-caption">Fase 2 — el caos se intensifica</div>
+                    </div>
+                </div>
+                <div class="img-pair">
+                    <div class="article-img-wrap" style="margin:0;">
+                        <img src="../assets/Blog/Mini_Juegos/Milagiltch3.webp" alt="Mila Glitch fase 3">
+                        <div class="article-img-caption">Fase 3 — distorsión total</div>
+                    </div>
+                    <div class="article-img-wrap" style="margin:0;">
+                        <img src="../assets/Blog/Mini_Juegos/Milaglitch4.webp" alt="Mila Glitch fase 4">
+                        <div class="article-img-caption">Fase 4 — el sistema colapsa</div>
+                    </div>
+                </div>
+                <p>
+                    El más perturbador de todos. Mila Glitch hace que el juego se
+                    "rompa" visualmente — la pantalla se distorsiona, los controles se invierten
+                    o cambian, y las reglas normales dejan de aplicar. Cada fase
+                    introduce un nuevo tipo de corrupción.
+                </p>
+                <div class="tip-box">
+                    <span class="tip-icon">💡</span>
+                    <span>Cuando la pantalla se distorsione, ignora los efectos visuales
+                        y concéntrate en los controles. La mecánica base no cambia —
+                        solo la presentación visual intenta confundirte.</span>
+                </div>
+
+                <div class="theory-block">
+                    <div class="theory-icon">🎮</div>
+                    <h4>¿Es Mila Glitch un mini juego o algo más?</h4>
+                    <p>Algunos jugadores teorizan que Mila Glitch no es solo un mini juego,
+                        sino una representación del propio sistema Mita "fallando" —
+                        como si el universo digital intentara rechazar al jugador
+                        antes de que descubriera demasiado.</p>
+                </div>
+            </div>
+
+            <!-- Bilibili card -->
+            <div class="article-img-wrap" style="margin-top:3rem;">
+                <img src="../assets/Blog/Mini_Juegos/Bilibili_card_art_6.webp"
+                    alt="Arte conceptual de los mini juegos de MiSide">
+                <div class="article-img-caption">Arte conceptual del universo de mini juegos de MiSide</div>
+            </div>
+
+            <!-- Share section -->
+            <div
+                style="margin-top:3rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+                <span
+                    style="font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;color:rgba(255,255,255,.25);text-transform:uppercase;">Compartir
+                    guía</span>
+                <a href="https://twitter.com/intent/tweet?text=Gu%C3%ADa+completa+de+Mini+Juegos+de+MiSide&url=https://dazzaz.github.io/miside-pacify-mode/Blog/guia-mini-juegos.html"
+                    target="_blank" rel="noopener"
+                    style="font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;color:rgba(255,255,255,.4);text-decoration:none;border:1px solid rgba(255,255,255,.1);padding:.3rem .8rem;border-radius:20px;transition:border-color .2s,color .2s;"
+                    onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,.3)'"
+                    onmouseout="this.style.color='rgba(255,255,255,.4)';this.style.borderColor='rgba(255,255,255,.1)'">
+                    𝕏 / Twitter
+                </a>
+                <button id="share-copy"
+                    style="font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;color:rgba(255,255,255,.4);background:none;border:1px solid rgba(255,255,255,.1);padding:.3rem .8rem;border-radius:20px;cursor:pointer;transition:border-color .2s,color .2s;">
+                    🔗 Copiar enlace
+                </button>
+            </div>
+
+        </div>
+    </article>
+
+    <!-- ARTICLE NAV -->
+    <nav id="article-nav" aria-label="Navegación entre artículos">
+        <a href="final-principal.html" class="article-nav-link">
+            <span class="article-nav-dir">← Anterior</span>
+            <span class="article-nav-title">El Final Principal de MiSide</span>
+        </a>
+        <a href="../blog.html" class="article-nav-link next">
+            <span class="article-nav-dir">Volver →</span>
+            <span class="article-nav-title">Todos los artículos</span>
+        </a>
+    </nav>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <p class="footer-text">
+            © 2026 MISide: Pacify Mode — Awfully Studios ·
+            <a href="../index.html">Inicio</a> ·
+            <a href="../blog.html">Blog</a> ·
+            <a href="../terminos.html">Términos &amp; Privacidad</a>
+        </p>
+    </footer>
+
+    <script src="../js/preloader.js"></script>
+    <script src="../js/legal-banner.js"></script>
+    <script src="./js/blog-article.js"></script>
+    <script src="../js/transitions.js"></script>
+    <script src="../js/pwa.js"></script>
+    <script src="../js/music-back.js"></script>
+</body>
+
+</html>
