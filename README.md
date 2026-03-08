@@ -14,13 +14,14 @@
 
 [![License](https://img.shields.io/badge/Licencia-Fan_Project-ff6b9d?style=flat-square)](./terminos.html)
 [![Status](https://img.shields.io/badge/Estado-Activo-brightgreen?style=flat-square)]()
-[![Pages](https://img.shields.io/badge/Páginas-10-blue?style=flat-square)]()
+[![Version](https://img.shields.io/badge/Versión-2.0-a78bfa?style=flat-square)]()
+[![Pages](https://img.shields.io/badge/Páginas-14+-blue?style=flat-square)]()
 [![Zero Dependencies](https://img.shields.io/badge/Dependencias-Zero-success?style=flat-square)]()
 
 > *"Un mundo en el que la dulzura esconde algo más profundo."*
 
 Fan site interactivo **100% estático** dedicado al juego **MiSide** de **Awfully Studios**.
-Explora personajes, mapas en 3D, galería de imágenes, trailers y la banda sonora oficial.
+Explora personajes, mapas en 3D, galería de imágenes, trailers, banda sonora oficial y el nuevo **Blog** con guías, lore y DevLogs.
 
 **[🌐 Ver Sitio en Vivo](https://dazzaz.github.io/miside-pacify-mode/)** · **[🐛 Reportar un Bug](../../issues/new?template=bug_report.md)** · **[💡 Sugerir Feature](../../issues/new?template=feature_request.md)**
 
@@ -37,7 +38,8 @@ Explora personajes, mapas en 3D, galería de imágenes, trailers y la banda sono
 - [🚀 Instalación y Uso Local](#-instalación-y-uso-local)
 - [🎨 Sistema de Diseño](#-sistema-de-diseño)
 - [📄 Mapa de Páginas y Scripts](#-mapa-de-páginas-y-scripts)
-- [🗺️ Explorador de Mapas 3D](#️-explorador-de-mapas-3d)
+- [� Blog — Artículos disponibles](#-blog--artículos-disponibles)
+- [�🗺️ Explorador de Mapas 3D](#️-explorador-de-mapas-3d)
 - [📱 PWA — Progressive Web App](#-pwa--progressive-web-app)
 - [🌐 Despliegue](#-despliegue)
 - [🙏 Créditos](#-créditos)
@@ -78,8 +80,10 @@ Explora personajes, mapas en 3D, galería de imágenes, trailers y la banda sono
 | 🎬 **Trailers** | Reproductor de video con tabs para toda la videografía oficial del juego |
 | 🗺️ **Mapa 3D** | Explorador interactivo de escenarios con modelos GLB cargados vía **Three.js** |
 | 🖼️ **Galería** | +150 imágenes con filtros por categoría, buscador en tiempo real y lightbox con miniaturas |
-| 🎵 **Banda Sonora** | Reproductor completo del OST con 24 pistas, shuffle, repeat, barra de progreso y volumen |
+| 🎵 **Banda Sonora** | Reproductor completo del OST con 24 pistas, shuffle, repeat, barra de progreso y volumen. **Música persistente entre páginas** |
+| 📝 **Blog** | Artículos de lore, guías de mini juegos, DevLogs y notas de versión — con filtros por categoría |
 | 🎮 **Alpha** | Arte conceptual, renders exclusivos y trailers de la versión Alpha del juego |
+| 📥 **Descarga** | Links directos a Steam e Itch.io para obtener MiSide |
 | ⚖️ **Términos** | Aviso legal y política de privacidad del proyecto |
 | ❌ **404** | Página de error personalizada con terminal animado y partículas |
 
@@ -95,6 +99,8 @@ Explora personajes, mapas en 3D, galería de imágenes, trailers y la banda sono
 | **[Three.js](https://threejs.org/)** | Renderizado WebGL de modelos 3D `.glb` para el explorador de mapas |
 | **Google Fonts** | Tipografías `Outfit` + `Share Tech Mono` |
 | **PWA** | Progressive Web App instalable con Service Worker y Web App Manifest |
+| **SessionStorage** | Persistencia del reproductor de música entre navegaciones de página |
+| **Open Graph / Twitter Cards** | Previews enriquecidos en redes sociales para las 14+ páginas del sitio |
 
 > ✅ **Zero dependencias de Node.js** · ✅ **Sin bundler** · ✅ **Abre `index.html` y listo**
 
@@ -106,6 +112,7 @@ Explora personajes, mapas en 3D, galería de imágenes, trailers y la banda sono
 MISide Pacify Mode/
 │
 ├── 📄 index.html              # Página principal (landing page)
+├── 📄 blog.html               # Índice del Blog con filtros por categoría
 ├── 📄 personajes.html         # Perfiles de los 13 personajes
 ├── 📄 lore.html               # Historia, cronología y teorías
 ├── 📄 trailers.html           # Reproductor de trailers oficiales
@@ -113,22 +120,37 @@ MISide Pacify Mode/
 ├── 📄 banda-sonora.html       # Reproductor del OST completo
 ├── 📄 mapa.html               # Explorador 3D de escenarios
 ├── 📄 alpha.html              # Contenido de la versión Alpha
+├── 📄 descarga.html           # Links a Steam e Itch.io
 ├── 📄 terminos.html           # Términos de uso y privacidad
 ├── 📄 404.html                # Página de error personalizada
 │
+├── 📁 Blog/                   # Artículos individuales del Blog
+│   ├── final-principal.html   # Lore: El Final Principal + Final Pacífico
+│   ├── guia-mini-juegos.html  # Guía completa de los 14 mini juegos
+│   ├── devlog-1.html          # DevLog #1 — Cómo nació el sitio
+│   ├── actualizacion-v2.html  # Notas de versión v2.0
+│   ├── 📁 css/
+│   │   └── blog-article.css   # Estilos compartidos por todos los artículos
+│   └── 📁 js/
+│       └── blog-article.js    # JS compartido (navbar, progreso, spoilers, copiar)
+│
 ├── 📁 css/
 │   ├── style.css              # Estilos globales + sistema de tokens
+│   ├── blog.css               # Estilos del índice del Blog
 │   ├── preloader.css          # Animación de pantalla de carga
 │   ├── transitions.css        # Efectos de transición entre páginas
 │   ├── legal-banner.css       # Banner de consentimiento de cookies
+│   ├── music-back.css         # Reproductor de música de fondo
 │   ├── pwa.css                # Estilos del botón de instalación PWA
 │   └── [pagina].css           # Hoja de estilos específica por página
 │
 ├── 📁 js/
 │   ├── script.js              # Lógica global (navbar, parallax, partículas, video)
+│   ├── blog.js                # Lógica del índice del Blog (filtros, animaciones)
 │   ├── preloader.js           # Control de la pantalla de carga
 │   ├── transitions.js         # Efectos glitch entre navegación
 │   ├── legal-banner.js        # Consentimiento de cookies
+│   ├── music-back.js          # Reproductor persistente de música de fondo
 │   ├── pwa.js                 # Registro del Service Worker
 │   └── [pagina].js            # Lógica específica por página
 │
@@ -142,10 +164,18 @@ MISide Pacify Mode/
 │   ├── Maps/                  # Modelos 3D (.glb) para el explorador
 │   ├── 2D Art/                # Arte 2D oficial y fan art
 │   ├── Alpha Concepts/        # Arte conceptual de la versión Alpha
+│   ├── Blog/                  # Imágenes usadas en los artículos del Blog
+│   │   ├── Historia_MiSide/   # Imágenes del artículo de lore
+│   │   ├── Mini_Juegos/       # Capturas de los 14 mini juegos
+│   │   ├── Todos_finales/     # Imágenes del final principal y pacífico
+│   │   └── TodaRopa/          # Atuendos de Mita (DevLog y Blog)
 │   ├── Open Graph/            # Imágenes para previews en redes sociales
 │   └── Readme/                # Capturas de pantalla para este README
 │
-├── 📄 manifest.json           # Configuración de la PWA
+├── � Blog/
+│   └── Finales/               # Videos de los finales del juego (.mp4)
+│
+├── �📄 manifest.json           # Configuración de la PWA
 ├── 📄 sw.js                   # Service Worker (cache-first)
 ├── 📄 robots.txt              # Directivas para motores de búsqueda
 └── 📄 sitemap.xml             # Mapa del sitio para SEO
@@ -159,8 +189,8 @@ No se necesita ningún servidor ni instalación de dependencias. Elige una opci�
 
 ```bash
 # Opción 1 — Python (recomendado para evitar errores CORS con los .glb)
-python -m http.server 5500
-# Luego abre: http://localhost:5500
+python -m http.server 8080
+# Luego abre: http://localhost:8080
 
 # Opción 2 — Node.js (live-server)
 npx live-server
@@ -178,7 +208,7 @@ npx live-server
 
 ## 🎨 Sistema de Diseño
 
-Los tokens de diseño están definidos como CSS custom properties en `css/style.css`, lo que permite mantener consistencia visual en todo el proyecto:
+Los tokens de diseño están definidos como CSS custom properties en `css/style.css` y replicados en `Blog/css/blog-article.css`, lo que permite mantener consistencia visual en todo el proyecto:
 
 ```css
 :root {
@@ -186,6 +216,7 @@ Los tokens de diseño están definidos como CSS custom properties en `css/style.
     --pink:       #ff6b9d;    /* Color de acento principal */
     --pink-light: #ffb3d1;    /* Variante clara del rosa */
     --cyan:       #00d4ff;    /* Color secundario / hover */
+    --purple:     #7c3aed;    /* Acento de profundidad */
 
     /* Fondos y superficies */
     --bg:         #060410;    /* Fondo base oscuro */
@@ -203,9 +234,12 @@ Los tokens de diseño están definidos como CSS custom properties en `css/style.
 
 Cada página tiene su propio archivo CSS y JS. Todos comparten el conjunto de scripts globales.
 
+### Páginas principales
+
 | Página | CSS | JS |
 |:---|:---|:---|
 | `index.html` | `style.css` | `script.js` |
+| `blog.html` | `blog.css` | `blog.js` |
 | `personajes.html` | `personajes.css` | `personajes.js` |
 | `lore.html` | `lore.css` | `lore.js` |
 | `trailers.html` | `trailers.css` | `trailers.js` |
@@ -213,10 +247,42 @@ Cada página tiene su propio archivo CSS y JS. Todos comparten el conjunto de sc
 | `banda-sonora.html` | `banda-sonora.css` | `banda-sonora.js` |
 | `mapa.html` | `mapa.css` | `mapa.js` + **Three.js CDN** |
 | `alpha.html` | `alpha.css` | `alpha.js` |
+| `descarga.html` | `descarga.css` | `descarga.js` |
 | `terminos.html` | `terminos.css` | `terminos.js` |
 | `404.html` | `404.css` | `404.js` |
 
-> 📌 Todos los archivos HTML comparten: `preloader`, `legal-banner`, `transitions` y `pwa`.
+### Artículos del Blog (comparten CSS y JS)
+
+| Artículo | Archivo |
+|:---|:---|
+| El Final Principal + Final Pacífico | `Blog/final-principal.html` |
+| Guía completa de Mini Juegos | `Blog/guia-mini-juegos.html` |
+| DevLog #1 — Cómo nació el sitio | `Blog/devlog-1.html` |
+| v2.0 — Blog, Música y Open Graph | `Blog/actualizacion-v2.html` |
+
+> 📌 Todos los archivos HTML comparten: `preloader`, `legal-banner`, `transitions`, `pwa` y `music-back`.
+
+---
+
+## 📝 Blog — Artículos disponibles
+
+La sección **Blog** cuenta con cuatro categorías y un artículo publicado por categoría en su lanzamiento:
+
+| Categoría | Artículo | Descripción |
+|:---|:---|:---|
+| 🩷 **Lore y Personajes** | El Final Principal de MiSide | Análisis del final malo (Crazy Mita) y el final pacífico con imágenes y teorías |
+| 🎮 **Guías de Mini Juegos** | Guía completa de Mini Juegos | 14 mini juegos cubiertos con dificultad, tips e imágenes de cada uno |
+| 📝 **DevLogs** | DevLog #1 — Cómo nació el sitio | Origen del fan site, stack técnica, retos de desarrollo y roadmap |
+| 🟩 **Actualizaciones del Sitio** | v2.0 — Blog, Música y OG Tags | Changelog completo de la versión 2.0 con todas las novedades |
+
+**Características de cada artículo:**
+- Barra de progreso de lectura en la parte superior
+- Breadcrumbs de navegación
+- Imagen de hero a pantalla completa con overlay
+- Open Graph + Twitter Card individuales
+- Botón de compartir en X/Twitter + copiar enlace
+- Navegación entre artículos (anterior / siguiente)
+- Preloader personalizado por categoría
 
 ---
 
@@ -242,7 +308,7 @@ El sitio es instalable como aplicación nativa en dispositivos móviles y escrit
 | `manifest.json` | Nombre, colores, iconos y accesos directos a páginas clave |
 | `sw.js` | Caché estático con estrategia *cache-first* para carga offline |
 
-> **Nota:** Los archivos `.glb` se excluyen del caché (por su peso) y se descargan siempre frescos desde el servidor.
+> **Nota:** Los archivos `.glb` y los videos de los finales se excluyen del caché (por su peso) y se descargan siempre frescos desde el servidor.
 
 ---
 
@@ -262,8 +328,9 @@ El sitio es **100% estático** y no requiere backend. Puede alojarse en cualquie
 Antes de subir el proyecto, actualiza las URLs en los siguientes archivos:
 
 ```
-robots.txt  → Sitemap: https://TU-DOMINIO.com/sitemap.xml
-sitemap.xml → Reemplaza "https://TU-DOMINIO.com" en todas las entradas
+robots.txt      → Sitemap: https://TU-DOMINIO.com/sitemap.xml
+sitemap.xml     → Reemplaza "https://TU-DOMINIO.com" en todas las entradas
+Blog/*.html     → og:url de cada artículo
 ```
 
 ---
@@ -296,5 +363,6 @@ Todo el contenido del juego (imágenes, música, nombres de personajes, modelos 
 *Hecho con ❤️ para la comunidad de MiSide*
 
 [![MiSide en Steam](https://img.shields.io/badge/MiSide-Steam-1b2838?style=flat-square&logo=steam&logoColor=white)](https://store.steampowered.com/app/2527500/MiSide/)
+[![Blog](https://img.shields.io/badge/Blog-Activo-ff6b9d?style=flat-square)](https://dazzaz.github.io/miside-pacify-mode/blog.html)
 
 </div>
